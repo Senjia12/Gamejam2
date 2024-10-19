@@ -10,6 +10,8 @@
 texture = ExtResource("1_8b1fp")
 
 [node name="Cam controller" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
 script = ExtResource("2_x58xy")
 
 [node name="Nécromancien" parent="." instance=ExtResource("3_6rrow")]
