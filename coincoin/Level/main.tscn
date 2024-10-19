@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=4 format=3 uid="uid://cu0nevcv16fdi"]
+
+[ext_resource type="Texture2D" uid="uid://dkj5btk3n4n3e" path="res://icon.svg" id="1_8b1fp"]
+[ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
+[ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien.tscn" id="3_6rrow"]
 
 [node name="Main" type="Node2D"]
+
+[node name="ref mouv" type="Sprite2D" parent="."]
+texture = ExtResource("1_8b1fp")
+
+[node name="Cam controller" type="Camera2D" parent="."]
+script = ExtResource("2_x58xy")
+
+[node name="Nécromancien" parent="." instance=ExtResource("3_6rrow")]
