@@ -1,7 +1,7 @@
 extends Node
 
 
-var night := true
+var night := false
 
 
 
