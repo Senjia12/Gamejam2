@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sw0ptkaim85x"]
+[gd_scene load_steps=10 format=3 uid="uid://sw0ptkaim85x"]
 
 [ext_resource type="Script" path="res://Unit/squellette prefab/squellette_prefab.gd" id="1_5ymbx"]
 [ext_resource type="Texture2D" uid="uid://c8yssiiexur7w" path="res://Unit/squellette prefab/squellette désa base.png" id="2_fix1f"]
@@ -72,7 +72,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lk8f"]
+size = Vector2(15, 5)
+
 [node name="Squellette prefab" type="CharacterBody2D" groups=["Unit", "squellette"]]
+y_sort_enabled = true
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_5ymbx")
@@ -82,6 +86,7 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_vusxl")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 5.0
 
 [node name="Attack_range" type="Area2D" parent="."]
 collision_layer = 2
@@ -99,6 +104,13 @@ frame_progress = 0.414757
 offset = Vector2(0, -8.5)
 
 [node name="attack cd" type="Timer" parent="."]
+
+[node name="check front" type="Area2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="check front"]
+position = Vector2(7.5, 0.5)
+shape = SubResource("RectangleShape2D_2lk8f")
 
 [connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Attack_range" to="." method="_on_attack_range_body_exited"]

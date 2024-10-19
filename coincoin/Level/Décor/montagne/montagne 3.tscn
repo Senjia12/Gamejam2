@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk3y7vaijo70y"]
+
+[ext_resource type="Texture2D" uid="uid://teobf5af0lka" path="res://Level/Décor/montagne/montagne 2.png" id="1_g8lxx"]
+
+[node name="montagne" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g8lxx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-109, -8, -104, 26, -46, 46, -18, 43, -12, 61, 10, 67, 14, 83, 49, 98, 66, 98, 75, 85, 110, 72, 115, 51, 106, 26, 92, 11, 42, -5, 50, -15, 45, -42, 27, -61, -12, -70, -43, -68, -61, -55)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(-114, -5, -111, 33, -56, 53, -26, 57, -14, 73, 39, 110, 67, 110, 87, 91, 119, 77, 125, 51, 113, 18, 89, 0, 59, -10, 53, -44, 31, -67, -21, -80, -64, -72, -103, -32)
+affect_navigation_mesh = true

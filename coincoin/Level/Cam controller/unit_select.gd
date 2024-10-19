@@ -5,7 +5,7 @@ var selection_end = Vector2()
 var selecting = false
 
 const sel_box_col = Color(96.0/255.0, 56.0/255.0, 106.0/255.0)
-const sel_box_line_width = 3
+const sel_box_line_width = 1
 
 var unit_select := []
 
@@ -39,8 +39,8 @@ func _input(event):
 				selection_end = get_local_mouse_position()
 				selecting = false
 				if selection_end.distance_to(selection_start) < 16:
-					selection_end += Vector2(1,1)*64
-					selection_start += Vector2(-1,-1)*64
+					selection_end += Vector2(1,1)*8
+					selection_start += Vector2(-1,-1)*8
 				select_units()
 				queue_redraw()
 		elif event.button_index != MOUSE_BUTTON_LEFT:

@@ -46,7 +46,9 @@ func move_along_path(delta):
 		global_position = next_point
 	else:
 		velocity = movement
-		move_and_slide()
+		$"check front".look_at(global_position + velocity)
+		if $"check front".get_overlapping_bodies() == [] or $"check front".get_overlapping_bodies() == [self]:
+			move_and_slide()
 	
 	if abs(velocity.x) <= 0.2:
 		if velocity.y < 0:
