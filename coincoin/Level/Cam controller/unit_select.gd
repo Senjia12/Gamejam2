@@ -5,16 +5,15 @@ var selection_end = Vector2()
 var selecting = false
 
 const sel_box_col = Color(96.0/255.0, 56.0/255.0, 106.0/255.0)
-const sel_box_line_width = 1
+const sel_box_line_width = 3
 
-var unit_select := []
 
 var a_pressed := false
 var last_pressed
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("click_droit"):
-		for i in unit_select:
+		for i in Globals.unit_select:
 			i.is_a_moving = false
 			i.is_moving = true
 			i.move_to(get_global_mouse_position())
@@ -22,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		a_pressed = true
 	if Input.is_action_just_released("click_gauche") && a_pressed:
 		a_pressed = false
-		for i in unit_select:
+		for i in Globals.unit_select:
 			i.is_a_moving = true
 			i.is_moving = false
 			i.move_to(get_global_mouse_position())
@@ -57,7 +56,7 @@ func _draw():
 		draw_line(selection_start, Vector2(selection_start.x, selection_end.y), sel_box_col, sel_box_line_width)
 		draw_line(selection_end, Vector2(selection_end.x, selection_start.y), sel_box_col, sel_box_line_width)
 		draw_line(selection_end, Vector2(selection_start.x, selection_end.y), sel_box_col, sel_box_line_width)
-		draw_rect(Rect2(selection_start,selection_end - selection_start),Color(sel_box_col,0.1))
+		draw_rect(Rect2(selection_start,selection_end - selection_start),Color(sel_box_col,0.25))
 
 
 func select_units():
@@ -65,7 +64,7 @@ func select_units():
 	for unit in get_tree().get_nodes_in_group("Unit"):
 		if rect.has_point(unit.global_position):
 			unit.is_selected = true
-			unit_select.append(unit)
+			Globals.unit_select.append(unit)
 		else:
 			unit.is_selected = false
-			unit_select.erase(unit)
+			Globals.unit_select.erase(unit)
