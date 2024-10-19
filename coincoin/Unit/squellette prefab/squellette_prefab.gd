@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var max_hp := 25
 var current_hp := 25
 
+@onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var nav = get_node("NavigationAgent2D")
 var target_position = null
@@ -13,20 +14,23 @@ var target_position = null
 var is_moving := false
 var is_a_moving := false
 var is_selected := false
-
 var humain_in_range := false
 
-@onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
+var direction := "down"
 
+@onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
 func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
+	animatedSprite.play("idle down")
 
 
 func _physics_process(delta: float) -> void:
 	if is_moving == true or is_a_moving && !humain_in_range:
 		move_along_path(delta)
+	else:
+		animatedSprite.play("idle " + direction)
 
 func move_to(pos):
 	var navigation = get_node("NavigationAgent2D")
@@ -43,6 +47,22 @@ func move_along_path(delta):
 	else:
 		velocity = movement
 		move_and_slide()
+	
+	if abs(velocity.x) <= 0.2:
+		if velocity.y < 0:
+			animatedSprite.play("move up")
+			direction = "up"
+		else:
+			animatedSprite.play("move down")
+			direction = "down"
+	else:
+		animatedSprite.play("move right")
+		if velocity.x < 0:
+			animatedSprite.flip_h = true
+			direction = "left"
+		else:
+			animatedSprite.flip_h = false
+			direction = "right"
 
 
 func take_damage(dmg):

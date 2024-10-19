@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://sw0ptkaim85x"]
+[gd_scene load_steps=9 format=3 uid="uid://sw0ptkaim85x"]
 
 [ext_resource type="Script" path="res://Unit/squellette prefab/squellette_prefab.gd" id="1_5ymbx"]
+[ext_resource type="Texture2D" uid="uid://c8yssiiexur7w" path="res://Unit/squellette prefab/squellette désa base.png" id="2_fix1f"]
 [ext_resource type="Texture2D" uid="uid://dwgoj4idsiucx" path="res://Unit/squellette prefab/squellette base.png" id="2_qtprt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vusxl"]
@@ -8,6 +9,10 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_crcds"]
 radius = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdvlv"]
+atlas = ExtResource("2_fix1f")
+region = Rect2(0, 0, 13, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnqdd"]
 atlas = ExtResource("2_qtprt")
@@ -17,10 +22,53 @@ region = Rect2(0, 0, 13, 17)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sdvlv")
+}],
+"loop": true,
+"name": &"disable down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"disable right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"disable up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pnqdd")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle up",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move up",
 "speed": 5.0
 }]
 
@@ -46,6 +94,8 @@ shape = SubResource("CircleShape2D_crcds")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_mjxqi")
+animation = &"idle down"
+frame_progress = 0.414757
 offset = Vector2(0, -8.5)
 
 [node name="attack cd" type="Timer" parent="."]
