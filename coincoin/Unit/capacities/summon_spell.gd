@@ -10,12 +10,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-var defensive_spell = false
-var defensive_spell_t2_explosive_armor = false
-var defensive_spell_t3_regen_explosive_armor = false
-var defensive_spell_t2_shadow_veil = false
-var defensive_spell_t2_extended_shadow_veil = false
+var summon_spell = true
+var summon_spell_t2_skeleton = false
+var summon_spell_t3_explosive_skeleton = false
+var summon_spell_t2_golem = false
+var summon_spell_t3_ice_storm_golem = false
 
 
-func _on_defensive_spell_cd_timeout() -> void:
+func _on_summon_spell_cd_timeout() -> void:
 	pass # Replace with function body.

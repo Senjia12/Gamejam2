@@ -1,22 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://byauyvuqltrvw"]
+[gd_scene load_steps=6 format=3 uid="uid://byauyvuqltrvw"]
 
 [ext_resource type="Script" path="res://Unit/nécromancien/nécromancien.gd" id="1_jlaiv"]
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
 [ext_resource type="Script" path="res://Unit/capacities/defensive_spell.gd" id="3_4fvd8"]
+[ext_resource type="Script" path="res://Unit/capacities/control_spell.gd" id="4_vfuac"]
+[ext_resource type="Script" path="res://Unit/capacities/summon_spell.gd" id="5_3xl4r"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_jlaiv")
-
-[node name="summon_spell_cd" type="Timer" parent="."]
-
-[node name="control_spell_cd" type="Timer" parent="."]
 
 [node name="offensive_spell" type="Area2D" parent="."]
 script = ExtResource("2_km2c4")
 
 [node name="offensive_spell_cd" type="Timer" parent="offensive_spell"]
+wait_time = 5.0
 
 [node name="defensive_spell" type="Area2D" parent="."]
 script = ExtResource("3_4fvd8")
 
 [node name="defensive_spell_cd" type="Timer" parent="defensive_spell"]
+wait_time = 7.0
+
+[node name="control_spell" type="Area2D" parent="."]
+script = ExtResource("4_vfuac")
+
+[node name="control_spell_cd" type="Timer" parent="control_spell"]
+wait_time = 13.0
+
+[node name="summon_spell" type="Area2D" parent="."]
+script = ExtResource("5_3xl4r")
+
+[node name="summon_spell_cd" type="Timer" parent="summon_spell"]
+wait_time = 15.0
+
+[connection signal="timeout" from="offensive_spell/offensive_spell_cd" to="offensive_spell" method="_on_offensive_spell_cd_timeout"]
+[connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
+[connection signal="timeout" from="control_spell/control_spell_cd" to="control_spell" method="_on_control_spell_cd_timeout"]
+[connection signal="timeout" from="summon_spell/summon_spell_cd" to="summon_spell" method="_on_summon_spell_cd_timeout"]

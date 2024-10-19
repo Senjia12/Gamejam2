@@ -10,7 +10,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+var offensive_spell = true
 var offensive_spell_t2_fireball = false
 var offensive_spell_t3_fireball_flames = false
 var offensive_spell_t2_burning_beam = false
-var offensive_spell_t3_burning_beam = false
+var offensive_spell_t3_infinite_burning_beam = false
+
+
+func _on_offensive_spell_cd_timeout() -> void:
+	pass # Replace with function body.
