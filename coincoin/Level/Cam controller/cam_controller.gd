@@ -13,13 +13,13 @@ func _physics_process(delta: float) -> void:
 	if Globals.night:
 		var move_dir := Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"), Input.get_action_strength("down") - Input.get_action_strength("up"))
 		if move_dir == Vector2.ZERO:
-			if get_local_mouse_position().x >= screen_size.x / zoom.x / 2 -20:
+			if get_local_mouse_position().x >= screen_size.x / zoom.x / 2 -20 / zoom.x:
 				move_dir.x = 1
-			elif get_local_mouse_position().x <= -screen_size.x / zoom.x / 2 +20:
+			elif get_local_mouse_position().x <= -screen_size.x / zoom.x / 2 +20 / zoom.x:
 				move_dir.x = -1
-			if get_local_mouse_position().y >= screen_size.y / zoom.x / 2 -20:
+			if get_local_mouse_position().y >= screen_size.y / zoom.x / 2 -20 / zoom.x:
 				move_dir.y += 1
-			elif get_local_mouse_position().y <= -screen_size.y / zoom.x / 2 +20:
+			elif get_local_mouse_position().y <= -screen_size.y / zoom.x / 2 +20 / zoom.x:
 				move_dir.y += -1
 		global_position += move_dir * speed * delta / zoom.x
 	else:

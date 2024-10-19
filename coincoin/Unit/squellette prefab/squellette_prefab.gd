@@ -73,6 +73,7 @@ func take_damage(dmg):
 		var cadavre_instance = cadavre.instantiate()
 		cadavre_instance.global_position = global_position
 		get_parent().add_child(cadavre_instance)
+		Globals.unit_select.erase(self)
 		queue_free()
 
 
@@ -84,7 +85,7 @@ func _on_attack_range_body_entered(body: Node2D) -> void:
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Humain"):
-		if $Attack_range.get_overlapping_bodies() == []:
+		if $Attack_range.get_overlapping_bodies() == [] or $Attack_range.get_overlapping_bodies() == [body]:
 			humain_in_range = false
 			$"attack cd".stop()
 
