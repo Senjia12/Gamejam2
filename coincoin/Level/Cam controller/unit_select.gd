@@ -9,21 +9,42 @@ const sel_box_line_width = 3
 
 var unit_select := []
 
+var a_pressed := false
+var last_pressed
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("click_droit"):
+		for i in unit_select:
+			i.is_a_moving = false
+			i.is_moving = true
+			i.move_to(get_global_mouse_position())
+	if Input.is_action_just_pressed("attack"):
+		a_pressed = true
+	if Input.is_action_just_released("click_gauche") && a_pressed:
+		a_pressed = false
+		for i in unit_select:
+			i.is_a_moving = true
+			i.is_moving = false
+			i.move_to(get_global_mouse_position())
+
+
 func _input(event):
 	if !Globals.night: return
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT && !a_pressed:
 			if event.pressed:
 				selection_start = get_local_mouse_position()
 				selecting = true
 			else:
 				selection_end = get_local_mouse_position()
 				selecting = false
-				if selection_end.distance_to(selection_start):
-					selection_end += selection_end.normalized() * 12
-					selection_start += selection_start.normalized() * 12
+				if selection_end.distance_to(selection_start) < 16:
+					selection_end += Vector2(1,1)*64
+					selection_start += Vector2(-1,-1)*64
 				select_units()
 				queue_redraw()
+		elif event.button_index != MOUSE_BUTTON_LEFT:
+			a_pressed = false
 	elif event is InputEventMouseMotion:
 		if selecting:
 			selection_end = get_local_mouse_position()
@@ -43,8 +64,8 @@ func select_units():
 	var rect = Rect2(selection_start, selection_end - selection_start).abs()
 	for unit in get_tree().get_nodes_in_group("Unit"):
 		if rect.has_point(unit.global_position):
-			unit.select()
+			unit.is_selected = true
 			unit_select.append(unit)
 		else:
-			unit.deselect()
+			unit.is_selected = false
 			unit_select.erase(unit)

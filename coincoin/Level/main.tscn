@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=9 format=3 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien.tscn" id="3_6rrow"]
+[ext_resource type="PackedScene" uid="uid://sw0ptkaim85x" path="res://Unit/squellette prefab/squellette_prefab.tscn" id="4_3edxg"]
 [ext_resource type="Script" path="res://Level/Cam controller/unit_select.gd" id="4_xyjs5"]
+[ext_resource type="Texture2D" uid="uid://b1h1ll51wx2ra" path="res://Level/Décor/fosse/fosse 0.png" id="5_38220"]
+[ext_resource type="Script" path="res://Level/fosse_a_squellette.gd" id="6_7g847"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r3k5b"]
+radius = 162.788
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uuqvk"]
+vertices = PackedVector2Array(170.047, -192.711, 321.563, 19.3906, 184.211, -0.601563, 175.258, -33.0469, 155.5, -64.8672, 166.047, 154.047, 177.594, 42.4609, 157.461, 76.0078, 129.438, -84.4219, 122.938, 99.7422, -105.367, 236.063, 88.5, 115.391, 43.4922, 128.688, -0.117188, 138.273, -51.6406, 125.648, -95.5703, 112.367, -295.047, 109.93, -140.82, 91.3203, -168.828, 63.3125, -188.891, 32.1094, -198.711, -172.391, -190.031, 1.25, -186.711, -16.4531, -178.313, -42.7188, -160.711, -79.0234, -129.594, -97.9063, 87.8281, -107.313, -92.8516, -113.656, -50.25, -120.93, 0.1875, -125.047, 43.9766, -119.844)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4), PackedInt32Array(2, 1, 5, 6), PackedInt32Array(7, 6, 5), PackedInt32Array(0, 4, 8), PackedInt32Array(9, 7, 5), PackedInt32Array(9, 5, 10, 11), PackedInt32Array(12, 11, 10), PackedInt32Array(13, 12, 10), PackedInt32Array(14, 13, 10), PackedInt32Array(15, 14, 10, 16), PackedInt32Array(17, 15, 16), PackedInt32Array(18, 17, 16), PackedInt32Array(19, 18, 16), PackedInt32Array(19, 16, 20, 21), PackedInt32Array(22, 21, 20), PackedInt32Array(23, 22, 20), PackedInt32Array(24, 23, 20), PackedInt32Array(25, 24, 20), PackedInt32Array(0, 8, 26), PackedInt32Array(27, 25, 20), PackedInt32Array(27, 20, 0, 28), PackedInt32Array(29, 28, 0), PackedInt32Array(30, 29, 0), PackedInt32Array(0, 26, 30)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-206, -182, -307, 114, -107, 247, 171, 163, 335, 21, 175, -203)])
 
 [node name="Main" type="Node2D"]
 
 [node name="Cam controller" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 script = ExtResource("2_x58xy")
@@ -14,4 +26,33 @@ script = ExtResource("2_x58xy")
 [node name="Nécromancien" parent="." instance=ExtResource("3_6rrow")]
 
 [node name="Unit_select" type="Node2D" parent="."]
+z_index = 500
 script = ExtResource("4_xyjs5")
+
+[node name="Squellette prefab" parent="." instance=ExtResource("4_3edxg")]
+position = Vector2(0, -124)
+
+[node name="day_night cycle" type="AnimationPlayer" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="day_night cycle"]
+
+[node name="Fosse a squellette" type="Sprite2D" parent="."]
+z_index = -500
+texture = ExtResource("5_38220")
+script = ExtResource("6_7g847")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fosse a squellette"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse a squellette/StaticBody2D"]
+position = Vector2(-4, 0)
+scale = Vector2(1, 0.63)
+shape = SubResource("CircleShape2D_r3k5b")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_uuqvk")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+vertices = PackedVector2Array(-177, -14, -169, -39, -153, -72, -125, -89, -90, -104, -49, -111, 0, -115, 42, -110, 84, -98, 124, -76, 148, -58, 166, -29, 174, 0, 168, 39, 150, 69, 118, 91, 85, 106, 41, 119, 0, 128, -49, 116, -92, 103, -135, 83, -161, 57, -179, 29, -180, 2)
+affect_navigation_mesh = true
