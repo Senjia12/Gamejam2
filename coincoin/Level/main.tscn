@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=15 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Level/fosse_a_squellette.gd" id="6_7g847"]
 [ext_resource type="Texture2D" uid="uid://dy183j5a4vt7v" path="res://Level/Décor/terrain/herbe.png" id="7_iuip1"]
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
+[ext_resource type="PackedScene" uid="uid://fg64ryqhhpeo" path="res://Unit/humain prefab/humain_prefab.tscn" id="9_hoqfq"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r3k5b"]
@@ -79,8 +80,14 @@ zoom = Vector2(0.1, 0.1)
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Humain prefab" parent="ysort" instance=ExtResource("9_hoqfq")]
+position = Vector2(41, -149)
+
 [node name="Squellette prefab" parent="ysort" instance=ExtResource("4_3edxg")]
-position = Vector2(0, -131)
+position = Vector2(94, -124)
+
+[node name="Squellette prefab2" parent="ysort" instance=ExtResource("4_3edxg")]
+position = Vector2(-16, -187)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

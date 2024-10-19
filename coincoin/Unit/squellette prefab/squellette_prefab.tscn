@@ -18,7 +18,7 @@ region = Rect2(0, 0, 13, 17)
 atlas = ExtResource("2_qtprt")
 region = Rect2(0, 0, 13, 17)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mjxqi"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3asus"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -73,7 +73,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lk8f"]
-size = Vector2(15, 5)
+size = Vector2(7, 5)
 
 [node name="Squellette prefab" type="CharacterBody2D" groups=["Unit", "squellette"]]
 y_sort_enabled = true
@@ -98,9 +98,8 @@ shape = SubResource("CircleShape2D_crcds")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-sprite_frames = SubResource("SpriteFrames_mjxqi")
+sprite_frames = SubResource("SpriteFrames_3asus")
 animation = &"idle down"
-frame_progress = 0.414757
 offset = Vector2(0, -8.5)
 
 [node name="attack cd" type="Timer" parent="."]
@@ -109,7 +108,7 @@ offset = Vector2(0, -8.5)
 position = Vector2(0, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="check front"]
-position = Vector2(7.5, 0.5)
+position = Vector2(3.5, 0.5)
 shape = SubResource("RectangleShape2D_2lk8f")
 
 [connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]

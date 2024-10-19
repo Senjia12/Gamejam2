@@ -21,6 +21,7 @@ var direction := "down"
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
 func _ready() -> void:
+	print("da")
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
@@ -68,6 +69,7 @@ func move_along_path(delta):
 
 
 func take_damage(dmg):
+	print("couik")
 	current_hp -= dmg
 	if current_hp <= 0:
 		var cadavre_instance = cadavre.instantiate()
@@ -89,5 +91,4 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 			$"attack cd".stop()
 
 func _on_attack_cd_timeout() -> void:
-	if $Attack_range.get_overlapping_bodies() != []:
-		$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
+	$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)

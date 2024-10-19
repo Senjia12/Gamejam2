@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://fg64ryqhhpeo"]
+
+[ext_resource type="Script" path="res://Unit/humain prefab/humain_prefab.gd" id="1_rfnpv"]
+[ext_resource type="Texture2D" uid="uid://cqjr8fsu248ky" path="res://Unit/enfant/Enfant_face_1.png" id="3_4c72q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kk8fg"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_heo0y"]
+radius = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvb5c"]
+atlas = ExtResource("3_4c72q")
+region = Rect2(0, 0, 13, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdula"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvb5c")
+}],
+"loop": true,
+"name": &"idle down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle up",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubvo7"]
+size = Vector2(15, 5)
+
+[node name="Humain prefab" type="CharacterBody2D" groups=["Humain"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_rfnpv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_kk8fg")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 5.0
+
+[node name="Attack_range" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_heo0y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_rdula")
+animation = &"idle down"
+offset = Vector2(0, -8.5)
+
+[node name="attack cd" type="Timer" parent="."]
+
+[node name="check front" type="Area2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="check front"]
+position = Vector2(7.5, 0.5)
+shape = SubResource("RectangleShape2D_ubvo7")
+
+[connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="Attack_range" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="attack cd" to="." method="_on_attack_cd_timeout"]

@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Unit/cadavre/cadavre.gd" id="1_tkysr"]
 
 [node name="Cadavre" type="Sprite2D"]
+z_index = -1
 script = ExtResource("1_tkysr")
