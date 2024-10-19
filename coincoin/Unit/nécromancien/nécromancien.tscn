@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://byauyvuqltrvw"]
 
-[ext_resource type="Script" path="res://Unit/nécromancien.gd" id="1_jlaiv"]
+[ext_resource type="Script" path="res://Unit/nécromancien/nécromancien.gd" id="1_jlaiv"]
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
 [ext_resource type="Script" path="res://Unit/capacities/defensive_spell.gd" id="3_4fvd8"]
 

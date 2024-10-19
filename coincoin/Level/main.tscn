@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
-[ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien.tscn" id="3_6rrow"]
+[ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
 [ext_resource type="PackedScene" uid="uid://sw0ptkaim85x" path="res://Unit/squellette prefab/squellette_prefab.tscn" id="4_3edxg"]
 [ext_resource type="Script" path="res://Level/Cam controller/unit_select.gd" id="4_xyjs5"]
 [ext_resource type="Texture2D" uid="uid://b1h1ll51wx2ra" path="res://Level/Décor/fosse/fosse 0.png" id="5_38220"]
@@ -80,16 +80,7 @@ zoom = Vector2(0.1, 0.1)
 y_sort_enabled = true
 
 [node name="Squellette prefab" parent="ysort" instance=ExtResource("4_3edxg")]
-position = Vector2(0, -124)
-
-[node name="Squellette prefab2" parent="ysort" instance=ExtResource("4_3edxg")]
-position = Vector2(-30, -157)
-
-[node name="Squellette prefab3" parent="ysort" instance=ExtResource("4_3edxg")]
-position = Vector2(18, -163)
-
-[node name="Squellette prefab4" parent="ysort" instance=ExtResource("4_3edxg")]
-position = Vector2(42, -130)
+position = Vector2(0, -131)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
