@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0oceq2d4puup"]
+
+[ext_resource type="Script" path="res://Unit/cadavre/cadavre.gd" id="1_tkysr"]
+
+[node name="Cadavre" type="Sprite2D"]
+script = ExtResource("1_tkysr")

@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=5 format=3 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien.tscn" id="3_6rrow"]
 [ext_resource type="PackedScene" uid="uid://sw0ptkaim85x" path="res://Unit/squellette prefab/squellette_prefab.tscn" id="4_3edxg"]
 [ext_resource type="Script" path="res://Level/Cam controller/unit_select.gd" id="4_xyjs5"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_51vpl"]
-vertices = PackedVector2Array(1117.97, -604.227, 801.383, 557.883, -528.469, 538.156, -359.359, -631.828)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-368, -642, -540, 548, 809, 568, 1131, -614)])
 
 [node name="Main" type="Node2D"]
 
@@ -26,6 +21,3 @@ script = ExtResource("4_xyjs5")
 
 [node name="Squellette prefab" parent="." instance=ExtResource("4_3edxg")]
 position = Vector2(-35, -18)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_51vpl")

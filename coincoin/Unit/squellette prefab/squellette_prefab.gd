@@ -16,6 +16,8 @@ var is_selected := false
 
 var humain_in_range := false
 
+@onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
+
 
 func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
@@ -46,6 +48,9 @@ func move_along_path(delta):
 func take_damage(dmg):
 	current_hp -= dmg
 	if current_hp <= 0:
+		var cadavre_instance = cadavre.instantiate()
+		cadavre_instance.global_position = global_position
+		get_parent().add_child(cadavre_instance)
 		queue_free()
 
 
