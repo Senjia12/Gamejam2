@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 10000
+@export var speed := 5000
 @export var range := 1.0
 
 @onready var nav = get_node("NavigationAgent2D")

@@ -29,8 +29,8 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				if get_zoom() >= Vector2(0.5,0.5):
+				if get_zoom() >= Vector2(2,2):
 					set_zoom(zoom / 1.2)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				if get_zoom() <= Vector2(2,2):
+				if get_zoom() <= Vector2(6,6):
 					set_zoom(zoom * 1.2)
