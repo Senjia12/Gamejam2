@@ -25,7 +25,7 @@ z_index = 500
 script = ExtResource("4_xyjs5")
 
 [node name="Squellette prefab" parent="." instance=ExtResource("4_3edxg")]
-position = Vector2(147, 85)
+position = Vector2(-35, -18)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_51vpl")

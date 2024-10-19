@@ -25,6 +25,8 @@ animations = [{
 }]
 
 [node name="Squellette prefab" type="CharacterBody2D" groups=["Unit", "squellette"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_5ymbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -34,6 +36,8 @@ shape = SubResource("CircleShape2D_vusxl")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Attack_range" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
 position = Vector2(0, -7)
@@ -44,4 +48,8 @@ y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_mjxqi")
 offset = Vector2(0, -8.5)
 
+[node name="attack cd" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="Attack_range" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="attack cd" to="." method="_on_attack_cd_timeout"]
