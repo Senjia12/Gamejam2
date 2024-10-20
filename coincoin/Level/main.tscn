@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=14 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1h1ll51wx2ra" path="res://Level/Décor/fosse/fosse 0.png" id="5_38220"]
 [ext_resource type="Script" path="res://Level/fosse_a_squellette.gd" id="6_7g847"]
 [ext_resource type="Texture2D" uid="uid://dy183j5a4vt7v" path="res://Level/Décor/terrain/herbe.png" id="7_iuip1"]
+[ext_resource type="PackedScene" uid="uid://didgcpblaia4b" path="res://Unit/poti squellette/poti squellette.tscn" id="8_npqbc"]
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
 
@@ -67,17 +68,26 @@ script = ExtResource("8_qxubo")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Terrain"]
 visible = false
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ihopg")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Terrain/NavigationRegion2D"]
 vertices = PackedVector2Array(-177, -14, -169, -39, -153, -72, -125, -89, -90, -104, -49, -111, 0, -115, 42, -110, 84, -98, 124, -76, 148, -58, 166, -29, 174, 0, 168, 39, 150, 69, 118, 91, 85, 106, 41, 119, -4, 121, -49, 116, -92, 103, -135, 83, -161, 57, -179, 29, -180, 2)
 affect_navigation_mesh = true
 
+[node name="Delay" type="Timer" parent="Terrain/NavigationRegion2D"]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.1, 0.1)
 
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Squellette prefab" parent="ysort" instance=ExtResource("8_npqbc")]
+position = Vector2(-16, -156)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -86,3 +96,5 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS : "
 script = ExtResource("9_wtiph")
+
+[connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]

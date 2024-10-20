@@ -1,0 +1,192 @@
+[gd_scene load_steps=30 format=3 uid="uid://didgcpblaia4b"]
+
+[ext_resource type="PackedScene" uid="uid://sw0ptkaim85x" path="res://Unit/squellette prefab/squellette_prefab.tscn" id="1_as5kn"]
+[ext_resource type="Texture2D" uid="uid://c8yssiiexur7w" path="res://Unit/squellette prefab/squellette désa base.png" id="2_efnm6"]
+[ext_resource type="Texture2D" uid="uid://dwgoj4idsiucx" path="res://Unit/squellette prefab/squellette base.png" id="3_nx60n"]
+[ext_resource type="Texture2D" uid="uid://b01cau57nc5wd" path="res://Unit/poti squellette/Squelette_cote_2.png" id="3_xc2at"]
+[ext_resource type="Texture2D" uid="uid://b6yhmwba3gubj" path="res://Unit/poti squellette/Squelette_dos_2.png" id="4_j13nc"]
+[ext_resource type="Texture2D" uid="uid://dfuooof4jceyv" path="res://Unit/poti squellette/Squelette_cote_1.png" id="6_puqdy"]
+[ext_resource type="Texture2D" uid="uid://byuwqbx2v38i4" path="res://Unit/poti squellette/Squelette_dos_1.png" id="7_ijs35"]
+[ext_resource type="Texture2D" uid="uid://vr546b7kimjq" path="res://Unit/poti squellette/anim_squelette_basic_marche-Sheet.png" id="8_oxb23"]
+[ext_resource type="Texture2D" uid="uid://be3rcpsmina81" path="res://Unit/poti squellette/Squelette_cote_1_marche.png" id="9_uxxhe"]
+[ext_resource type="Texture2D" uid="uid://d3bcrd1s23btf" path="res://Unit/poti squellette/Squelette_dos_1_marche.png" id="10_n2l56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdvlv"]
+atlas = ExtResource("2_efnm6")
+region = Rect2(0, 0, 13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvmmq"]
+atlas = ExtResource("3_xc2at")
+region = Rect2(0, 0, 13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj8xu"]
+atlas = ExtResource("4_j13nc")
+region = Rect2(0, 0, 13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnqdd"]
+atlas = ExtResource("3_nx60n")
+region = Rect2(0, 0, 13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3hvx"]
+atlas = ExtResource("6_puqdy")
+region = Rect2(0, 0, 13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urnd3"]
+atlas = ExtResource("7_ijs35")
+region = Rect2(0, 0, 13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yliru"]
+atlas = ExtResource("8_oxb23")
+region = Rect2(0, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cft87"]
+atlas = ExtResource("8_oxb23")
+region = Rect2(13, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdluh"]
+atlas = ExtResource("8_oxb23")
+region = Rect2(26, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxet7"]
+atlas = ExtResource("8_oxb23")
+region = Rect2(39, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1shx"]
+atlas = ExtResource("9_uxxhe")
+region = Rect2(0, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rad10"]
+atlas = ExtResource("9_uxxhe")
+region = Rect2(13, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da40u"]
+atlas = ExtResource("9_uxxhe")
+region = Rect2(26, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_075g7"]
+atlas = ExtResource("9_uxxhe")
+region = Rect2(39, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxttw"]
+atlas = ExtResource("10_n2l56")
+region = Rect2(0, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6c8q"]
+atlas = ExtResource("10_n2l56")
+region = Rect2(13, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0n30"]
+atlas = ExtResource("10_n2l56")
+region = Rect2(26, 0, 13, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8we42"]
+atlas = ExtResource("10_n2l56")
+region = Rect2(39, 0, 13, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqxaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdvlv")
+}],
+"loop": true,
+"name": &"disable down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvmmq")
+}],
+"loop": true,
+"name": &"disable right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj8xu")
+}],
+"loop": true,
+"name": &"disable up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnqdd")
+}],
+"loop": true,
+"name": &"idle down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3hvx")
+}],
+"loop": true,
+"name": &"idle right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urnd3")
+}],
+"loop": true,
+"name": &"idle up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yliru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cft87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdluh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxet7")
+}],
+"loop": true,
+"name": &"move down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1shx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rad10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da40u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_075g7")
+}],
+"loop": true,
+"name": &"move right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxttw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6c8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0n30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8we42")
+}],
+"loop": true,
+"name": &"move up",
+"speed": 5.0
+}]
+
+[node name="Squellette prefab" instance=ExtResource("1_as5kn")]
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_mqxaq")
+animation = &"idle up"

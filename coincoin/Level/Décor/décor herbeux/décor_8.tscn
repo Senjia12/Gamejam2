@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://3uv1ow0is1nb"]
+
+[ext_resource type="Texture2D" uid="uid://b1xmh7n8xq5mb" path="res://Level/Décor/décor herbeux/image (8).png" id="1_380n7"]
+
+[node name="décor 8" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_380n7")
+offset = Vector2(0, -5)
