@@ -9,23 +9,31 @@ const sel_box_line_width = 3
 
 const CURSEUR_BASE = preload("res://UI/curseur base.png")
 const EPEE = preload("res://UI/épée.png")
-
+const MARQUEUR = preload("res://UI/Marqueur/marqueur.tscn")
 
 var a_pressed := false
 var last_pressed
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("click_droit"):
+	if !Globals.night: return
+	if Input.is_action_just_pressed("click_droit") && Globals.unit_select != []:
 		for i in Globals.unit_select:
 			i.is_a_moving = false
 			i.is_moving = true
 			i.move_to(get_global_mouse_position())
-	if Input.is_action_just_pressed("attack") && !selecting:
+		var marqueur_instance = MARQUEUR.instantiate()
+		marqueur_instance.position = get_global_mouse_position()
+		add_child(marqueur_instance)
+	if Input.is_action_just_pressed("attack") && !selecting && Globals.unit_select != []:
 		a_pressed = true
 		Input.set_custom_mouse_cursor(EPEE)
-	if Input.is_action_just_released("click_gauche") && a_pressed:
+	if Input.is_action_just_released("click_gauche") && a_pressed && Globals.unit_select != []:
 		Input.set_custom_mouse_cursor(CURSEUR_BASE)
 		a_pressed = false
+		var marqueur_instance = MARQUEUR.instantiate()
+		marqueur_instance.position = get_global_mouse_position()
+		marqueur_instance.type = "attack"
+		add_child(marqueur_instance)
 		for i in Globals.unit_select:
 			i.is_a_moving = true
 			i.is_moving = false
