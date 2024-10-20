@@ -9,6 +9,7 @@ const sel_box_line_width = 3
 
 const CURSEUR_BASE = preload("res://UI/curseur base.png")
 const EPEE = preload("res://UI/épée.png")
+const BOTTE = preload("res://UI/botte.png")
 const MARQUEUR = preload("res://UI/Marqueur/marqueur.tscn")
 
 var a_pressed := false
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		a_pressed = true
 		Input.set_custom_mouse_cursor(EPEE)
 	if Input.is_action_just_released("click_gauche") && a_pressed && Globals.unit_select != []:
-		Input.set_custom_mouse_cursor(CURSEUR_BASE)
+		Input.set_custom_mouse_cursor(BOTTE,0,Vector2(16,16))
 		a_pressed = false
 		var marqueur_instance = MARQUEUR.instantiate()
 		marqueur_instance.position = get_global_mouse_position()
@@ -57,6 +58,8 @@ func _input(event):
 				queue_redraw()
 		elif event.button_index != MOUSE_BUTTON_LEFT:
 			Input.set_custom_mouse_cursor(CURSEUR_BASE)
+			if Globals.unit_select != []:
+				Input.set_custom_mouse_cursor(BOTTE,0,Vector2(16,16))
 			a_pressed = false
 	elif event is InputEventMouseMotion:
 		if selecting:
@@ -82,3 +85,7 @@ func select_units():
 		else:
 			unit.is_selected = false
 			Globals.unit_select.erase(unit)
+	if Globals.unit_select != []:
+		Input.set_custom_mouse_cursor(BOTTE,0,Vector2(16,16))
+	else:
+		Input.set_custom_mouse_cursor(CURSEUR_BASE)
