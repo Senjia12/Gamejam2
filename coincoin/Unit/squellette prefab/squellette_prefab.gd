@@ -48,7 +48,7 @@ func move_along_path(delta):
 		if $"check front".get_overlapping_bodies() == [] or $"check front".get_overlapping_bodies() == [self]:
 			move_and_slide()
 	
-	if abs(velocity.x) <= 50:
+	if abs(direction.x) <= 0.5:
 		if velocity.y < 0:
 			animatedSprite.play("move up")
 			looking = "up"

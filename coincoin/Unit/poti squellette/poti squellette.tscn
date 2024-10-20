@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://didgcpblaia4b"]
+[gd_scene load_steps=30 format=3 uid="uid://didgcpblaia4b"]
 
 [ext_resource type="PackedScene" uid="uid://sw0ptkaim85x" path="res://Unit/squellette prefab/squellette_prefab.tscn" id="1_as5kn"]
 [ext_resource type="Texture2D" uid="uid://c8yssiiexur7w" path="res://Unit/squellette prefab/squellette désa base.png" id="2_efnm6"]
@@ -35,37 +35,21 @@ region = Rect2(0, 0, 13, 17)
 atlas = ExtResource("7_ijs35")
 region = Rect2(0, 0, 13, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbnvb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4kc0"]
 atlas = ExtResource("8_oxb23")
-region = Rect2(0, 0, 13, 19)
+region = Rect2(0, 0, 13, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xe2mp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_80vdp"]
 atlas = ExtResource("8_oxb23")
-region = Rect2(13, 0, 13, 19)
+region = Rect2(13, 0, 13, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_olywr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsond"]
 atlas = ExtResource("8_oxb23")
-region = Rect2(26, 0, 13, 19)
+region = Rect2(26, 0, 13, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0rkp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fud7v"]
 atlas = ExtResource("8_oxb23")
-region = Rect2(39, 0, 13, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2wlf"]
-atlas = ExtResource("8_oxb23")
-region = Rect2(52, 0, 13, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8sh00"]
-atlas = ExtResource("8_oxb23")
-region = Rect2(65, 0, 13, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bka3h"]
-atlas = ExtResource("8_oxb23")
-region = Rect2(78, 0, 13, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_666nl"]
-atlas = ExtResource("8_oxb23")
-region = Rect2(91, 0, 13, 19)
+region = Rect2(39, 0, 13, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1shx"]
 atlas = ExtResource("9_uxxhe")
@@ -131,7 +115,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle down",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -139,7 +123,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle right",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,32 +131,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle up",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xbnvb")
+"texture": SubResource("AtlasTexture_u4kc0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xe2mp")
+"texture": SubResource("AtlasTexture_80vdp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_olywr")
+"texture": SubResource("AtlasTexture_fsond")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c0rkp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y2wlf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8sh00")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bka3h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_666nl")
+"texture": SubResource("AtlasTexture_fud7v")
 }],
 "loop": true,
 "name": &"move down",
@@ -193,7 +165,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move right",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -210,13 +182,12 @@ animations = [{
 }],
 "loop": true,
 "name": &"move up",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="Squellette prefab" instance=ExtResource("1_as5kn")]
+speed = 3500
 max_hp = 15
 
 [node name="AnimatedSprite2D" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_mqxaq")
-animation = &"move down"
-frame_progress = 0.0651078

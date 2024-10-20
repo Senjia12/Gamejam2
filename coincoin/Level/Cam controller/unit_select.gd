@@ -7,6 +7,9 @@ var selecting = false
 const sel_box_col = Color(96.0/255.0, 56.0/255.0, 106.0/255.0)
 const sel_box_line_width = 3
 
+const CURSEUR_BASE = preload("res://UI/curseur base.png")
+const EPEE = preload("res://UI/épée.png")
+
 
 var a_pressed := false
 var last_pressed
@@ -17,9 +20,11 @@ func _physics_process(delta: float) -> void:
 			i.is_a_moving = false
 			i.is_moving = true
 			i.move_to(get_global_mouse_position())
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") && !selecting:
 		a_pressed = true
+		Input.set_custom_mouse_cursor(EPEE)
 	if Input.is_action_just_released("click_gauche") && a_pressed:
+		Input.set_custom_mouse_cursor(CURSEUR_BASE)
 		a_pressed = false
 		for i in Globals.unit_select:
 			i.is_a_moving = true
@@ -43,6 +48,7 @@ func _input(event):
 				select_units()
 				queue_redraw()
 		elif event.button_index != MOUSE_BUTTON_LEFT:
+			Input.set_custom_mouse_cursor(CURSEUR_BASE)
 			a_pressed = false
 	elif event is InputEventMouseMotion:
 		if selecting:
