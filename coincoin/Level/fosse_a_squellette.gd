@@ -2,22 +2,6 @@ extends Sprite2D
 
 
 @onready var state := [preload("res://Level/Décor/fosse/fosse 0.png"), preload("res://Level/Décor/fosse/fosse 1.png"), preload("res://Level/Décor/fosse/fosse 2.png"), preload("res://Level/Décor/fosse/fosse 3.png"), preload("res://Level/Décor/fosse/fosse 4.png"), preload("res://Level/Décor/fosse/fosse 5.png"), preload("res://Level/Décor/fosse/fosse 6.png"), preload("res://Level/Décor/fosse/fosse 7.png")]
-const POTI_SQUELLETTE = preload("res://Unit/poti squellette/poti squellette.tscn")
-@onready var spawn_parent: NavigationRegion2D = $"../Terrain/NavigationRegion2D"
-
-
-@onready var pos: Node2D = $"spawn pos/pos"
-
-var next_spawn
-
-func _ready() -> void:
-	Globals.bone_pill = self
-
-
-func spawn(what):
-	$"spawn pos".global_rotation = randi()%360
-	next_spawn = what
-	$delay.start()
 
 
 func update_state(squellette):
@@ -37,14 +21,3 @@ func update_state(squellette):
 		texture = state[6]
 	else:
 		texture = state[7]
-
-
-func _on_delay_timeout() -> void:
-	if $"spawn pos/pos/Area2D".get_overlapping_bodies() == []:
-		if next_spawn == "poti squellette":
-			var poti_squellette = POTI_SQUELLETTE.instantiate()
-			poti_squellette.global_position = pos.global_position
-			spawn_parent.add_child(poti_squellette)
-	else:
-		$"spawn pos".global_rotation = randi()%360
-		$delay.start()

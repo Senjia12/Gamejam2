@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dwgoj4idsiucx" path="res://Unit/squellette prefab/squellette base.png" id="2_qtprt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vusxl"]
-radius = 2.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_crcds"]
 radius = 14.0
@@ -73,7 +73,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lk8f"]
-size = Vector2(2.5, 2)
+size = Vector2(7, 5)
 
 [node name="Squellette prefab" type="CharacterBody2D" groups=["Unit", "squellette"]]
 y_sort_enabled = true
@@ -82,7 +82,7 @@ collision_mask = 5
 script = ExtResource("1_5ymbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_vusxl")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -110,7 +110,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="check front"]
-position = Vector2(1.75, 1)
+position = Vector2(3.5, 0.5)
 shape = SubResource("RectangleShape2D_2lk8f")
 
 [connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]

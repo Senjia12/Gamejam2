@@ -48,26 +48,24 @@ func move_along_path(delta):
 		if $"check front".get_overlapping_bodies() == [] or $"check front".get_overlapping_bodies() == [self]:
 			move_and_slide()
 	
-			if abs(direction.x) <= 0.5:
-				if velocity.y < 0:
-					animatedSprite.play("move up")
-					looking = "up"
-				elif velocity.y > 0:
-					animatedSprite.play("move down")
-					looking = "down"
-			else:
-				animatedSprite.play("move right")
-				if velocity.x < 0:
-					animatedSprite.flip_h = true
-					looking = "right"
-				else:
-					animatedSprite.flip_h = false
-					looking = "right"
-			
-			if velocity == Vector2.ZERO:
-				animatedSprite.play("idle " + looking)
+	if abs(direction.x) <= 0.5:
+		if velocity.y < 0:
+			animatedSprite.play("move up")
+			looking = "up"
+		elif velocity.y > 0:
+			animatedSprite.play("move down")
+			looking = "down"
+	else:
+		animatedSprite.play("move right")
+		if velocity.x < 0:
+			animatedSprite.flip_h = true
+			looking = "right"
 		else:
-			animatedSprite.play("idle " + looking)
+			animatedSprite.flip_h = false
+			looking = "right"
+	
+	if velocity == Vector2.ZERO:
+		animatedSprite.play("idle " + looking)
 
 
 func take_damage(dmg):
