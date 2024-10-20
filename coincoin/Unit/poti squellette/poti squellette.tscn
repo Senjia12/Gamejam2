@@ -190,4 +190,6 @@ speed = 3500
 max_hp = 15
 
 [node name="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -0.0138893)
+scale = Vector2(1, 1.02778)
 sprite_frames = SubResource("SpriteFrames_mqxaq")

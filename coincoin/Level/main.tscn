@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=38 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -10,12 +10,29 @@
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
+[ext_resource type="Shader" path="res://UI/shader/blur.gdshader" id="10_hnh7q"]
 [ext_resource type="Texture2D" uid="uid://d1uo675bmndvh" path="res://UI/image.png" id="10_ldxxe"]
 [ext_resource type="Texture2D" uid="uid://cokvtcd1t40xj" path="res://UI/image (2).png" id="11_63304"]
 [ext_resource type="Texture2D" uid="uid://b6f3mwv8lv8sb" path="res://UI/image (1).png" id="12_kqbog"]
+[ext_resource type="Texture2D" uid="uid://du5owmsa1h44x" path="res://UI/achat squellette/compteur_os.png" id="13_6ucth"]
+[ext_resource type="Texture2D" uid="uid://cmcqbv7c78lfi" path="res://UI/achat squellette/ui_invoccheval.png" id="14_hp4yc"]
+[ext_resource type="Texture2D" uid="uid://qm4qayohc6o2" path="res://UI/achat squellette/ui_invocsquelett.png" id="14_phhdv"]
+[ext_resource type="Script" path="res://UI/achat squellette/conteur_os.gd" id="14_un8gy"]
+[ext_resource type="Texture2D" uid="uid://c32vjslcfxsf1" path="res://UI/uiiiiipause.png" id="15_28fe6"]
+[ext_resource type="Script" path="res://Level/pause_menu.gd" id="15_chd8v"]
+[ext_resource type="FontFile" uid="uid://cxsyqol86cuds" path="res://UI/BabaMediumPixels.ttf" id="15_yflrp"]
+[ext_resource type="Texture2D" uid="uid://bxi5yaosa0s0e" path="res://UI/achat squellette/ui_invocexplo.png" id="16_o4s5s"]
+[ext_resource type="Script" path="res://Level/spawner.gd" id="17_2p2yo"]
+[ext_resource type="Texture2D" uid="uid://cqvxpk3cgjdav" path="res://UI/achat squellette/ui_invoclong.png" id="17_68tkg"]
+[ext_resource type="Texture2D" uid="uid://b74v2tx5yh5mt" path="res://UI/achat squellette/ui_invocsqueletarchert.png" id="18_i3vpa"]
+[ext_resource type="Texture2D" uid="uid://sgj7p62oaxct" path="res://UI/achat squellette/ui_invocgros.png" id="20_lis2n"]
+[ext_resource type="Texture2D" uid="uid://ghj70d1f3p5n" path="res://UI/achat squellette/ui_invocgeant.png" id="21_btisa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r3k5b"]
 radius = 162.788
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dfrv"]
+radius = 11.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v671"]
 texture = ExtResource("7_iuip1")
@@ -218,13 +235,23 @@ _data = {
 }
 point_count = 14
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxe0"]
+shader = ExtResource("10_hnh7q")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.2
+
 [node name="Main" type="Node2D"]
 
 [node name="Cam controller" type="Camera2D" parent="."]
 position = Vector2(0, -137)
 zoom = Vector2(4, 4)
+limit_left = -5000
+limit_top = -5000
+limit_right = 5000
+limit_bottom = 5000
+limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 12.0
+position_smoothing_speed = 10.0
 script = ExtResource("2_x58xy")
 
 [node name="Nécromancien" parent="." instance=ExtResource("3_6rrow")]
@@ -247,14 +274,31 @@ position = Vector2(-4, 0)
 scale = Vector2(1, 0.63)
 shape = SubResource("CircleShape2D_r3k5b")
 
+[node name="spawn pos" type="Node2D" parent="Fosse a squellette"]
+
+[node name="pos" type="Node2D" parent="Fosse a squellette/spawn pos"]
+position = Vector2(177, 0)
+
+[node name="Area2D" type="Area2D" parent="Fosse a squellette/spawn pos/pos"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse a squellette/spawn pos/pos/Area2D"]
+shape = SubResource("CircleShape2D_1dfrv")
+
+[node name="delay" type="Timer" parent="Fosse a squellette"]
+wait_time = 0.01
+one_shot = true
+
 [node name="Terrain" type="TileMapLayer" parent="."]
-z_index = -4096
+z_index = -1000
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD8////AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAP//AAAAAAAAAAADAP7/AAAAAAAAAAADAP3/AAAAAAAAAAACAP3/AAAAAAAAAAABAP3/AAAAAAAAAAAAAP3/AAAAAAAAAAD9//3/AAAAAAAAAAD8//3/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAADAPz/AAAAAAAAAAACAPz/AAAAAAAAAAABAPz/AAAAAAAAAAAAAPz/AAAAAAAAAAD///z/AAAAAAAAAAD+//z/AAAAAAAAAAD9//z/AAAAAAAAAAD8//z/AAAAAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_t4kdc")
 script = ExtResource("8_qxubo")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Terrain"]
 visible = false
+z_index = 1000
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ihopg")
 
@@ -267,19 +311,17 @@ wait_time = 0.05
 one_shot = true
 autostart = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.1, 0.1)
+[node name="Squellette prefab" parent="Terrain/NavigationRegion2D" instance=ExtResource("8_npqbc")]
+position = Vector2(-16, -156)
 
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="Squellette prefab" parent="ysort" instance=ExtResource("8_npqbc")]
-position = Vector2(-16, -156)
 
 [node name="day_night cycle" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1hnvk")
 }
+speed_scale = 0.05
 script = ExtResource("9_d34sj")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="day_night cycle"]
@@ -289,12 +331,6 @@ wait_time = 6.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="fps" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "FPS : "
-script = ExtResource("9_wtiph")
 
 [node name="day night" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -343,6 +379,382 @@ rotates = false
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/day night/Path2D/soleil"]
 texture = ExtResource("12_kqbog")
 
+[node name="achat squellette" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 124.0
+grow_vertical = 2
+
+[node name="conteur os" type="TextureRect" parent="CanvasLayer/achat squellette"]
+layout_mode = 2
+texture = ExtResource("13_6ucth")
+expand_mode = 5
+script = ExtResource("14_un8gy")
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/conteur os"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -35.937
+offset_right = 27.0
+offset_bottom = -4.93701
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="poti squellette" type="TextureRect" parent="CanvasLayer/achat squellette"]
+layout_mode = 2
+texture = ExtResource("14_phhdv")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/poti squellette"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/poti squellette"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "2"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="squellette explo" type="TextureRect" parent="CanvasLayer/achat squellette"]
+layout_mode = 2
+texture = ExtResource("16_o4s5s")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette explo"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/squellette explo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "5"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="squellette arché" type="TextureRect" parent="CanvasLayer/achat squellette"]
+layout_mode = 2
+texture = ExtResource("18_i3vpa")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette arché"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/squellette arché"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="squellette range" type="TextureRect" parent="CanvasLayer/achat squellette"]
+layout_mode = 2
+texture = ExtResource("17_68tkg")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette range"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/squellette range"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "30"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="squellette mortier" type="TextureRect" parent="CanvasLayer/achat squellette"]
+layout_mode = 2
+texture = ExtResource("18_i3vpa")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette mortier"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/squellette mortier"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "99999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="squellette ponnay" type="TextureRect" parent="CanvasLayer/achat squellette"]
+visible = false
+layout_mode = 2
+texture = ExtResource("14_hp4yc")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette ponnay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/squellette ponnay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "25"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="squellette gros" type="TextureRect" parent="CanvasLayer/achat squellette"]
+visible = false
+layout_mode = 2
+texture = ExtResource("20_lis2n")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette gros"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/squellette gros"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "25
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="squellette énorme" type="TextureRect" parent="CanvasLayer/achat squellette"]
+visible = false
+layout_mode = 2
+texture = ExtResource("21_btisa")
+expand_mode = 5
+script = ExtResource("17_2p2yo")
+
+[node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette énorme"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/squellette énorme"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -28.9625
+offset_right = 22.5
+offset_bottom = -4.9625
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="pause menu" type="ColorRect" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+material = SubResource("ShaderMaterial_uoxe0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_chd8v")
+
+[node name="pause menu" type="TextureRect" parent="CanvasLayer/pause menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_28fe6")
+
+[node name="resume" type="Button" parent="CanvasLayer/pause menu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -135.385
+offset_right = 166.0
+offset_bottom = -69.385
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fps" type="Label" parent="CanvasLayer"]
+process_mode = 3
+offset_left = 137.0
+offset_top = 12.0
+offset_right = 177.0
+offset_bottom = 35.0
+text = "FPS : "
+script = ExtResource("9_wtiph")
+
+[connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]
 [connection signal="animation_finished" from="day_night cycle" to="day_night cycle" method="_on_animation_finished"]
 [connection signal="timeout" from="day_night cycle/day duration" to="day_night cycle" method="_on_day_duration_timeout"]
+[connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
