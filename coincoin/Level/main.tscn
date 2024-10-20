@@ -277,7 +277,7 @@ shape = SubResource("CircleShape2D_r3k5b")
 [node name="spawn pos" type="Node2D" parent="Fosse a squellette"]
 
 [node name="pos" type="Node2D" parent="Fosse a squellette/spawn pos"]
-position = Vector2(177, 0)
+position = Vector2(199, 0)
 
 [node name="Area2D" type="Area2D" parent="Fosse a squellette/spawn pos/pos"]
 collision_layer = 4
@@ -419,6 +419,7 @@ expand_mode = 5
 script = ExtResource("17_2p2yo")
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/poti squellette"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -454,7 +455,7 @@ expand_mode = 5
 script = ExtResource("17_2p2yo")
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette explo"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -488,9 +489,11 @@ layout_mode = 2
 texture = ExtResource("18_i3vpa")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
+cost = 10
+type = "squellette arché"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette arché"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -524,9 +527,11 @@ layout_mode = 2
 texture = ExtResource("17_68tkg")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
+cost = 30
+type = "squellette range"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette range"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -562,7 +567,7 @@ expand_mode = 5
 script = ExtResource("17_2p2yo")
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette mortier"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -592,14 +597,15 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette ponnay" type="TextureRect" parent="CanvasLayer/achat squellette"]
-visible = false
 layout_mode = 2
 texture = ExtResource("14_hp4yc")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
+cost = 25
+type = "ponney"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette ponnay"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -636,7 +642,7 @@ expand_mode = 5
 script = ExtResource("17_2p2yo")
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette gros"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -674,7 +680,7 @@ expand_mode = 5
 script = ExtResource("17_2p2yo")
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette énorme"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

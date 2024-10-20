@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		global_position = Globals.player.global_position
 
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():

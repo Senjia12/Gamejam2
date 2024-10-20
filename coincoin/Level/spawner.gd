@@ -10,4 +10,4 @@ func _ready() -> void:
 
 func spawn():
 	if Globals.bone_counter.cost(cost):
-		Globals.bone_pill.spawn("poti squellette")
+		Globals.bone_pill.spawn(type)

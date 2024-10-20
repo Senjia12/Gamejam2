@@ -7,11 +7,9 @@ func _ready() -> void:
 
 func _on_day_duration_timeout() -> void:
 	Globals.night = true
-	print("night")
 
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	Globals.night = true
-	print("day")
 	$"day duration".start()
 	play("day nighy")
