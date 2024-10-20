@@ -17,7 +17,7 @@ var is_attacking = false
 func _process(delta: float) -> void:
 	var offensive_spell = "offensive spell"
 	
-	if Input.is_action_just_pressed("attack_spell") && can_attack==true:
+	if Input.is_action_just_pressed("offensive_spell") && can_attack==true:
 		can_attack = false
 		is_attacking = true
 		$offensive_spell_cd.start()

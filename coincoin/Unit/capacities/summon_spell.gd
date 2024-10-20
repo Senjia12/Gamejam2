@@ -6,7 +6,7 @@ extends Area2D
 #var summon_spell_t3_ice_storm_golem = false
 #var on_summon_spell_cd_duration = false
 const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
-var poti_squellette_instance = poti_squelette_preload.instance()
+var poti_squellette_instance = poti_squelette_preload.instantiate()
 
 var can_summon = true
 
