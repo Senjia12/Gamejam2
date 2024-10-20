@@ -106,6 +106,8 @@ offset = Vector2(0, -8.5)
 
 [node name="check front" type="Area2D" parent="."]
 position = Vector2(0, -3)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="check front"]
 position = Vector2(3.5, 0.5)
