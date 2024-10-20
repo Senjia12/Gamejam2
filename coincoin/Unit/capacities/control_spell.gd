@@ -1,22 +1,29 @@
 extends Area2D
 
 
-# Called when the node enters the scene tree for the first time.
+#var  control_spell_t2_wall = false
+#var  control_spell_t2_palisade_turret = false
+#var  control_spell_t2_area = false
+#var  control_spell_t2_infinite_area = false
+#var control_spell_cd_timeout_end = true
+
 func _ready() -> void:
 	pass # Replace with function body.
 
-var player = get_parent()
+@onready var player = get_parent()
+@onready var control_spell_cd_timeout_duration = player.cooldown_multiplayer
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var can_control = false
+var is_controlling = false
+
 func _process(delta: float) -> void:
-	pass
+	var control_spell = "control spell"
 
-var control_spell = false
-var  control_spell_t2_wall = false
-var  control_spell_t2_palisade_turret = false
-var  control_spell_t2_area = false
-var  control_spell_t2_infinite_area = false
-
+	if Input.is_action_just_pressed("control_spell") && can_control==true:
+		can_control = false
+		is_controlling = true
+		$control_spell_cd.start()
 
 func _on_control_spell_cd_timeout() -> void:
-	pass # Replace with function body.
+	can_control = true
+	is_controlling = false

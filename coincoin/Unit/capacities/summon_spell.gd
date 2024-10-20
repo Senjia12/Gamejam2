@@ -1,22 +1,30 @@
 extends Area2D
 
+#var summon_spell_t2_skeleton = false
+#var summon_spell_t3_explosive_skeleton = false
+#var summon_spell_t2_golem = false
+#var summon_spell_t3_ice_storm_golem = false
+#var on_summon_spell_cd_duration = false
+const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
+var poti_squellette_instance = poti_squelette_preload.instance()
 
-# Called when the node enters the scene tree for the first time.
+var can_summon = true
+
 func _ready() -> void:
 	pass # Replace with function body.
 
-var player = get_parent()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var summon_spell = "summon spell"
 
-var summon_spell = true
-var summon_spell_t2_skeleton = false
-var summon_spell_t3_explosive_skeleton = false
-var summon_spell_t2_golem = false
-var summon_spell_t3_ice_storm_golem = false
+	if Input.is_action_just_pressed("summon_spell") && can_summon==true:
+		can_summon = false
+		$summon_spell_cd.start()
+		
+		if summon_spell == "summon spell":
+			summon_t1()
 
+func summon_t1():
+	poti_squellette_instance.position = Vector2(randi(), randi())
 
 func _on_summon_spell_cd_timeout() -> void:
-	pass # Replace with function body.
+	can_summon = true

@@ -1,22 +1,28 @@
 extends Area2D
 
+#var defensive_spell_t2_explosive_armor = false
+#var defensive_spell_t3_regen_explosive_armor = false
+#var defensive_spell_t2_shadow_veil = false
+#var defensive_spell_t2_extended_shadow_veil = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body
 	
-var player = get_parent()
+@onready var player = get_parent()
+@onready var control_spell_cd_timeout_duration = player.cooldown_multiplayer
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var can_defend = false
+var is_defending = false
+
 func _process(delta: float) -> void:
-	pass
+	var defensive_spell = "defense spell"
 
-var defensive_spell = false
-var defensive_spell_t2_explosive_armor = false
-var defensive_spell_t3_regen_explosive_armor = false
-var defensive_spell_t2_shadow_veil = false
-var defensive_spell_t2_extended_shadow_veil = false
-
+	if Input.is_action_just_pressed("defensive_spell") && can_defend==true:
+		can_defend = false
+		is_defending = true
+		$defensive_spell_cd.start()
 
 func _on_defensive_spell_cd_timeout() -> void:
 	pass # Replace with function body.
+	can_defend = true
+	is_defending = false
