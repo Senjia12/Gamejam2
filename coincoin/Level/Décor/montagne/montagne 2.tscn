@@ -2,16 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://luoabp0sub74" path="res://Level/Décor/montagne/montagne 3.png" id="1_7xcdt"]
 
-[node name="montagne" type="StaticBody2D"]
+[node name="montagne" type="StaticBody2D" groups=["montagne"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
 texture = ExtResource("1_7xcdt")
+offset = Vector2(0, -82)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, -82)
 polygon = PackedVector2Array(-143, 27, -121, 42, -120, 60, -104, 72, -56, 85, -17, 81, -6, 94, 36, 91, 54, 102, 73, 104, 92, 79, 123, 80, 126, 17, 99, -2, 83, -18, 99, -30, 155, -31, 171, -49, 207, -52, 204, -105, 184, -124, 131, -129, 103, -126, 84, -115, 59, -91, 65, -77, 71, -73, 60, -55, 43, -45, 26, -51, -23, -51, -54, -49, -107, -14, -135, 10)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, -82)
 vertices = PackedVector2Array(-152, 43, -126, 67, -101, 85, -58, 98, -27, 92, 0, 105, 35, 101, 58, 115, 78, 117, 99, 89, 124, 91, 136, 17, 113, -12, 139, -15, 166, -22, 175, -39, 216, -39, 217, -116, 188, -137, 103, -142, 48, -101, 42, -64, -53, -62, -138, -12, -152, 20)
 affect_navigation_mesh = true

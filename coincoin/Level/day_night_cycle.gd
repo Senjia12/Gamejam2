@@ -10,6 +10,6 @@ func _on_day_duration_timeout() -> void:
 
 
 func _on_animation_finished(anim_name: StringName) -> void:
-	Globals.night = false
+	Globals.night = true
 	$"day duration".start()
 	play("day nighy")

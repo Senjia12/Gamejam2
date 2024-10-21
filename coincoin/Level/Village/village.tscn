@@ -1,10 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjw0ow47vtrl4"]
+[gd_scene load_steps=3 format=3 uid="uid://cjw0ow47vtrl4"]
 
 [ext_resource type="Script" path="res://Level/Village/village.gd" id="1_53s8d"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwift"]
+radius = 132.0
+
 [node name="Village générator" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_53s8d")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 664)
-zoom = Vector2(0.5, 0.5)
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rwift")
+
+[node name="delay" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]

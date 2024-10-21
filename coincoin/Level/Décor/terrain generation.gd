@@ -48,14 +48,16 @@ func _ready() -> void:
 	
 	for i in 3:
 		var new_spawn_pos := Vector2.ZERO
-		while new_spawn_pos.distance_to(Vector2.ZERO) < 1200 * (i+1):
-			new_spawn_pos = Vector2(randi()%2000-1000,randi()%2000-1000) * (i + 1)
+		while new_spawn_pos.distance_to(Vector2.ZERO) < 1000 * (i/1.8+1):
+			new_spawn_pos = Vector2(randi()%1500-750,randi()%1500-750) * (i / 1.8 + 1)
+			
 			for y in village_spawn:
-				if new_spawn_pos.distance_to(y) < 3000:
+				if new_spawn_pos.distance_to(y) < 1500:
 					new_spawn_pos = Vector2.ZERO
 		var village_instance = VILLAGE.instantiate()
+		print(new_spawn_pos)
 		village_instance.global_position = new_spawn_pos
-		village_instance.difficulty = diff * i * 3 + 4
+		village_instance.difficulty = diff * i * 2 + 3
 		$NavigationRegion2D.add_child(village_instance)
 		village_spawn.append(new_spawn_pos)
 	

@@ -439,7 +439,6 @@ shader_parameter/mix_percentage = 0.2
 
 [node name="Cam controller" type="Camera2D" parent="."]
 position = Vector2(0, -137)
-enabled = false
 zoom = Vector2(4, 4)
 limit_left = -5000
 limit_top = -5000
