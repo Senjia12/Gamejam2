@@ -1,7 +1,7 @@
 extends TextureRect
 
 
-var current_bones := 50
+var current_bones := 250
 @onready var display: Label = $Label
 
 

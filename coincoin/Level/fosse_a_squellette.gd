@@ -7,6 +7,8 @@ const POTI_SQUELLETTE = preload("res://Unit/poti squellette/poti squellette.tscn
 const SQUELLETTE_ARCHER = preload("res://Unit/squellette archer/squellette_archer.tscn")
 const SQUELLETTE_DISTANCE = preload("res://Unit/squellette distance/squellette distance.tscn")
 const SQUELLETTE_PONEY = preload("res://Unit/squellette poney/squellette_poney.tscn")
+const SQUELLETTE_MORTIER = preload("res://Unit/squellette mortier/squellette_mortier.tscn")
+const SQUELLETTE_GROS = preload("res://Unit/gros quellette/squellette_gros.tscn")
 
 @onready var spawn_parent: NavigationRegion2D = $"../Terrain/NavigationRegion2D"
 
@@ -45,22 +47,21 @@ func update_state(squellette):
 
 func _on_delay_timeout() -> void:
 	if $"spawn pos/pos/Area2D".get_overlapping_bodies() == []:
+		var poti_squellette
 		if next_spawn == "poti squellette":
-			var poti_squellette = POTI_SQUELLETTE.instantiate()
-			poti_squellette.global_position = pos.global_position
-			spawn_parent.add_child(poti_squellette)
+			poti_squellette = POTI_SQUELLETTE.instantiate()
 		elif next_spawn == "squellette arché":
-			var poti_squellette = SQUELLETTE_ARCHER.instantiate()
-			poti_squellette.global_position = pos.global_position
-			spawn_parent.add_child(poti_squellette)
+			poti_squellette = SQUELLETTE_ARCHER.instantiate()
 		elif next_spawn == "squellette range":
-			var poti_squellette = SQUELLETTE_DISTANCE.instantiate()
-			poti_squellette.global_position = pos.global_position
-			spawn_parent.add_child(poti_squellette)
+			poti_squellette = SQUELLETTE_DISTANCE.instantiate()
 		elif next_spawn == "ponney":
-			var poti_squellette = SQUELLETTE_PONEY.instantiate()
-			poti_squellette.global_position = pos.global_position
-			spawn_parent.add_child(poti_squellette)
+			poti_squellette = SQUELLETTE_PONEY.instantiate()
+		elif next_spawn == "motier":
+			poti_squellette = SQUELLETTE_MORTIER.instantiate()
+		elif next_spawn == "squellette gros":
+			poti_squellette = SQUELLETTE_GROS.instantiate()
+		poti_squellette.global_position = pos.global_position
+		spawn_parent.add_child(poti_squellette)
 	else:
 		$"spawn pos".global_rotation = randi()%360
 		$delay.start()

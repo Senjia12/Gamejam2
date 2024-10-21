@@ -134,6 +134,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/achat squellette:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/achat squellette:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6xvkw"]
 resource_name = "day nighy"
@@ -221,6 +245,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.410025, 0.490822, 0.728245, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.756291, 0.584098, 0.413742, 1), Color(0.0646193, 0.14478, 0.274938, 1), Color(0.0646193, 0.14478, 0.274938, 1), Color(0.410025, 0.490822, 0.728245, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/achat squellette:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 5.96667, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/achat squellette:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 6, 6.03333, 11.9667, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1hnvk"]
@@ -380,6 +428,8 @@ rotates = false
 texture = ExtResource("12_kqbog")
 
 [node name="achat squellette" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 124.0
@@ -485,6 +535,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette arché" type="TextureRect" parent="CanvasLayer/achat squellette"]
+visible = false
 layout_mode = 2
 texture = ExtResource("18_i3vpa")
 expand_mode = 5
@@ -523,6 +574,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette range" type="TextureRect" parent="CanvasLayer/achat squellette"]
+visible = false
 layout_mode = 2
 texture = ExtResource("17_68tkg")
 expand_mode = 5
@@ -561,10 +613,13 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette mortier" type="TextureRect" parent="CanvasLayer/achat squellette"]
+visible = false
 layout_mode = 2
 texture = ExtResource("18_i3vpa")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
+cost = 75
+type = "motier"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette mortier"]
 modulate = Color(1, 1, 1, 0)
@@ -592,11 +647,12 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "99999"
+text = "75"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette ponnay" type="TextureRect" parent="CanvasLayer/achat squellette"]
+visible = false
 layout_mode = 2
 texture = ExtResource("14_hp4yc")
 expand_mode = 5
@@ -635,11 +691,12 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette gros" type="TextureRect" parent="CanvasLayer/achat squellette"]
-visible = false
 layout_mode = 2
 texture = ExtResource("20_lis2n")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
+cost = 25
+type = "squellette gros"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette gros"]
 modulate = Color(1, 1, 1, 0)
@@ -673,7 +730,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette énorme" type="TextureRect" parent="CanvasLayer/achat squellette"]
-visible = false
 layout_mode = 2
 texture = ExtResource("21_btisa")
 expand_mode = 5
