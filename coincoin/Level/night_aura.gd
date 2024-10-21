@@ -7,7 +7,7 @@ const BOTTE = preload("res://UI/botte.png")
 
 func _physics_process(delta: float) -> void:
 	global_position = Globals.player.global_position - Vector2(126,126)
-	if Input.is_action_just_pressed("shift"):
+	if Input.is_action_just_pressed("shift") && !Globals.night:
 		$spawn.play("spawn")
 		$GPUParticles2D.emitting = true
 		show()

@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://0oceq2d4puup"]
+[gd_scene load_steps=3 format=3 uid="uid://0oceq2d4puup"]
 
 [ext_resource type="Script" path="res://Unit/cadavre/cadavre.gd" id="1_tkysr"]
 
-[node name="Cadavre" type="Sprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yfhua"]
+
+[node name="Cadavre" type="Sprite2D" groups=["cadavre"]]
 z_index = -1
 script = ExtResource("1_tkysr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yfhua")

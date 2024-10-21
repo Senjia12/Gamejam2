@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=55 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -28,6 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://ghj70d1f3p5n" path="res://UI/achat squellette/ui_invocgeant.png" id="21_btisa"]
 [ext_resource type="Shader" path="res://UI/shader/night aura.gdshader" id="28_ijpyy"]
 [ext_resource type="Script" path="res://Level/night_aura.gd" id="29_ly362"]
+[ext_resource type="Script" path="res://UI/mana/spell_cost.gd" id="29_wrche"]
+[ext_resource type="Texture2D" uid="uid://bk5s4meothho2" path="res://UI/mana/image.png" id="30_wxwx8"]
+[ext_resource type="Texture2D" uid="uid://bvws5n5voidyn" path="res://UI/mana/image (6).png" id="31_l11uv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r3k5b"]
 radius = 162.788
@@ -314,7 +317,7 @@ curve = SubResource("Curve_xxo4i")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dtv63"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(0.31, 0.31, 1)
+emission_shape_scale = Vector3(78, 78, 1)
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
@@ -434,6 +437,9 @@ shader = ExtResource("10_hnh7q")
 shader_parameter/lod = 5.0
 shader_parameter/mix_percentage = 0.2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5w1cw"]
+radius = 139.23
+
 [node name="Main" type="Node2D"]
 
 [node name="Cam controller" type="Camera2D" parent="."]
@@ -512,32 +518,31 @@ y_sort_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_1hnvk")
 }
-speed_scale = 0.05
 script = ExtResource("9_d34sj")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="day_night cycle"]
 
 [node name="day duration" type="Timer" parent="day_night cycle"]
-wait_time = 120.0
+wait_time = 6.0
 one_shot = true
 
 [node name="night aura" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_y1000")
-offset_left = 170.0
-offset_top = -120.0
-offset_right = 171.0
-offset_bottom = -119.0
-scale = Vector2(252, 252)
+offset_left = -126.0
+offset_top = -126.0
+offset_right = 126.0
+offset_bottom = 126.0
 pivot_offset = Vector2(0.5, 0.5)
 script = ExtResource("29_ly362")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="night aura"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(0.498016, 0.498016)
+position = Vector2(126, 126)
 amount = 256
 process_material = SubResource("ParticleProcessMaterial_dtv63")
 lifetime = 0.5
+local_coords = true
 
 [node name="spawn" type="AnimationPlayer" parent="night aura"]
 libraries = {
@@ -990,8 +995,35 @@ offset_bottom = 35.0
 text = "FPS : "
 script = ExtResource("9_wtiph")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.08, 0.08)
+[node name="Spell cost" type="Node2D" parent="."]
+script = ExtResource("29_wrche")
+
+[node name="spell cost" type="CanvasLayer" parent="Spell cost"]
+
+[node name="mana bar" type="TextureProgressBar" parent="Spell cost/spell cost"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -292.5
+offset_bottom = 292.5
+grow_horizontal = 0
+grow_vertical = 2
+max_value = 20.0
+step = 0.1
+value = 5.0
+fill_mode = 3
+texture_under = ExtResource("30_wxwx8")
+texture_progress = ExtResource("31_l11uv")
+
+[node name="Area2D" type="Area2D" parent="Spell cost"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell cost/Area2D"]
+shape = SubResource("CircleShape2D_5w1cw")
 
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]

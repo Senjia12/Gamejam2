@@ -1,10 +1,10 @@
 extends Node
 
 
-var night := true
+var night := false
 var bone_counter
 var bone_pill
-
+var mana
 
 var player
 var unit_select := []
