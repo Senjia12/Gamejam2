@@ -15,6 +15,7 @@ var is_moving := false
 var is_a_moving := false
 var is_selected := false
 var humain_in_range := false
+var in_night_arura := false
 
 var looking := "down"
 
@@ -28,7 +29,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_moving == true or is_a_moving && !humain_in_range:
-		move_along_path(delta)
+		if Globals.night or in_night_arura:
+			move_along_path(delta)
 
 func move_to(pos):
 	var navigation = get_node("NavigationAgent2D")
