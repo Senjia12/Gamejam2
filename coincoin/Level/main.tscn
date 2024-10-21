@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=52 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -337,45 +337,6 @@ turbulence_influence_max = 0.0
 turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 1.49012e-06
 
-[sub_resource type="Animation" id="Animation_3shsv"]
-resource_name = "spawn"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/visibility")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_blips"]
 length = 0.001
 tracks/0/type = "value"
@@ -415,11 +376,53 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_3shsv"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/visibility")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eyox6"]
 _data = {
 "RESET": SubResource("Animation_blips"),
 "spawn": SubResource("Animation_3shsv")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6oos5"]
+radius = 0.309931
 
 [sub_resource type="Curve2D" id="Curve2D_hbitj"]
 _data = {
@@ -545,6 +548,14 @@ libraries = {
 "": SubResource("AnimationLibrary_eyox6")
 }
 speed_scale = 3.0
+
+[node name="Area2D" type="Area2D" parent="night aura"]
+position = Vector2(0.498016, 0.498016)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
+shape = SubResource("CircleShape2D_6oos5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -987,4 +998,6 @@ script = ExtResource("9_wtiph")
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]
 [connection signal="animation_finished" from="day_night cycle" to="day_night cycle" method="_on_animation_finished"]
 [connection signal="timeout" from="day_night cycle/day duration" to="day_night cycle" method="_on_day_duration_timeout"]
+[connection signal="body_entered" from="night aura/Area2D" to="night aura" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="night aura/Area2D" to="night aura" method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]

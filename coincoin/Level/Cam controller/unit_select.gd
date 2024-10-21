@@ -16,7 +16,6 @@ var a_pressed := false
 var last_pressed
 
 func _physics_process(delta: float) -> void:
-	if !Globals.night: return
 	if Input.is_action_just_pressed("click_droit") && Globals.unit_select != []:
 		for i in Globals.unit_select:
 			i.is_a_moving = false
@@ -40,6 +39,7 @@ func _physics_process(delta: float) -> void:
 			i.is_moving = false
 			i.move_to(get_global_mouse_position())
 
+	#if !Globals.night: return
 
 func _input(event):
 	if !Globals.night: return

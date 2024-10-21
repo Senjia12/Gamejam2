@@ -17,6 +17,8 @@ var is_selected := false
 var humain_in_range := false
 var in_night_arura := false
 
+var disable := false
+
 var looking := "down"
 
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
@@ -25,6 +27,16 @@ func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
+
+
+func disabled():
+	disable = true
+	animatedSprite.play("disable " + looking)
+
+
+func enabled():
+	disable = false
+	animatedSprite.play("idle " + looking)
 
 
 func _physics_process(delta: float) -> void:
