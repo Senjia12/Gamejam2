@@ -14,6 +14,10 @@ extends TileMapLayer
 	preload("res://Level/Décor/décor herbeux/décor_10.tscn")
 ]
 
+const VILLAGE = preload("res://Level/Village/village.tscn")
+var village_spawn := []
+
+var diff := 1
 
 @onready var ysort: Node2D = $"../ysort"
 
@@ -42,6 +46,18 @@ func _ready() -> void:
 		buisosn_instance.global_position = new_spawn_pos
 		$NavigationRegion2D.add_child(buisosn_instance)
 	
+	for i in 3:
+		var new_spawn_pos := Vector2.ZERO
+		while new_spawn_pos.distance_to(Vector2.ZERO) < 1200 * (i+1):
+			new_spawn_pos = Vector2(randi()%2000-1000,randi()%2000-1000) * (i + 1)
+			for y in village_spawn:
+				if new_spawn_pos.distance_to(y) < 3000:
+					new_spawn_pos = Vector2.ZERO
+		var village_instance = VILLAGE.instantiate()
+		village_instance.global_position = new_spawn_pos
+		village_instance.difficulty = diff * i * 3 + 4
+		$NavigationRegion2D.add_child(village_instance)
+		village_spawn.append(new_spawn_pos)
 	
 	$NavigationRegion2D.show()
 

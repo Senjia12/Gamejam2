@@ -439,6 +439,7 @@ shader_parameter/mix_percentage = 0.2
 
 [node name="Cam controller" type="Camera2D" parent="."]
 position = Vector2(0, -137)
+enabled = false
 zoom = Vector2(4, 4)
 limit_left = -5000
 limit_top = -5000
@@ -993,6 +994,9 @@ offset_right = 177.0
 offset_bottom = 35.0
 text = "FPS : "
 script = ExtResource("9_wtiph")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.08, 0.08)
 
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]

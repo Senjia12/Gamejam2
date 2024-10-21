@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://kyw8nirpj3ab"]
+
+[ext_resource type="Texture2D" uid="uid://cfagcp42ja2ov" path="res://Level/Village/Maison/image (1).png" id="1_2euji"]
+
+[node name="Maison" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_2euji")
+offset = Vector2(0, -67)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-48, 0, 18, 0, 18, -32, 50, -32, 50, -92, -48, -92)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(-51, 4, 22, 4, 22, -29, 54, -29, 54, -95, -53, -95)
