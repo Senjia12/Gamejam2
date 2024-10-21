@@ -7,7 +7,7 @@ var y_diff := 264
 var decalage := 64
 
 const MAISON = [preload("res://Level/Village/maison scène/maison.tscn"),preload("res://Level/Village/maison scène/maison2.tscn"),preload("res://Level/Village/maison scène/maison3.tscn"),preload("res://Level/Village/maison scène/maison4.tscn"),preload("res://Level/Village/maison scène/maison5.tscn")]
-
+const _GLISE = preload("res://Level/Village/maison scène/église.tscn")
 var house_number := 0
 
 func _ready() -> void:
@@ -19,9 +19,15 @@ func _ready() -> void:
 		for y in difficulty:
 			var next_pos := (Vector2(x - (difficulty / 2),y - (difficulty / 2)) * 200) + Vector2(randi()%(decalage * 2 + 1) - decalage,randi()%(decalage * 2 + 1) - decalage)
 			if randi()%int(Vector2.ZERO.distance_to(next_pos)) < difficulty * 50 or house_number < 5:
-				var maison = MAISON[randi()%MAISON.size()].instantiate()
-				maison.global_position = next_pos + global_position
-				add_child(maison)
+				
+				if house_number == 4:
+					var glise = _GLISE.instantiate()
+					glise.global_position = next_pos + global_position
+					add_child(glise)
+				else:
+					var maison = MAISON[randi()%MAISON.size()].instantiate()
+					maison.global_position = next_pos + global_position
+					add_child(maison)
 				house_number += 1
 	
 
