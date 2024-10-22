@@ -24,6 +24,8 @@ func _on_day_duration_timeout() -> void:
 		i.queue_free()
 	for i in get_tree().get_nodes_in_group("Humain"):
 		i.run()
+	for i in get_tree().get_nodes_in_group("reset HP"):
+		i.hp = i.max_hp
 	$"../night aura/night aura".disable()
 
 

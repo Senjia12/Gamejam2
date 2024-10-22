@@ -21,6 +21,10 @@ var timer_start := false
 
 var reavealer := 0
 
+func reset_target():
+	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 32)
+
+
 func _ready() -> void:
 	unreavealed()
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)

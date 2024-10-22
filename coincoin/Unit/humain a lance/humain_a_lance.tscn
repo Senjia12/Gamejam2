@@ -343,7 +343,6 @@ sprite_frames = SubResource("SpriteFrames_21ncv")
 offset = Vector2(0, -17)
 
 [node name="attack" parent="." index="10"]
-visible = true
 sprite_frames = SubResource("SpriteFrames_4hj71")
 animation = &"attack up"
 frame = 1

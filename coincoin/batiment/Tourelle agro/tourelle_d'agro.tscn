@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgu4uup4wdj0g"]
+
+[ext_resource type="Script" path="res://batiment/Tourelle agro/tourelle_d'agro.gd" id="1_2t6hk"]
+[ext_resource type="Texture2D" uid="uid://c4ch5blp3y8j4" path="res://batiment/Tourelle agro/image (3).png" id="1_ntc88"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_d7icg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0civj"]
+radius = 27.074
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dc72c"]
+radius = 223.987
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ip7c6"]
+radius = 7.0
+height = 42.0
+
+[node name="Tourelle d\'agro" type="StaticBody2D" groups=["reset HP", "squellette"]]
+modulate = Color(0, 0.678431, 0.819608, 0.384314)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_2t6hk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(1, 1, 1, 0.309804)
+scale = Vector2(448, 448)
+mesh = SubResource("SphereMesh_d7icg")
+
+[node name="Area2D" type="Area2D" parent="MeshInstance2D"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MeshInstance2D/Area2D"]
+scale = Vector2(0.00223214, 0.00223214)
+shape = SubResource("CircleShape2D_0civj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_ntc88")
+offset = Vector2(0, -57)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dc72c")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ip7c6")
+disabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
