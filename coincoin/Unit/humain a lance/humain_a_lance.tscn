@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bw86f2eol54fr"]
+[gd_scene load_steps=52 format=3 uid="uid://bw86f2eol54fr"]
 
 [ext_resource type="PackedScene" uid="uid://fg64ryqhhpeo" path="res://Unit/humain prefab/humain_prefab.tscn" id="1_cdscf"]
 [ext_resource type="Texture2D" uid="uid://dtg6i1jv7f651" path="res://Unit/humain a lance/image (1).png" id="2_aj5og"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://df65ndas35q5i" path="res://Unit/humain a lance/Chevalier_lance_cote_gauche_1_marche.png" id="7_dp4cy"]
 [ext_resource type="Texture2D" uid="uid://pox1bsf5ulnm" path="res://Unit/humain a lance/Chevalier_lance_cote_droit_1_marche.png" id="8_2mu78"]
 [ext_resource type="Texture2D" uid="uid://b6jsw278oma2d" path="res://Unit/humain a lance/Chevalier_lance_dos_1_marche.png" id="9_gi3b4"]
+[ext_resource type="Texture2D" uid="uid://btfhqxs3gby6o" path="res://Unit/humain a lance/Chevalier_lance_face_1_attaque.png" id="10_4uknx"]
+[ext_resource type="Texture2D" uid="uid://c8it6d23dxkam" path="res://Unit/humain a lance/Chevalier_lance_cote_gauche_1_attaque.png" id="11_oxw23"]
+[ext_resource type="Texture2D" uid="uid://ngttmahya0v" path="res://Unit/humain a lance/Chevalier_lance_cote_droit_1_attaque.png" id="12_h8cm7"]
+[ext_resource type="Texture2D" uid="uid://5iavpwo2jexj" path="res://Unit/humain a lance/Chevalier_lance_dos_1_attaque.png" id="13_6pcqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojh61"]
 atlas = ExtResource("2_aj5og")
@@ -193,12 +197,155 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsddm"]
+atlas = ExtResource("10_4uknx")
+region = Rect2(0, 0, 26, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tkch"]
+atlas = ExtResource("10_4uknx")
+region = Rect2(26, 0, 26, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85jci"]
+atlas = ExtResource("10_4uknx")
+region = Rect2(52, 0, 26, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rqc5"]
+atlas = ExtResource("10_4uknx")
+region = Rect2(78, 0, 26, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n63q"]
+atlas = ExtResource("11_oxw23")
+region = Rect2(105, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blm8l"]
+atlas = ExtResource("11_oxw23")
+region = Rect2(70, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7jnv"]
+atlas = ExtResource("11_oxw23")
+region = Rect2(35, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydq7b"]
+atlas = ExtResource("11_oxw23")
+region = Rect2(0, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sxa6"]
+atlas = ExtResource("12_h8cm7")
+region = Rect2(0, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73hq6"]
+atlas = ExtResource("12_h8cm7")
+region = Rect2(35, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yn4q"]
+atlas = ExtResource("12_h8cm7")
+region = Rect2(70, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hip5a"]
+atlas = ExtResource("12_h8cm7")
+region = Rect2(105, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3arac"]
+atlas = ExtResource("13_6pcqi")
+region = Rect2(0, 0, 26, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oed7"]
+atlas = ExtResource("13_6pcqi")
+region = Rect2(26, 0, 26, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo7d5"]
+atlas = ExtResource("13_6pcqi")
+region = Rect2(52, 0, 26, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4esu"]
+atlas = ExtResource("13_6pcqi")
+region = Rect2(78, 0, 26, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hj71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsddm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85jci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rqc5")
+}],
+"loop": true,
+"name": &"attack down",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n63q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blm8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7jnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydq7b")
+}],
+"loop": true,
+"name": &"attack left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73hq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yn4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hip5a")
+}],
+"loop": true,
+"name": &"attack right",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3arac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oed7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo7d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4esu")
+}],
+"loop": true,
+"name": &"attack up",
+"speed": 4.0
+}]
+
 [node name="Humain prefab" instance=ExtResource("1_cdscf")]
 speed = 3500
 range = 3.0
 attack_damage = 15
 max_hp = 35
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_21ncv")
 offset = Vector2(0, -17)
+
+[node name="attack" parent="." index="10"]
+visible = true
+sprite_frames = SubResource("SpriteFrames_4hj71")
+animation = &"attack up"
+frame = 1
+frame_progress = 0.983607
+offset = Vector2(0, -5)

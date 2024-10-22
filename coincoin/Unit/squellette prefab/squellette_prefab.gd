@@ -27,6 +27,7 @@ var looking := "down"
 
 func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
+	$"decal attack"/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
 	fow_revealer.enable = false
@@ -36,6 +37,7 @@ func disabled():
 	disable = true
 	animatedSprite.play("disable " + looking)
 	fow_revealer.light_off()
+	hide_marqueur()
 
 
 func enabled():
@@ -66,7 +68,7 @@ func move_along_path(delta):
 	
 	if movement.length()/100 > distance:
 		global_position = next_point
-	else:
+	elif !disable:
 		velocity = movement
 		$"check front".look_at(global_position + velocity)
 		if $"check front".get_overlapping_bodies() == [] or $"check front".get_overlapping_bodies() == [self]:
@@ -109,13 +111,11 @@ func take_damage(dmg):
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Humain"):
 		if !humain_in_range:
-			humain_in_range = true
 			$"attack cd".start()
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Humain"):
 		if $Attack_range.get_overlapping_bodies() == [] or $Attack_range.get_overlapping_bodies() == [body]:
-			humain_in_range = false
 			$"attack cd".stop()
 			attack.hide()
 			animatedSprite.show()
@@ -129,3 +129,13 @@ func _on_attack_cd_timeout() -> void:
 			attack.play("attack d " + looking)
 		else:
 			attack.play("attack " + looking)
+
+
+func _on_decal_attack_body_entered(body: Node2D) -> void:
+	if body.is_in_group("squellette"):
+		humain_in_range = true
+
+
+func _on_decal_attack_body_exited(body: Node2D) -> void:
+	if body.is_in_group("squellette"):
+		humain_in_range = false

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://fg64ryqhhpeo"]
+[gd_scene load_steps=32 format=3 uid="uid://fg64ryqhhpeo"]
 
 [ext_resource type="Script" path="res://Unit/humain prefab/humain_prefab.gd" id="1_rfnpv"]
 [ext_resource type="Texture2D" uid="uid://cqjr8fsu248ky" path="res://Unit/enfant/Enfant_face_1.png" id="3_4c72q"]
+[ext_resource type="Texture2D" uid="uid://cqsl7jfxq704n" path="res://Level/Village/unit despawn/anim_tp_haut_sheet.png" id="3_t1nrw"]
+[ext_resource type="Texture2D" uid="uid://b71a8kg1obksh" path="res://Level/Village/unit despawn/anim_tp_bas-Sheet.png" id="4_3kbf2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kk8fg"]
 radius = 2.0
@@ -65,11 +67,176 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubvo7"]
 size = Vector2(4, 2)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d3f7"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(0, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70j0v"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(48, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdm1r"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(96, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpy18"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(144, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1xeu"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(192, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ubgo"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(240, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qgr3"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(288, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3gt3"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(336, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8awc6"]
+atlas = ExtResource("3_t1nrw")
+region = Rect2(384, 0, 48, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rcv3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d3f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70j0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdm1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpy18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1xeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ubgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qgr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3gt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8awc6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu31y"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(0, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5oyg"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(48, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm510"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(96, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbyxf"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(144, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q4ie"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(192, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moxo4"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(240, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3srpr"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(288, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gnmy"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(336, 0, 48, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n60j5"]
+atlas = ExtResource("4_3kbf2")
+region = Rect2(384, 0, 48, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qg0vx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu31y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5oyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm510")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbyxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q4ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moxo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3srpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gnmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n60j5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aujte"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack down",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack right",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack up",
+"speed": 4.0
+}]
+
 [node name="Humain prefab" type="CharacterBody2D" groups=["Humain"]]
 collision_layer = 11
 collision_mask = 11
 script = ExtResource("1_rfnpv")
-range = 1.5
+range = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -111,8 +278,31 @@ collision_mask = 2
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_ubvo7")
 
+[node name="tp haut" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rcv3r")
+frame = 1
+frame_progress = 0.919895
+offset = Vector2(0, -12)
+
+[node name="tp bas" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_qg0vx")
+frame = 5
+frame_progress = 0.399058
+offset = Vector2(0, -12)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="attack" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_aujte")
+animation = &"attack left"
+
 [connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Attack_range" to="." method="_on_attack_range_body_exited"]
 [connection signal="body_entered" from="ennemi near" to="." method="_on_ennemi_near_body_entered"]
 [connection signal="body_exited" from="ennemi near" to="." method="_on_ennemi_near_body_exited"]
 [connection signal="timeout" from="attack cd" to="." method="_on_attack_cd_timeout"]
+[connection signal="animation_changed" from="tp haut" to="." method="_on_tp_haut_animation_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

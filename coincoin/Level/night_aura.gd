@@ -5,22 +5,36 @@ const EPEE = preload("res://UI/épée.png")
 const BOTTE = preload("res://UI/botte.png")
 @onready var area_2d: Area2D = $"../Area2D"
 
+var activate := false
 
 func _physics_process(delta: float) -> void:
 	area_2d.global_position = Globals.player.global_position
 	global_position = Globals.player.global_position - Vector2(126,126)
-	if Input.is_action_just_pressed("shift") && !Globals.night:
-		$spawn.play("spawn")
-		$GPUParticles2D.emitting = true
-		show()
-		for i in $"../Area2D".get_overlapping_bodies():
-			_on_area_2d_body_entered(i)
-	elif Input.is_action_just_released("shift"):
-		$GPUParticles2D.emitting = false
-		$spawn.play_backwards("spawn")
-		for i in $"../Area2D".get_overlapping_bodies():
-			_on_area_2d_body_exited(i)
-		Input.set_custom_mouse_cursor(CURSEUR_BASE)
+	if Input.is_action_just_pressed("shift"):
+		if !activate && !Globals.night:
+			activate = true
+			$spawn.play("spawn")
+			$GPUParticles2D.emitting = true
+			show()
+			for i in $"../Area2D".get_overlapping_bodies():
+				_on_area_2d_body_entered(i)
+		elif activate:
+			activate = false
+			$GPUParticles2D.emitting = false
+			$spawn.play_backwards("spawn")
+			for i in $"../Area2D".get_overlapping_bodies():
+				_on_area_2d_body_exited(i)
+			Input.set_custom_mouse_cursor(CURSEUR_BASE)
+
+
+func disable():
+	activate = false
+	$GPUParticles2D.emitting = false
+	$spawn.play_backwards("spawn")
+	for i in $"../Area2D".get_overlapping_bodies():
+		_on_area_2d_body_exited(i)
+	Input.set_custom_mouse_cursor(CURSEUR_BASE)
+	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

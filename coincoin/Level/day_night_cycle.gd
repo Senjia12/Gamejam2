@@ -22,6 +22,9 @@ func _on_day_duration_timeout() -> void:
 	for i in get_tree().get_nodes_in_group("cadavre"):
 		Globals.bone_counter.add_bones(1)
 		i.queue_free()
+	for i in get_tree().get_nodes_in_group("Humain"):
+		i.run()
+	$"../night aura/night aura".disable()
 
 
 

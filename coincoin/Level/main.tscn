@@ -518,7 +518,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_1dfrv")
 
 [node name="delay" type="Timer" parent="Fosse a squellette"]
-wait_time = 0.01
+wait_time = 0.02
 one_shot = true
 
 [node name="FOW revealer" type="PointLight2D" parent="Fosse a squellette" groups=["fow"]]
@@ -542,12 +542,13 @@ tile_set = SubResource("TileSet_t4kdc")
 script = ExtResource("8_qxubo")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Terrain"]
+visible = false
 z_index = 1000
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ihopg")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Terrain/NavigationRegion2D"]
-vertices = PackedVector2Array(-172, -29, -161, -45, -140, -69, -116, -85, -81, -99, -47, -106, 0, -109, 43, -105, 83, -91, 118, -74, 143, -55, 165, -28, 171, 0, 164, 32, 145, 62, 116, 82, 84, 97, 45, 112, 0, 116, -49, 112, -94, 99, -134, 78, -157, 55, -173, 31, -177, 0)
+vertices = PackedVector2Array(-172, -29, -161, -45, -140, -69, -116, -85, -81, -99, -47, -106, 0, -109, 43, -105, 85, -94, 120, -77, 145, -56, 165, -28, 171, 0, 164, 32, 145, 62, 116, 82, 84, 97, 45, 112, 0, 116, -49, 112, -94, 99, -134, 78, -157, 55, -173, 31, -177, 0)
 affect_navigation_mesh = true
 
 [node name="Delay" type="Timer" parent="Terrain/NavigationRegion2D"]

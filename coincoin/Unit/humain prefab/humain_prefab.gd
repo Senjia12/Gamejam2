@@ -7,6 +7,7 @@ extends CharacterBody2D
 var current_hp := 25
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack: AnimatedSprite2D = $attack
 
 @onready var nav = get_node("NavigationAgent2D")
 var target_position = null
@@ -91,6 +92,12 @@ func unreavealed():
 		reavealer = 0
 
 
+func run():
+	$"tp haut".play("default")
+	$"tp bas".play("default")
+	$Timer.start()
+
+
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("squellette"):
 		if !timer_start:
@@ -102,13 +109,18 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 		if $Attack_range.get_overlapping_bodies() == [] or $Attack_range.get_overlapping_bodies() == [body]:
 			timer_start = false
 			$"attack cd".stop()
+			attack.hide()
+			animatedSprite.show()
 
 func _on_attack_cd_timeout() -> void:
 	if $Attack_range.get_overlapping_bodies() != []:
 		if $Attack_range.get_overlapping_bodies()[0].is_in_group("fosse a squellette"):
 			Globals.bone_counter.take_damage(attack_damage)
 		else:
+			attack.show()
+			animatedSprite.hide()
 			$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
+			attack.play("attack " + looking)
 
 
 func _on_ennemi_near_body_entered(body: Node2D) -> void:
@@ -119,3 +131,11 @@ func _on_ennemi_near_body_entered(body: Node2D) -> void:
 func _on_ennemi_near_body_exited(body: Node2D) -> void:
 	if body.is_in_group("squellette"):
 		humain_in_range = false
+
+
+func _on_tp_haut_animation_changed() -> void:
+	queue_free()
+
+
+func _on_timer_timeout() -> void:
+	hide()
