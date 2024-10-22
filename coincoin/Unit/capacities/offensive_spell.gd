@@ -9,7 +9,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 @onready var player = get_parent()
-@onready var cooldown_multiplayer = player.cooldown_multiplayer
+@onready var cooldown_multiplayer = player.cooldown_multiplier
 
 var can_attack = true
 var is_attacking = false
