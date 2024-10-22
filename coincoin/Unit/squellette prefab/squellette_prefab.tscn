@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://sw0ptkaim85x"]
+[gd_scene load_steps=13 format=3 uid="uid://sw0ptkaim85x"]
 
 [ext_resource type="Script" path="res://Unit/squellette prefab/squellette_prefab.gd" id="1_5ymbx"]
 [ext_resource type="Texture2D" uid="uid://c8yssiiexur7w" path="res://Unit/squellette prefab/squellette désa base.png" id="2_fix1f"]
 [ext_resource type="Texture2D" uid="uid://dwgoj4idsiucx" path="res://Unit/squellette prefab/squellette base.png" id="2_qtprt"]
+[ext_resource type="Texture2D" uid="uid://bqw123g6lvnug" path="res://UI/shader/light.png" id="4_2b0uh"]
+[ext_resource type="Script" path="res://Level/fow_revealer.gd" id="5_ieoef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vusxl"]
 radius = 2.0
@@ -75,6 +77,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lk8f"]
 size = Vector2(2.5, 2)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1d2re"]
+radius = 250.0
+
 [node name="Squellette prefab" type="CharacterBody2D" groups=["Unit", "squellette"]]
 y_sort_enabled = true
 collision_layer = 5
@@ -113,6 +118,21 @@ collision_mask = 4
 position = Vector2(1.75, 1)
 shape = SubResource("RectangleShape2D_2lk8f")
 
+[node name="FOW revealer" type="PointLight2D" parent="."]
+blend_mode = 2
+texture = ExtResource("4_2b0uh")
+texture_scale = 0.5
+script = ExtResource("5_ieoef")
+
+[node name="Area2D" type="Area2D" parent="FOW revealer"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FOW revealer/Area2D"]
+shape = SubResource("CircleShape2D_1d2re")
+
 [connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Attack_range" to="." method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="attack cd" to="." method="_on_attack_cd_timeout"]
+[connection signal="body_entered" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_exited"]

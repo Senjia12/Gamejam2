@@ -66,8 +66,8 @@ animations = [{
 size = Vector2(4, 2)
 
 [node name="Humain prefab" type="CharacterBody2D" groups=["Humain"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 11
+collision_mask = 11
 script = ExtResource("1_rfnpv")
 range = 1.5
 

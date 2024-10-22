@@ -10,6 +10,7 @@ var current_hp := 25
 
 @onready var nav = get_node("NavigationAgent2D")
 var target_position = null
+@onready var fow_revealer: PointLight2D = $"FOW revealer"
 
 var is_moving := false
 var is_a_moving := false
@@ -27,16 +28,20 @@ func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
+	fow_revealer.enable = false
 
 
 func disabled():
 	disable = true
 	animatedSprite.play("disable " + looking)
+	fow_revealer.light_off()
 
 
 func enabled():
 	disable = false
 	animatedSprite.play("idle " + looking)
+	fow_revealer.light_on()
+
 
 
 func _physics_process(delta: float) -> void:

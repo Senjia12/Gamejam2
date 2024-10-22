@@ -17,7 +17,11 @@ var looking := "down"
 var timer_start := false
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
+
+var reavealer := 0
+
 func _ready() -> void:
+	unreavealed()
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
 	$"ennemi near"/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
@@ -74,6 +78,18 @@ func take_damage(dmg):
 		cadavre_instance.global_position = global_position
 		get_parent().add_child(cadavre_instance)
 		queue_free()
+
+func reavealed():
+	reavealer += 1
+	show()
+
+
+func unreavealed():
+	reavealer -= 1
+	if reavealer <= 0:
+		hide()
+		reavealer = 0
+
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("squellette"):
