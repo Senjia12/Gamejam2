@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Unit"):
 		if is_visible_in_tree():
+			body.show_marqueur()
 			body.in_night_arura = true
 			Globals.unit_select.append(body)
 			body.enabled()
@@ -33,6 +34,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Unit") && !Globals.night:
+		body.hide_marqueur()
 		body.in_night_arura = false
 		Globals.unit_select.erase(body)
 		body.disabled()

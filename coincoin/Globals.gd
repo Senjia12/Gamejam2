@@ -10,4 +10,4 @@ var player
 var unit_select := []
 
 
-var infamie := 0
+var infamie := 1

@@ -82,9 +82,11 @@ func select_units():
 		if rect.has_point(unit.global_position):
 			unit.is_selected = true
 			Globals.unit_select.append(unit)
+			unit.show_marqueur()
 		else:
 			unit.is_selected = false
 			Globals.unit_select.erase(unit)
+			unit.hide_marqueur()
 	if Globals.unit_select != []:
 		Input.set_custom_mouse_cursor(BOTTE,0,Vector2(16,16))
 	else:

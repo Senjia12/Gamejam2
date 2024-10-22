@@ -1,9 +1,18 @@
 extends AnimationPlayer
 
 const CURSEUR_BASE = preload("res://UI/curseur base.png")
+@export var light_mix := 1.0
+
+
 
 func _ready() -> void:
 	_on_animation_finished("duck")
+
+
+func _physics_process(delta: float) -> void:
+	for i in get_tree().get_nodes_in_group("fow"):
+		i.energy = light_mix
+
 
 
 func _on_day_duration_timeout() -> void:

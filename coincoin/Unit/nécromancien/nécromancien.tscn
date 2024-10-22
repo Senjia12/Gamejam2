@@ -38,7 +38,7 @@ script = ExtResource("5_3xl4r")
 [node name="summon_spell_cd" type="Timer" parent="summon_spell"]
 wait_time = 15.0
 
-[node name="FOW revealer" type="PointLight2D" parent="."]
+[node name="FOW revealer" type="PointLight2D" parent="." groups=["fow"]]
 blend_mode = 2
 texture = ExtResource("6_oi4u0")
 texture_scale = 0.8

@@ -7,6 +7,7 @@ extends CharacterBody2D
 var current_hp := 25
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack: AnimatedSprite2D = $attack
 
 @onready var nav = get_node("NavigationAgent2D")
 var target_position = null
@@ -42,7 +43,11 @@ func enabled():
 	animatedSprite.play("idle " + looking)
 	fow_revealer.light_on()
 
+func show_marqueur():
+	$marqueur.show()
 
+func hide_marqueur():
+	$marqueur.hide()
 
 func _physics_process(delta: float) -> void:
 	if is_moving == true or is_a_moving && !humain_in_range:
@@ -78,9 +83,11 @@ func move_along_path(delta):
 				animatedSprite.play("move right")
 				if velocity.x < 0:
 					animatedSprite.flip_h = true
+					attack.flip_h = true
 					looking = "right"
 				else:
 					animatedSprite.flip_h = false
+					attack.flip_h = false
 					looking = "right"
 			
 			if velocity == Vector2.ZERO:
@@ -110,7 +117,15 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 		if $Attack_range.get_overlapping_bodies() == [] or $Attack_range.get_overlapping_bodies() == [body]:
 			humain_in_range = false
 			$"attack cd".stop()
+			attack.hide()
+			animatedSprite.show()
 
 func _on_attack_cd_timeout() -> void:
 	if $Attack_range.get_overlapping_bodies() != []:
+		attack.show()
+		animatedSprite.hide()
 		$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
+		if disable:
+			attack.play("attack d " + looking)
+		else:
+			attack.play("attack " + looking)
