@@ -9,6 +9,7 @@ const SQUELLETTE_DISTANCE = preload("res://Unit/squellette distance/squellette d
 const SQUELLETTE_PONEY = preload("res://Unit/squellette poney/squellette_poney.tscn")
 const SQUELLETTE_MORTIER = preload("res://Unit/squellette mortier/squellette_mortier.tscn")
 const SQUELLETTE_GROS = preload("res://Unit/gros quellette/squellette_gros.tscn")
+const SQUELLETTE_ENORME = preload("res://Unit/squellette énorme/squellette_enorme.tscn")
 
 @onready var spawn_parent: NavigationRegion2D = $"../Terrain/NavigationRegion2D"
 
@@ -60,6 +61,8 @@ func _on_delay_timeout() -> void:
 			poti_squellette = SQUELLETTE_MORTIER.instantiate()
 		elif next_spawn == "squellette gros":
 			poti_squellette = SQUELLETTE_GROS.instantiate()
+		elif next_spawn == "squellette enomre":
+			poti_squellette = SQUELLETTE_ENORME.instantiate()
 		poti_squellette.global_position = pos.global_position
 		spawn_parent.add_child(poti_squellette)
 	else:

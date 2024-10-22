@@ -25,6 +25,11 @@ animations = [{
 }, {
 "frames": [],
 "loop": true,
+"name": &"idle left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
 "name": &"idle right",
 "speed": 5.0
 }, {
@@ -36,6 +41,11 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"move down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move left",
 "speed": 5.0
 }, {
 "frames": [],
@@ -75,13 +85,15 @@ shape = SubResource("CircleShape2D_heo0y")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_rdula")
-animation = &"idle down"
+animation = &"idle left"
 offset = Vector2(0, -8.5)
 
 [node name="attack cd" type="Timer" parent="."]
 
 [node name="check front" type="Area2D" parent="."]
 position = Vector2(0, -3)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="check front"]
 position = Vector2(7.5, 0.5)

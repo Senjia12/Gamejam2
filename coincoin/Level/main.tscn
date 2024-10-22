@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=56 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1h1ll51wx2ra" path="res://Level/Décor/fosse/fosse 0.png" id="5_38220"]
 [ext_resource type="Script" path="res://Level/fosse_a_squellette.gd" id="6_7g847"]
 [ext_resource type="Texture2D" uid="uid://dy183j5a4vt7v" path="res://Level/Décor/terrain/herbe.png" id="7_iuip1"]
+[ext_resource type="PackedScene" uid="uid://didgcpblaia4b" path="res://Unit/poti squellette/poti squellette.tscn" id="8_85ant"]
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
@@ -281,6 +282,20 @@ _data = {
 "day nighy": SubResource("Animation_6xvkw")
 }
 
+[sub_resource type="Curve2D" id="Curve2D_hbitj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -78, 27, 0, 0, 0, 0, -68, 18, 0, 0, 0, 0, -57, 12, 0, 0, 0, 0, -49, 8, 0, 0, 0, 0, -39, 4, 0, 0, 0, 0, -22, 0, 0, 0, 0, 0, -9, -2, 0, 0, 0, 0, 5, -4, 0, 0, 0, 0, 35, -4, 0, 0, 0, 0, 55, -1, 0, 0, 0, 0, 70, 2, 0, 0, 0, 0, 88, 7, 0, 0, 0, 0, 105, 16, 0, 0, 0, 0, 118, 27)
+}
+point_count = 14
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxe0"]
+shader = ExtResource("10_hnh7q")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5w1cw"]
+radius = 139.23
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y1000"]
 shader = ExtResource("28_ijpyy")
 shader_parameter/anim_speed = 0.0
@@ -424,26 +439,13 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oos5"]
-radius = 0.309931
-
-[sub_resource type="Curve2D" id="Curve2D_hbitj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -78, 27, 0, 0, 0, 0, -68, 18, 0, 0, 0, 0, -57, 12, 0, 0, 0, 0, -49, 8, 0, 0, 0, 0, -39, 4, 0, 0, 0, 0, -22, 0, 0, 0, 0, 0, -9, -2, 0, 0, 0, 0, 5, -4, 0, 0, 0, 0, 35, -4, 0, 0, 0, 0, 55, -1, 0, 0, 0, 0, 70, 2, 0, 0, 0, 0, 88, 7, 0, 0, 0, 0, 105, 16, 0, 0, 0, 0, 118, 27)
-}
-point_count = 14
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxe0"]
-shader = ExtResource("10_hnh7q")
-shader_parameter/lod = 5.0
-shader_parameter/mix_percentage = 0.2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5w1cw"]
-radius = 139.23
+radius = 80.16
 
 [node name="Main" type="Node2D"]
 
 [node name="Cam controller" type="Camera2D" parent="."]
 position = Vector2(0, -137)
+enabled = false
 zoom = Vector2(4, 4)
 limit_left = -5000
 limit_top = -5000
@@ -511,6 +513,9 @@ wait_time = 0.05
 one_shot = true
 autostart = true
 
+[node name="Squellette prefab" parent="Terrain/NavigationRegion2D" instance=ExtResource("8_85ant")]
+position = Vector2(184, -68)
+
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -518,45 +523,14 @@ y_sort_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_1hnvk")
 }
+speed_scale = 0.05
 script = ExtResource("9_d34sj")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="day_night cycle"]
 
 [node name="day duration" type="Timer" parent="day_night cycle"]
-wait_time = 6.0
+wait_time = 120.0
 one_shot = true
-
-[node name="night aura" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_y1000")
-offset_left = -126.0
-offset_top = -126.0
-offset_right = 126.0
-offset_bottom = 126.0
-pivot_offset = Vector2(0.5, 0.5)
-script = ExtResource("29_ly362")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="night aura"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(126, 126)
-amount = 256
-process_material = SubResource("ParticleProcessMaterial_dtv63")
-lifetime = 0.5
-local_coords = true
-
-[node name="spawn" type="AnimationPlayer" parent="night aura"]
-libraries = {
-"": SubResource("AnimationLibrary_eyox6")
-}
-speed_scale = 3.0
-
-[node name="Area2D" type="Area2D" parent="night aura"]
-position = Vector2(0.498016, 0.498016)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
-shape = SubResource("CircleShape2D_6oos5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -914,6 +888,8 @@ layout_mode = 2
 texture = ExtResource("21_btisa")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
+cost = 100
+type = "squellette enomre"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette énorme"]
 modulate = Color(1, 1, 1, 0)
@@ -1019,16 +995,60 @@ texture_under = ExtResource("30_wxwx8")
 texture_progress = ExtResource("31_l11uv")
 
 [node name="Area2D" type="Area2D" parent="Spell cost"]
+visible = false
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spell cost/Area2D"]
 shape = SubResource("CircleShape2D_5w1cw")
 
+[node name="Timer" type="Timer" parent="Spell cost"]
+autostart = true
+
+[node name="night aura" type="Node2D" parent="."]
+
+[node name="night aura" type="ColorRect" parent="night aura"]
+visible = false
+material = SubResource("ShaderMaterial_y1000")
+offset_left = -126.0
+offset_top = -126.0
+offset_right = 126.0
+offset_bottom = 126.0
+pivot_offset = Vector2(0.5, 0.5)
+script = ExtResource("29_ly362")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="night aura/night aura"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(126, 126)
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_dtv63")
+lifetime = 0.5
+local_coords = true
+
+[node name="spawn" type="AnimationPlayer" parent="night aura/night aura"]
+libraries = {
+"": SubResource("AnimationLibrary_eyox6")
+}
+speed_scale = 3.0
+
+[node name="Area2D" type="Area2D" parent="night aura"]
+visible = false
+position = Vector2(-125.502, -125.502)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
+shape = SubResource("CircleShape2D_6oos5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(0.1, 0.1)
+
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]
 [connection signal="animation_finished" from="day_night cycle" to="day_night cycle" method="_on_animation_finished"]
 [connection signal="timeout" from="day_night cycle/day duration" to="day_night cycle" method="_on_day_duration_timeout"]
-[connection signal="body_entered" from="night aura/Area2D" to="night aura" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="night aura/Area2D" to="night aura" method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
+[connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
+[connection signal="body_entered" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_exited"]

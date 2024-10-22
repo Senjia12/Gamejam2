@@ -8,3 +8,6 @@ var mana
 
 var player
 var unit_select := []
+
+
+var infamie := 10

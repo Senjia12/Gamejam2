@@ -25,3 +25,5 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	play("day nighy")
 	for unit in get_tree().get_nodes_in_group("Unit"):
 		unit.disabled()
+	for i in get_tree().get_nodes_in_group("village"):
+		i.next_wave()

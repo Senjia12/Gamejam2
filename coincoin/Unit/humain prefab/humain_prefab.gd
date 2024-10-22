@@ -11,12 +11,9 @@ var current_hp := 25
 @onready var nav = get_node("NavigationAgent2D")
 var target_position = null
 
-var is_moving := false
-var is_a_moving := false
-var is_selected := false
-var squellette_in_range := false
+var humain_in_range := false
 
-var direction := "down"
+var looking := "down"
 
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
@@ -24,15 +21,11 @@ func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
-	is_a_moving = true
 	move_to(Vector2.ZERO)
 
-
 func _physics_process(delta: float) -> void:
-	if is_moving == true or is_a_moving && !squellette_in_range:
+	if !humain_in_range:
 		move_along_path(delta)
-	else:
-		animatedSprite.play("idle " + direction)
 
 func move_to(pos):
 	var navigation = get_node("NavigationAgent2D")
@@ -52,22 +45,26 @@ func move_along_path(delta):
 		if $"check front".get_overlapping_bodies() == [] or $"check front".get_overlapping_bodies() == [self]:
 			move_and_slide()
 	
-	if abs(velocity.x) <= 0.2:
-		if velocity.y < 0:
-			animatedSprite.play("move up")
-			direction = "up"
+			if abs(direction.x) <= 0.5:
+				if velocity.y < 0:
+					animatedSprite.play("move up")
+					looking = "up"
+				elif velocity.y > 0:
+					animatedSprite.play("move down")
+					looking = "down"
+			else:
+				if velocity.x < 0:
+					looking = "left"
+					animatedSprite.play("move left")
+				
+				else:
+					looking = "right"
+					animatedSprite.play("move right")
+			
+			if velocity == Vector2.ZERO:
+				animatedSprite.play("idle " + looking)
 		else:
-			animatedSprite.play("move down")
-			direction = "down"
-	else:
-		animatedSprite.play("move right")
-		if velocity.x < 0:
-			animatedSprite.flip_h = true
-			direction = "left"
-		else:
-			animatedSprite.flip_h = false
-			direction = "right"
-
+			animatedSprite.play("idle " + looking)
 
 func take_damage(dmg):
 	current_hp -= dmg
@@ -77,17 +74,16 @@ func take_damage(dmg):
 		get_parent().add_child(cadavre_instance)
 		queue_free()
 
-
 func _on_attack_range_body_entered(body: Node2D) -> void:
-	if body.is_in_group("squellette") && !is_moving:
-		if !squellette_in_range:
-			squellette_in_range = true
+	if body.is_in_group("squellette"):
+		if !humain_in_range:
+			humain_in_range = true
 			$"attack cd".start()
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("squellette"):
 		if $Attack_range.get_overlapping_bodies() == [] or $Attack_range.get_overlapping_bodies() == [body]:
-			squellette_in_range = false
+			humain_in_range = false
 			$"attack cd".stop()
 
 func _on_attack_cd_timeout() -> void:
