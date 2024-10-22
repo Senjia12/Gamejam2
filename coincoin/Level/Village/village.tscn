@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjw0ow47vtrl4"]
+[gd_scene load_steps=4 format=3 uid="uid://cjw0ow47vtrl4"]
 
 [ext_resource type="Script" path="res://Level/Village/village.gd" id="1_53s8d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwift"]
 radius = 132.0
 
-[node name="Village générator" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7f7qa"]
+radius = 12.0
+
+[node name="Village générator" type="Node2D" groups=["village"]]
 y_sort_enabled = true
 script = ExtResource("1_53s8d")
 
@@ -19,4 +22,23 @@ wait_time = 0.001
 one_shot = true
 autostart = true
 
+[node name="spawn" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="look spawn" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="look spawn"]
+shape = SubResource("CircleShape2D_7f7qa")
+
+[node name="decale" type="Timer" parent="look spawn"]
+wait_time = 0.001
+autostart = true
+
+[node name="spawn delay" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]
+[connection signal="timeout" from="spawn" to="." method="_on_spawn_timeout"]
+[connection signal="timeout" from="look spawn/decale" to="." method="_on_decale_timeout"]
+[connection signal="timeout" from="spawn delay" to="." method="_on_spawn_delay_timeout"]

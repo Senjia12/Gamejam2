@@ -9,6 +9,15 @@ func _ready() -> void:
 	Globals.bone_counter = self
 
 
+func take_damage(dmg):
+	current_bones -= dmg / 5
+	display.text = str(current_bones)
+	Globals.bone_pill.update_state(current_bones)
+	if current_bones <= 0:
+		get_parent().queue_free()
+
+
+
 func add_bones(bones):
 	current_bones += bones
 	display.text = str(current_bones)

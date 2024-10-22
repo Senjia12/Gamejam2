@@ -21,3 +21,7 @@ func cost(mana):
 		else:
 			return false
 	return true
+
+
+func _on_timer_timeout() -> void:
+	mana_bar.value += 0.1

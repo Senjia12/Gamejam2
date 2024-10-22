@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dhfqjfivuv5yw"]
+
+[node name="nav tourelle" type="NavigationObstacle2D"]
+vertices = PackedVector2Array(-29, -2, -22, 11, 1, 14, 23, 11, 30, -2, 24, -15, -21, -15)

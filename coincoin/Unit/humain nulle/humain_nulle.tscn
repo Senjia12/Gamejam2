@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://6tcuoem3mdak"]
+
+[ext_resource type="PackedScene" uid="uid://fg64ryqhhpeo" path="res://Unit/humain prefab/humain_prefab.tscn" id="1_0wckm"]
+[ext_resource type="SpriteFrames" uid="uid://dfe2xdc8p8ox2" path="res://Unit/humain nulle/torche/torche sprite.tres" id="2_musog"]
+[ext_resource type="Script" path="res://Unit/humain nulle/humain_nulle_randomiser.gd" id="3_deiyg"]
+
+[node name="Humain nulle" instance=ExtResource("1_0wckm")]
+speed = 3500
+max_hp = 15
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+sprite_frames = ExtResource("2_musog")
+animation = &"move right"
+offset = Vector2(0, -14)
+
+[node name="humain nulle randomiser" type="Sprite2D" parent="." index="6"]
+script = ExtResource("3_deiyg")

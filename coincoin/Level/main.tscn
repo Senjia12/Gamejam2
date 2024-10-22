@@ -1,11 +1,14 @@
-[gd_scene load_steps=55 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=60 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
 [ext_resource type="Script" path="res://Level/Cam controller/unit_select.gd" id="4_xyjs5"]
 [ext_resource type="Texture2D" uid="uid://b1h1ll51wx2ra" path="res://Level/Décor/fosse/fosse 0.png" id="5_38220"]
 [ext_resource type="Script" path="res://Level/fosse_a_squellette.gd" id="6_7g847"]
+[ext_resource type="Texture2D" uid="uid://bqw123g6lvnug" path="res://UI/shader/light.png" id="6_h4lyg"]
 [ext_resource type="Texture2D" uid="uid://dy183j5a4vt7v" path="res://Level/Décor/terrain/herbe.png" id="7_iuip1"]
+[ext_resource type="Script" path="res://Level/fow_revealer.gd" id="7_ol4v5"]
+[ext_resource type="PackedScene" uid="uid://didgcpblaia4b" path="res://Unit/poti squellette/poti squellette.tscn" id="8_85ant"]
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
@@ -31,12 +34,16 @@
 [ext_resource type="Script" path="res://UI/mana/spell_cost.gd" id="29_wrche"]
 [ext_resource type="Texture2D" uid="uid://bk5s4meothho2" path="res://UI/mana/image.png" id="30_wxwx8"]
 [ext_resource type="Texture2D" uid="uid://bvws5n5voidyn" path="res://UI/mana/image (6).png" id="31_l11uv"]
+[ext_resource type="PackedScene" uid="uid://cgu4uup4wdj0g" path="res://batiment/Tourelle agro/tourelle_d'agro.tscn" id="35_ntxs3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r3k5b"]
 radius = 162.788
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dfrv"]
 radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_624vs"]
+radius = 1027.02
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v671"]
 texture = ExtResource("7_iuip1")
@@ -162,6 +169,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("day_night cycle:light_mix")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
 
 [sub_resource type="Animation" id="Animation_6xvkw"]
 resource_name = "day nighy"
@@ -248,7 +267,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 1, 5, 6, 7, 11, 12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.410025, 0.490822, 0.728245, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.756291, 0.584098, 0.413742, 1), Color(0.0646193, 0.14478, 0.274938, 1), Color(0.0646193, 0.14478, 0.274938, 1), Color(0.410025, 0.490822, 0.728245, 1)]
+"values": [Color(0.410025, 0.490822, 0.728245, 1), Color(0.787759, 0.787759, 0.787759, 1), Color(0.762404, 0.762404, 0.762404, 1), Color(0.632861, 0.473897, 0.314627, 1), Color(0.0646193, 0.14478, 0.274938, 1), Color(0.0646193, 0.14478, 0.274938, 1), Color(0.410025, 0.490822, 0.728245, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -274,12 +293,38 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("day_night cycle:light_mix")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1, 5, 6, 7, 11, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.75, 1.0, 1.0, 0.75, 0.5, 0.5, 0.75]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1hnvk"]
 _data = {
 "RESET": SubResource("Animation_ys2np"),
 "day nighy": SubResource("Animation_6xvkw")
 }
+
+[sub_resource type="Curve2D" id="Curve2D_hbitj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -78, 27, 0, 0, 0, 0, -68, 18, 0, 0, 0, 0, -57, 12, 0, 0, 0, 0, -49, 8, 0, 0, 0, 0, -39, 4, 0, 0, 0, 0, -22, 0, 0, 0, 0, 0, -9, -2, 0, 0, 0, 0, 5, -4, 0, 0, 0, 0, 35, -4, 0, 0, 0, 0, 55, -1, 0, 0, 0, 0, 70, 2, 0, 0, 0, 0, 88, 7, 0, 0, 0, 0, 105, 16, 0, 0, 0, 0, 118, 27)
+}
+point_count = 14
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxe0"]
+shader = ExtResource("10_hnh7q")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5w1cw"]
+radius = 139.23
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y1000"]
 shader = ExtResource("28_ijpyy")
@@ -424,21 +469,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oos5"]
-radius = 0.309931
-
-[sub_resource type="Curve2D" id="Curve2D_hbitj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -78, 27, 0, 0, 0, 0, -68, 18, 0, 0, 0, 0, -57, 12, 0, 0, 0, 0, -49, 8, 0, 0, 0, 0, -39, 4, 0, 0, 0, 0, -22, 0, 0, 0, 0, 0, -9, -2, 0, 0, 0, 0, 5, -4, 0, 0, 0, 0, 35, -4, 0, 0, 0, 0, 55, -1, 0, 0, 0, 0, 70, 2, 0, 0, 0, 0, 88, 7, 0, 0, 0, 0, 105, 16, 0, 0, 0, 0, 118, 27)
-}
-point_count = 14
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxe0"]
-shader = ExtResource("10_hnh7q")
-shader_parameter/lod = 5.0
-shader_parameter/mix_percentage = 0.2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5w1cw"]
-radius = 139.23
+radius = 80.16
 
 [node name="Main" type="Node2D"]
 
@@ -466,8 +497,9 @@ z_index = -500
 texture = ExtResource("5_38220")
 script = ExtResource("6_7g847")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Fosse a squellette"]
-visible = false
+[node name="StaticBody2D" type="StaticBody2D" parent="Fosse a squellette" groups=["fosse a squellette", "squellette"]]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse a squellette/StaticBody2D"]
 position = Vector2(-4, 0)
@@ -487,8 +519,22 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_1dfrv")
 
 [node name="delay" type="Timer" parent="Fosse a squellette"]
-wait_time = 0.01
+wait_time = 0.02
 one_shot = true
+
+[node name="FOW revealer" type="PointLight2D" parent="Fosse a squellette" groups=["fow"]]
+blend_mode = 2
+texture = ExtResource("6_h4lyg")
+texture_scale = 2.0
+script = ExtResource("7_ol4v5")
+
+[node name="Area2D" type="Area2D" parent="Fosse a squellette/FOW revealer"]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse a squellette/FOW revealer/Area2D"]
+shape = SubResource("CircleShape2D_624vs")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 z_index = -1000
@@ -503,13 +549,16 @@ y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ihopg")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Terrain/NavigationRegion2D"]
-vertices = PackedVector2Array(-177, -14, -169, -39, -153, -72, -125, -89, -90, -104, -49, -111, 0, -115, 42, -110, 84, -98, 124, -76, 148, -58, 166, -29, 174, 0, 168, 39, 150, 69, 118, 91, 85, 106, 41, 119, -4, 121, -49, 116, -92, 103, -135, 83, -161, 57, -179, 29, -180, 2)
+vertices = PackedVector2Array(-172, -29, -161, -45, -140, -69, -116, -85, -81, -99, -47, -106, 0, -109, 43, -105, 85, -94, 120, -77, 145, -56, 165, -28, 171, 0, 164, 32, 145, 62, 116, 82, 84, 97, 45, 112, 0, 116, -49, 112, -94, 99, -134, 78, -157, 55, -173, 31, -177, 0)
 affect_navigation_mesh = true
 
 [node name="Delay" type="Timer" parent="Terrain/NavigationRegion2D"]
 wait_time = 0.05
 one_shot = true
 autostart = true
+
+[node name="Squellette prefab" parent="Terrain/NavigationRegion2D" instance=ExtResource("8_85ant")]
+position = Vector2(188, -70)
 
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -518,45 +567,15 @@ y_sort_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_1hnvk")
 }
+speed_scale = 0.05
 script = ExtResource("9_d34sj")
+light_mix = 0.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="day_night cycle"]
 
 [node name="day duration" type="Timer" parent="day_night cycle"]
-wait_time = 6.0
+wait_time = 120.0
 one_shot = true
-
-[node name="night aura" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_y1000")
-offset_left = -126.0
-offset_top = -126.0
-offset_right = 126.0
-offset_bottom = 126.0
-pivot_offset = Vector2(0.5, 0.5)
-script = ExtResource("29_ly362")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="night aura"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(126, 126)
-amount = 256
-process_material = SubResource("ParticleProcessMaterial_dtv63")
-lifetime = 0.5
-local_coords = true
-
-[node name="spawn" type="AnimationPlayer" parent="night aura"]
-libraries = {
-"": SubResource("AnimationLibrary_eyox6")
-}
-speed_scale = 3.0
-
-[node name="Area2D" type="Area2D" parent="night aura"]
-position = Vector2(0.498016, 0.498016)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
-shape = SubResource("CircleShape2D_6oos5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -607,6 +626,34 @@ rotates = false
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/day night/Path2D/soleil"]
 texture = ExtResource("12_kqbog")
 
+[node name="conteur os" type="TextureRect" parent="CanvasLayer"]
+offset_right = 124.0
+offset_bottom = 43.937
+texture = ExtResource("13_6ucth")
+expand_mode = 5
+script = ExtResource("14_un8gy")
+
+[node name="Label" type="Label" parent="CanvasLayer/conteur os"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -35.937
+offset_right = 27.0
+offset_bottom = -4.93701
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="achat squellette" type="VBoxContainer" parent="CanvasLayer"]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -615,13 +662,13 @@ anchor_bottom = 1.0
 offset_right = 124.0
 grow_vertical = 2
 
-[node name="conteur os" type="TextureRect" parent="CanvasLayer/achat squellette"]
+[node name="faux conteur" type="TextureRect" parent="CanvasLayer/achat squellette"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("13_6ucth")
 expand_mode = 5
-script = ExtResource("14_un8gy")
 
-[node name="Label" type="Label" parent="CanvasLayer/achat squellette/conteur os"]
+[node name="Label" type="Label" parent="CanvasLayer/achat squellette/faux conteur"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -914,6 +961,8 @@ layout_mode = 2
 texture = ExtResource("21_btisa")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
+cost = 100
+type = "squellette enomre"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette énorme"]
 modulate = Color(1, 1, 1, 0)
@@ -944,6 +993,10 @@ theme_override_fonts/font = ExtResource("15_yflrp")
 text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="achat batiment" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="pause menu" type="ColorRect" parent="CanvasLayer"]
 process_mode = 3
@@ -1019,16 +1072,60 @@ texture_under = ExtResource("30_wxwx8")
 texture_progress = ExtResource("31_l11uv")
 
 [node name="Area2D" type="Area2D" parent="Spell cost"]
+visible = false
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spell cost/Area2D"]
 shape = SubResource("CircleShape2D_5w1cw")
 
+[node name="Timer" type="Timer" parent="Spell cost"]
+autostart = true
+
+[node name="night aura" type="Node2D" parent="."]
+
+[node name="night aura" type="ColorRect" parent="night aura"]
+visible = false
+material = SubResource("ShaderMaterial_y1000")
+offset_left = -126.0
+offset_top = -126.0
+offset_right = 126.0
+offset_bottom = 126.0
+pivot_offset = Vector2(0.5, 0.5)
+script = ExtResource("29_ly362")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="night aura/night aura"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(126, 126)
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_dtv63")
+lifetime = 0.5
+local_coords = true
+
+[node name="spawn" type="AnimationPlayer" parent="night aura/night aura"]
+libraries = {
+"": SubResource("AnimationLibrary_eyox6")
+}
+speed_scale = 3.0
+
+[node name="Area2D" type="Area2D" parent="night aura"]
+visible = false
+position = Vector2(-125.502, -125.502)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
+shape = SubResource("CircleShape2D_6oos5")
+
+[node name="Tourelle d\'agro" parent="." instance=ExtResource("35_ntxs3")]
+
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
+[connection signal="body_entered" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]
 [connection signal="animation_finished" from="day_night cycle" to="day_night cycle" method="_on_animation_finished"]
 [connection signal="timeout" from="day_night cycle/day duration" to="day_night cycle" method="_on_day_duration_timeout"]
-[connection signal="body_entered" from="night aura/Area2D" to="night aura" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="night aura/Area2D" to="night aura" method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
+[connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
+[connection signal="body_entered" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_exited"]
