@@ -14,14 +14,15 @@ var target_position = null
 var humain_in_range := false
 
 var looking := "down"
-
+var timer_start := false
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
 func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
+	$"ennemi near"/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
-	move_to(Vector2.ZERO)
+	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 32)
 
 func _physics_process(delta: float) -> void:
 	if !humain_in_range:
@@ -76,16 +77,29 @@ func take_damage(dmg):
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("squellette"):
-		if !humain_in_range:
-			humain_in_range = true
+		if !timer_start:
+			timer_start = true
 			$"attack cd".start()
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("squellette"):
 		if $Attack_range.get_overlapping_bodies() == [] or $Attack_range.get_overlapping_bodies() == [body]:
-			humain_in_range = false
+			timer_start = false
 			$"attack cd".stop()
 
 func _on_attack_cd_timeout() -> void:
 	if $Attack_range.get_overlapping_bodies() != []:
-		$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
+		if $Attack_range.get_overlapping_bodies()[0].is_in_group("fosse a squellette"):
+			Globals.bone_counter.take_damage(attack_damage)
+		else:
+			$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
+
+
+func _on_ennemi_near_body_entered(body: Node2D) -> void:
+	if body.is_in_group("squellette"):
+		humain_in_range = true
+
+
+func _on_ennemi_near_body_exited(body: Node2D) -> void:
+	if body.is_in_group("squellette"):
+		humain_in_range = false
