@@ -9,20 +9,21 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 @onready var player = get_parent()
-@onready var control_spell_cd_timeout_duration = player.cooldown_multiplayer
+@onready var cooldown_multiplayer = player.cooldown_multiplayer
 
 var can_attack = true
 var is_attacking = false
 
 func _process(delta: float) -> void:
 	var offensive_spell = "offensive spell"
+	var offensive_spell_cd = $offensive_spell_cd.wait_time * cooldown_multiplayer
 	
 	if Input.is_action_just_pressed("offensive_spell") && can_attack==true:
 		can_attack = false
 		is_attacking = true
 		$offensive_spell_cd.start()
 
-func _on_offensive_spell_cd_timeout() -> void:
+func _on_offensive_spell_cd_timeout(offensive_spell_cd) -> void:
 	pass # Replace with function body.
 	can_attack = true
 	is_attacking = false

@@ -12,7 +12,6 @@ extends Area2D
 const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
 var poti_squellette_instance = poti_squelette_preload.instantiate()
 
-
 var can_summon = true
 
 func _ready() -> void:

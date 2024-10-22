@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
 [ext_resource type="Script" path="res://Unit/capacities/defensive_spell.gd" id="3_4fvd8"]
 [ext_resource type="Script" path="res://Unit/capacities/control_spell.gd" id="4_vfuac"]
-[ext_resource type="Script" path="res://Unit/capacities/summon_spell.gd" id="5_3xl4r"]
+[ext_resource type="Script" path="res://Unit/capacities/summon_spell2.gd" id="5_6x7yj"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_jlaiv")
@@ -28,7 +28,7 @@ script = ExtResource("4_vfuac")
 wait_time = 13.0
 
 [node name="summon_spell" type="Area2D" parent="."]
-script = ExtResource("5_3xl4r")
+script = ExtResource("5_6x7yj")
 
 [node name="summon_spell_cd" type="Timer" parent="summon_spell"]
 wait_time = 15.0
