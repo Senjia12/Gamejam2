@@ -8,9 +8,6 @@ extends Area2D
 
 @onready var player = get_parent()
 @onready var cooldown_multiplier = player.cooldown_multiplier
-@onready var spell_cost = get_parent().get_parent().get_node("Spell cost")
-@onready var summon_cost = spell_cost.summon_cost
-@onready var summon_spell = spell_cost.summon_spell
 
 
 const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
@@ -19,6 +16,8 @@ var can_summon = true
 var spawn_number = 3
 var summoned_creatures = []
 var parent_node
+var summon_spell = "summon spell"
+var summon_cost = 4
 
 #scores
 var nb_spawn = 0
@@ -65,8 +64,10 @@ func _process(delta: float) -> void:
 #dispawn_cd_end = timer pour dispawn les unités summonned
 
 func summon_t1():
+	spawn_number = 3
 	nb_spawn += spawn_number
 	nb_squelettes_t1 += spawn_number
+	summon_radius = 100
 	var angle_gap_between = TAU / spawn_number
 	
 	for i in range (spawn_number):
@@ -76,8 +77,9 @@ func summon_t1():
 
 		poti_squellette_instance.global_position = spawn_position + global_position
 		parent_node.add_child(poti_squellette_instance)
-		
-		
+		summoned_creatures.append(poti_squellette_instance)
+
+
 func summon_t2_skeleton():
 	spawn_number = 5
 	nb_spawn += spawn_number
@@ -90,9 +92,9 @@ func summon_t2_skeleton():
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
 		var poti_squellette_instance = poti_squelette_preload.instantiate()
 
+		poti_squellette_instance.global_position = spawn_position + global_position
 		parent_node.add_child(poti_squellette_instance)
-		parent_node.add_child(poti_squellette_instance)
-		
+		summoned_creatures.append(poti_squellette_instance)
 
 func summon_t3_skeleton():
 	spawn_number = 10
