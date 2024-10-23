@@ -1059,6 +1059,7 @@ grow_vertical = 0
 
 [node name="explos" type="TextureRect" parent="CanvasLayer/achat bati"]
 visible = false
+layout_mode = 0
 offset_left = -252.0
 offset_top = -66.0
 offset_right = -164.0
@@ -1100,6 +1101,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="tour d\'archer" type="TextureRect" parent="CanvasLayer/achat bati"]
+layout_mode = 0
 offset_left = -252.0
 offset_top = -66.0
 offset_right = -164.0
@@ -1143,6 +1145,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="tour d\'aggro" type="TextureRect" parent="CanvasLayer/achat bati"]
+layout_mode = 0
 offset_left = -388.0
 offset_top = -66.0
 offset_right = -300.0

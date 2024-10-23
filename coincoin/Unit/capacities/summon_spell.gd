@@ -10,13 +10,20 @@ extends Area2D
 @onready var cooldown_multiplier = player.cooldown_multiplier
 
 const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
-var poti_squellette_instance = poti_squelette_preload.instantiate()
 var summon_radius = 100
 var can_summon = true
 var spawn_number = 3
-
+var summoned_creatures = []
 var parent_node
 
+#scores
+var nb_spawn = 0
+var nb_summon_spell = 0
+var nb_squelettes_t1 = 0
+var nb_squelettes_t2 = 0
+var nb_squelettes_t3 = 0
+var nb_golem = 0
+var nb_golem_icestorm = 0
 
 func _ready() -> void:
 	parent_node = get_parent().spawn_node
@@ -27,6 +34,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("summon_spell") && can_summon==true:
 		can_summon = false
+		nb_summon_spell += 1
 		$summon_spell_cd.start()
 		
 		if summon_spell == "summon spell":
@@ -50,68 +58,89 @@ func _process(delta: float) -> void:
 #spawn_angle = pour décaler le spawn de l'écart nécessaire entre chaque spawn
 #spawn_position = position sur le rayon, là où l'unité spwan
 #spawn_number = nombre d'unités qui spawnent
+#dispawn_cd_end = timer pour dispawn les unités summonned
 
 func summon_t1():
-	
+	nb_spawn += spawn_number
+	nb_squelettes_t1 += spawn_number
 	var angle_gap_between = TAU / spawn_number
 	
 	for i in range (spawn_number):
 		var spawn_angle = i * angle_gap_between
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		
+		var poti_squellette_instance = poti_squelette_preload.instantiate()
+
 		poti_squellette_instance.global_position = spawn_position + global_position
 		add_child(poti_squellette_instance)
 		
+		
 func summon_t2_skeleton():
 	spawn_number = 5
+	nb_spawn += spawn_number
+	nb_squelettes_t2 += spawn_number
 	summon_radius = 150
 	var angle_gap_between = TAU / spawn_number
 	
 	for i in range (spawn_number):
 		var spawn_angle = i * angle_gap_between
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		
+		var poti_squellette_instance = poti_squelette_preload.instantiate()
+
 		poti_squellette_instance.global_position = spawn_position + global_position
 		add_child(poti_squellette_instance)
-
+		
 
 func summon_t3_skeleton():
 	spawn_number = 10
+	nb_spawn += spawn_number
+	nb_squelettes_t3 += spawn_number
 	summon_radius = 200
 	var angle_gap_between = TAU / spawn_number
 	
 	for i in range (spawn_number):
 		var spawn_angle = i * angle_gap_between
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		
-		poti_squellette_instance.global_position = spawn_position + global_position
-		add_child(poti_squellette_instance)
+		var poti_squellette_instance = poti_squelette_preload.instantiate()
 
+		poti_squellette_instance.global_position = spawn_position + global_position
+		parent_node.add_child(poti_squellette_instance)
+		summoned_creatures.append(poti_squellette_instance)
 
 func summon_t2_golem():
 	spawn_number = 1
+	nb_spawn += spawn_number
+	nb_golem += spawn_number
 	summon_radius = 150
 	var angle_gap_between = TAU / spawn_number
-	
+
 	for i in range (spawn_number):
 		var spawn_angle = i * angle_gap_between
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		
+		var poti_squellette_instance = poti_squelette_preload.instantiate()
+
 		poti_squellette_instance.global_position = spawn_position + global_position
-		add_child(poti_squellette_instance)
+		parent_node.add_child(poti_squellette_instance)
+		summoned_creatures.append(poti_squellette_instance)
 
 
 func summon_t3_golem():
 	spawn_number = 1
+	nb_spawn += spawn_number
+	nb_golem_icestorm += spawn_number
 	summon_radius = 200
 	var angle_gap_between = TAU / spawn_number
-	
+	var poti_squellette_instance = poti_squelette_preload.instantiate()
+
 	for i in range (spawn_number):
 		var spawn_angle = i * angle_gap_between
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
 		
 		poti_squellette_instance.global_position = spawn_position + global_position
-		add_child(poti_squellette_instance)
+		parent_node.add_child(poti_squellette_instance)
+		summoned_creatures.append(poti_squellette_instance)
 
 func _on_summon_spell_cd_timeout(summon_spell_cd) -> void:
 	can_summon = true
+
+func _on_dispawn_cd_timeout() -> void:
+	summoned_creatures.queue_free()
