@@ -1154,7 +1154,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="tour d\'aggro" type="TextureRect" parent="CanvasLayer/achat bati"]
-visible = false
 layout_mode = 0
 offset_left = -388.0
 offset_top = -66.0
@@ -1188,50 +1187,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="buy" type="Button" parent="CanvasLayer/achat bati/tour d\'aggro"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 19.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="bumper" type="TextureRect" parent="CanvasLayer/achat bati"]
-layout_mode = 0
-offset_left = -388.0
-offset_top = -66.0
-offset_right = -300.0
-offset_bottom = 4.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("27_y638d")
-script = ExtResource("27_te5or")
-bat_type = "agro"
-price = 25
-
-[node name="Label" type="Label" parent="CanvasLayer/achat bati/bumper"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -69.5556
-offset_top = -26.6667
-offset_right = 18.4444
-offset_bottom = 4.33331
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("15_yflrp")
-text = "50"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="buy" type="Button" parent="CanvasLayer/achat bati/bumper"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1404,7 +1359,6 @@ shape = SubResource("CircleShape2D_6oos5")
 [connection signal="pressed" from="CanvasLayer/achat bati/explos/buy" to="CanvasLayer/achat bati/explos" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/achat bati/tour d\'archer/buy" to="CanvasLayer/achat bati/tour d\'archer" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/achat bati/tour d\'aggro/buy" to="CanvasLayer/achat bati/tour d\'aggro" method="_on_buy_pressed"]
-[connection signal="pressed" from="CanvasLayer/achat bati/bumper/buy" to="CanvasLayer/achat bati/bumper" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
 [connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spell cost/Spell cost/Timer" to="Spell cost/Spell cost" method="_on_timer_timeout"]
