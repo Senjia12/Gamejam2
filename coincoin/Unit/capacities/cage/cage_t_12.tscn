@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb375d51rb1bi"]
+
+[ext_resource type="Script" path="res://Unit/capacities/cage/cage_t_12.gd" id="1_hyk55"]
+[ext_resource type="Texture2D" uid="uid://qawpxp8j08ft" path="res://Unit/capacities/tiny_cage_back.png" id="1_uiehu"]
+[ext_resource type="Texture2D" uid="uid://bjysfrtu4nsh7" path="res://Unit/capacities/tiny_cage_front.png" id="2_5roiv"]
+
+[node name="cage t1" type="StaticBody2D" groups=["squellette"]]
+y_sort_enabled = true
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_hyk55")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_uiehu")
+offset = Vector2(0, -23.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 11.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_5roiv")
+offset = Vector2(0, -33.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(1.5, 1.5)
+polygon = PackedVector2Array(-16, -10.6667, -15.3333, -2.66667, -12.162, 0, 13.3333, 0, 16.6667, -2.66667, 16.6667, -10.6667, 14.6667, -12.6667, -14.6667, -12.6667, -16, -10.6667, -20, -11, -20, -17, 20, -17, 20, 2, -20, 2, -20, -11)

@@ -1,30 +1,34 @@
-extends Area2D
+extends Node2D
 
 
-#var  control_spell_t2_wall = false
-#var  control_spell_t2_palisade_turret = false
-#var  control_spell_t2_area = false
-#var  control_spell_t2_infinite_area = false
-#var control_spell_cd_timeout_end = true
+var can_control = true
+const CAGE_T_12 = preload("res://Unit/capacities/cage/cage_t_12.tscn")
+const CAGE_T_3 = preload("res://Unit/capacities/cage/cage_t_3.tscn")
+
+
+var control_type = "cage"
+var tier = 3
+
+var ysort
 
 func _ready() -> void:
-	pass # Replace with function body.
+	ysort = get_parent().get_parent().get_node("Terrain").get_node("NavigationRegion2D") 
 
-@onready var player = get_parent()
-@onready var cooldown_multiplier = player.cooldown_multiplier
 
-var can_control = false
-var is_controlling = false
-
-func _process(delta: float) -> void:
-	var control_spell = "control spell"
-	var control_spell_cd = cooldown_multiplier * $control_spell_cd.wait_time
-
-	if Input.is_action_just_pressed("control_spell") && can_control==true:
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("control_spell") && can_control:
+		if control_type == "cage" && tier <= 2:
+			var cage = CAGE_T_12.instantiate()
+			cage.t = tier
+			cage.global_position = get_global_mouse_position()
+			ysort.add_child(cage)
+		elif control_type == "cage" && tier == 3:
+			var cage = CAGE_T_3.instantiate()
+			cage.global_position = get_global_mouse_position()
+			ysort.add_child(cage)
+			
 		can_control = false
-		is_controlling = true
-		$control_spell_cd.start()
+		$cd.start()
 
-func _on_control_spell_cd_timeout(control_spell_cd) -> void:
+func _on_cd_timeout() -> void:
 	can_control = true
-	is_controlling = false

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgwm5d6glx08u"]
+
+[ext_resource type="Script" path="res://Unit/capacities/cage/cage_t_3.gd" id="1_0wiby"]
+[ext_resource type="Texture2D" uid="uid://brgomffc2dskh" path="res://Unit/capacities/Cage_grande_arriere.png" id="1_7bnpm"]
+[ext_resource type="Texture2D" uid="uid://dhg2lyimnkgjm" path="res://Unit/capacities/Cage_grande_avant.png" id="2_7g637"]
+
+[node name="cage t3" type="StaticBody2D" groups=["squellette"]]
+script = ExtResource("1_0wiby")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -21.725)
+texture = ExtResource("1_7bnpm")
+offset = Vector2(0, -7)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 2.58)
+texture = ExtResource("2_7g637")
+offset = Vector2(0, -33)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 7.015)
+polygon = PackedVector2Array(-49, -28, -27, -35, -12, -36, 0, -37, 13, -36, 28, -35, 47, -31, 49, -15, 30, -9, 9, -8, -11, -8, -30, -9, -49, -16, -49, -28, -53, -31, -59, -19, -51, -10, -33, -5, -9, -4, 10, -4, 31, -6, 50, -11, 59, -18, 53, -31, 29, -38, 0, -41, -28, -39, -53, -31)
