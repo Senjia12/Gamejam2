@@ -194,7 +194,7 @@ shape = SubResource("CircleShape2D_7xbhf")
 
 [node name="necro" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kghp3")
-animation = &"idle_forward"
+animation = &"walk_to_the_right"
 
 [connection signal="timeout" from="offensive_spell/offensive_spell_cd" to="offensive_spell" method="_on_offensive_spell_cd_timeout"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
