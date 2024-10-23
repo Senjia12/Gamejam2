@@ -26,13 +26,13 @@ var nb_golem = 0
 var nb_golem_icestorm = 0
 
 func _ready() -> void:
-	parent_node = get_parent().spawn_node
+	parent_node = get_parent().get_parent().get_node("Terrain").get_node("NavigationRegion2D")
 
 func _process(delta: float) -> void:
 	var summon_spell = "summon spell"
-	var summon_spell_cd = cooldown_multiplier * $summon_spell_cd.wait_time
+	$summon_spell_cd.wait_time = cooldown_multiplier * $summon_spell_cd.wait_time #opti avec calcul quand amélio cd ?
 	
-	if Input.is_action_just_pressed("summon_spell") && can_summon==true:
+	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(1)==true:
 		can_summon = false
 		nb_summon_spell += 1
 		$summon_spell_cd.start()
@@ -71,7 +71,7 @@ func summon_t1():
 		var poti_squellette_instance = poti_squelette_preload.instantiate()
 
 		poti_squellette_instance.global_position = spawn_position + global_position
-		add_child(poti_squellette_instance)
+		parent_node.add_child(poti_squellette_instance)
 		
 		
 func summon_t2_skeleton():
@@ -86,8 +86,8 @@ func summon_t2_skeleton():
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
 		var poti_squellette_instance = poti_squelette_preload.instantiate()
 
-		poti_squellette_instance.global_position = spawn_position + global_position
-		add_child(poti_squellette_instance)
+		parent_node.add_child(poti_squellette_instance)
+		parent_node.add_child(poti_squellette_instance)
 		
 
 func summon_t3_skeleton():
@@ -139,7 +139,7 @@ func summon_t3_golem():
 		parent_node.add_child(poti_squellette_instance)
 		summoned_creatures.append(poti_squellette_instance)
 
-func _on_summon_spell_cd_timeout(summon_spell_cd) -> void:
+func _on_summon_spell_cd_timeout() -> void:
 	can_summon = true
 
 func _on_dispawn_cd_timeout() -> void:

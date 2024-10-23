@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byauyvuqltrvw"]
+[gd_scene load_steps=28 format=3 uid="uid://byauyvuqltrvw"]
 
 [ext_resource type="Script" path="res://Unit/nécromancien/nécromancien.gd" id="1_jlaiv"]
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
@@ -8,18 +8,144 @@
 [ext_resource type="Texture2D" uid="uid://bqw123g6lvnug" path="res://UI/shader/light.png" id="6_oi4u0"]
 [ext_resource type="Script" path="res://Level/fow_revealer.gd" id="7_3oo88"]
 [ext_resource type="Texture2D" uid="uid://thib7u3t2wvm" path="res://Unit/nécromancien/nécro base.png" id="8_p7ksd"]
+[ext_resource type="Texture2D" uid="uid://bmhfdi416ywbs" path="res://Unit/nécromancien/Necro_dos_1_marche.png" id="9_vefms"]
+[ext_resource type="Texture2D" uid="uid://b2neepr7dxja7" path="res://Unit/nécromancien/Necro_face_1_marche.png" id="10_yyxyt"]
+[ext_resource type="Texture2D" uid="uid://62kiglucnda2" path="res://Unit/nécromancien/Necro_cote_1_marche.png" id="11_sujck"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xbhf"]
 radius = 400.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wcr5"]
+atlas = ExtResource("9_vefms")
+region = Rect2(26, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6sh5"]
+atlas = ExtResource("11_sujck")
+region = Rect2(45, 0, 15, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my0cp"]
+atlas = ExtResource("9_vefms")
+region = Rect2(0, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l732j"]
+atlas = ExtResource("9_vefms")
+region = Rect2(26, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip3cw"]
+atlas = ExtResource("9_vefms")
+region = Rect2(52, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kguo"]
+atlas = ExtResource("9_vefms")
+region = Rect2(78, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvocm"]
+atlas = ExtResource("10_yyxyt")
+region = Rect2(0, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fvb6"]
+atlas = ExtResource("10_yyxyt")
+region = Rect2(26, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov5gb"]
+atlas = ExtResource("10_yyxyt")
+region = Rect2(52, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w1x3"]
+atlas = ExtResource("10_yyxyt")
+region = Rect2(78, 0, 26, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtsfy"]
+atlas = ExtResource("11_sujck")
+region = Rect2(0, 0, 15, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqb5w"]
+atlas = ExtResource("11_sujck")
+region = Rect2(15, 0, 15, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfl44"]
+atlas = ExtResource("11_sujck")
+region = Rect2(30, 0, 15, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc3bb"]
+atlas = ExtResource("11_sujck")
+region = Rect2(45, 0, 15, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kghp3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4wcr5")
+}],
+"loop": true,
+"name": &"idle_backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_p7ksd")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle_forward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6sh5")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my0cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l732j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip3cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kguo")
+}],
+"loop": true,
+"name": &"walk_backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvocm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fvb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov5gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w1x3")
+}],
+"loop": true,
+"name": &"walk_forward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtsfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqb5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfl44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3bb")
+}],
+"loop": true,
+"name": &"walk_to_the_right",
 "speed": 5.0
 }]
 
@@ -68,6 +194,7 @@ shape = SubResource("CircleShape2D_7xbhf")
 
 [node name="necro" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kghp3")
+animation = &"idle_forward"
 
 [connection signal="timeout" from="offensive_spell/offensive_spell_cd" to="offensive_spell" method="_on_offensive_spell_cd_timeout"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
