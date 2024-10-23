@@ -8,6 +8,9 @@ extends Area2D
 
 @onready var player = get_parent()
 @onready var cooldown_multiplier = player.cooldown_multiplier
+@onready var spell_cost = get_node("res://UI/mana/spell_cost.gd")
+@onready var summon_cost = spell_cost.summon_cost
+@onready var summon_spell = spell_cost.summon_spell
 
 const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
 var summon_radius = 100
@@ -29,10 +32,10 @@ func _ready() -> void:
 	parent_node = get_parent().get_parent().get_node("Terrain").get_node("NavigationRegion2D")
 
 func _process(delta: float) -> void:
-	var summon_spell = "summon spell"
 	$summon_spell_cd.wait_time = cooldown_multiplier * $summon_spell_cd.wait_time #opti avec calcul quand amélio cd ?
+	#summon_cost à recalculer ?
 	
-	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(1)==true:
+	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(summon_cost)==true:
 		can_summon = false
 		nb_summon_spell += 1
 		$summon_spell_cd.start()
