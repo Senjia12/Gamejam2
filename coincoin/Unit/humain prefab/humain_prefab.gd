@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 5000
+var real_speed := 5000
 @export var range := 1.0
 @export var attack_damage := 5
 @export var max_hp := 25
@@ -44,7 +45,7 @@ func move_to(pos):
 func move_along_path(delta):
 	var next_point = nav.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
-	var movement = direction * speed * delta
+	var movement = direction * real_speed * delta
 	var distance = global_position.distance_to(next_point)
 	
 	if movement.length()/100 > distance:
@@ -87,6 +88,7 @@ func take_damage(dmg):
 func reavealed():
 	reavealer += 1
 	show()
+	real_speed = speed
 
 
 func unreavealed():
@@ -94,6 +96,7 @@ func unreavealed():
 	if reavealer <= 0:
 		hide()
 		reavealer = 0
+		real_speed = speed * 2
 
 
 func run():

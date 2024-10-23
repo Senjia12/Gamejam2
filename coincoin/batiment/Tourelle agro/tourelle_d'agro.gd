@@ -7,6 +7,7 @@ var hp := 100
 @onready var nav = preload("res://batiment/nav_tourelle.tscn")
 
 
+var price := 50
 
 func _physics_process(delta: float) -> void:
 	if !put:
@@ -21,6 +22,9 @@ func _physics_process(delta: float) -> void:
 				var nav_instance = nav.instantiate()
 				nav_instance.global_position = global_position
 				add_child(nav_instance)
+			elif Input.is_action_just_pressed("click_droit") or Input.is_action_just_pressed("esc"):
+				Globals.bone_counter.add_bones(price)
+				queue_free()
 		else:
 			hide()
 
@@ -37,3 +41,12 @@ func take_damage(dmg):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Humain"):
 		body.move_to(global_position)
+
+
+func _on_put_body_entered(body: Node2D) -> void:
+	set_modulate("ff597162")
+
+
+func _on_put_body_exited(body: Node2D) -> void:
+	if $MeshInstance2D/Area2D.get_overlapping_bodies() == []:
+		set_modulate("00add162")

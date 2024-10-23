@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=59 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -34,7 +34,6 @@
 [ext_resource type="Script" path="res://UI/mana/spell_cost.gd" id="29_wrche"]
 [ext_resource type="Texture2D" uid="uid://bk5s4meothho2" path="res://UI/mana/image.png" id="30_wxwx8"]
 [ext_resource type="Texture2D" uid="uid://bvws5n5voidyn" path="res://UI/mana/image (6).png" id="31_l11uv"]
-[ext_resource type="PackedScene" uid="uid://cgu4uup4wdj0g" path="res://batiment/Tourelle agro/tourelle_d'agro.tscn" id="35_ntxs3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r3k5b"]
 radius = 162.788
@@ -1116,8 +1115,6 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
 shape = SubResource("CircleShape2D_6oos5")
-
-[node name="Tourelle d\'agro" parent="." instance=ExtResource("35_ntxs3")]
 
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="body_entered" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_entered"]

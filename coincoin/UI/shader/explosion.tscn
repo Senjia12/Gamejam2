@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7ll6s4b3wtq3"]
+
+[ext_resource type="Script" path="res://UI/shader/explosion.gd" id="1_eutl4"]
+
+[sub_resource type="Gradient" id="Gradient_wggpi"]
+colors = PackedColorArray(0.705745, 0, 0.174529, 1, 0.97196, 0.516432, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dxmhm"]
+gradient = SubResource("Gradient_wggpi")
+
+[sub_resource type="Curve" id="Curve_keoa0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.634146, 0.769231), -1.12637, -1.12637, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_j3tx6"]
+curve = SubResource("Curve_keoa0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xxadm"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_j3tx6")
+color_initial_ramp = SubResource("GradientTexture1D_dxmhm")
+
+[node name="explosion" type="GPUParticles2D"]
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_xxadm")
+explosiveness = 1.0
+script = ExtResource("1_eutl4")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_finished"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://50hlk4fduqww"]
+
+[ext_resource type="Texture2D" uid="uid://dn5nvt15ps5yq" path="res://batiment/kaboomeur/image (1).png" id="1_ncqd1"]
+[ext_resource type="Script" path="res://batiment/kaboomeur/kaboomeur.gd" id="1_wvq0o"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_txrfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ev7a8"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8nigm"]
+radius = 50.04
+
+[node name="kaboomeur" type="Node2D"]
+modulate = Color(0, 0.678431, 0.819608, 0.384314)
+y_sort_enabled = true
+script = ExtResource("1_wvq0o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 5)
+texture = ExtResource("1_ncqd1")
+offset = Vector2(0, -9)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(1, 1, 1, 0.309804)
+scale = Vector2(100, 100)
+mesh = SubResource("SphereMesh_txrfw")
+
+[node name="Area2D" type="Area2D" parent="MeshInstance2D"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MeshInstance2D/Area2D"]
+position = Vector2(0, -0.0245536)
+scale = Vector2(0.00223214, 0.00223214)
+shape = SubResource("CircleShape2D_ev7a8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8nigm")
+disabled = true
+
+[node name="explosion delay" type="Timer" parent="."]
+wait_time = 1.2
+
+[node name="tick" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="body_entered" from="MeshInstance2D/Area2D" to="." method="_on_put_body_entered"]
+[connection signal="body_exited" from="MeshInstance2D/Area2D" to="." method="_on_put_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="explosion delay" to="." method="_on_explosion_delay_timeout"]
+[connection signal="timeout" from="tick" to="." method="_on_tick_timeout"]
