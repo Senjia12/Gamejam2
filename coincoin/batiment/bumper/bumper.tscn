@@ -1,0 +1,256 @@
+[gd_scene load_steps=25 format=3 uid="uid://bql0pjoptnjj1"]
+
+[ext_resource type="Script" path="res://batiment/bumper/bumper.gd" id="1_2plns"]
+[ext_resource type="Texture2D" uid="uid://d2lgyxg8qq3jj" path="res://batiment/bumper/image.png" id="1_s0il5"]
+[ext_resource type="Texture2D" uid="uid://6dbna76vqqc8" path="res://batiment/bumper/image (6).png" id="2_5f28a"]
+[ext_resource type="Texture2D" uid="uid://c0qx8ir0v2mua" path="res://batiment/bumper/image (2).png" id="3_61v7v"]
+[ext_resource type="Texture2D" uid="uid://bm1rj2wvgoqky" path="res://batiment/bumper/image (4).png" id="4_kwtco"]
+[ext_resource type="Texture2D" uid="uid://rb4ondpjfuuq" path="res://batiment/bumper/image (1).png" id="5_vxmtg"]
+[ext_resource type="Texture2D" uid="uid://bsjs742rw8iku" path="res://batiment/bumper/image (7).png" id="6_7e8i3"]
+[ext_resource type="Texture2D" uid="uid://c8tojxjvbmxce" path="res://batiment/bumper/image (5).png" id="7_ne8qy"]
+[ext_resource type="Texture2D" uid="uid://ciso33kc8x1w6" path="res://batiment/bumper/image (3).png" id="8_rkmlh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss2ut"]
+atlas = ExtResource("1_s0il5")
+region = Rect2(0, 0, 55, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eol6y"]
+atlas = ExtResource("2_5f28a")
+region = Rect2(0, 0, 37, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61us7"]
+atlas = ExtResource("4_kwtco")
+region = Rect2(0, 0, 37, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nly8k"]
+atlas = ExtResource("5_vxmtg")
+region = Rect2(0, 0, 55, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj8b8"]
+atlas = ExtResource("6_7e8i3")
+region = Rect2(0, 0, 47, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6yj7"]
+atlas = ExtResource("7_ne8qy")
+region = Rect2(0, 0, 47, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbh21"]
+atlas = ExtResource("8_rkmlh")
+region = Rect2(0, 0, 55, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubmqi"]
+atlas = ExtResource("3_61v7v")
+region = Rect2(0, 0, 61, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ye6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss2ut")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eol6y")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61us7")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nly8k")
+}],
+"loop": true,
+"name": &"u down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj8b8")
+}],
+"loop": true,
+"name": &"u left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6yj7")
+}],
+"loop": true,
+"name": &"u right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbh21")
+}],
+"loop": true,
+"name": &"u up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubmqi")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxMesh" id="BoxMesh_btcaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lopxn"]
+size = Vector2(38, 18.9367)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mag23"]
+size = Vector2(44, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8iwf"]
+size = Vector2(38, 18.9367)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83538"]
+size = Vector2(13, 34.9183)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih5if"]
+size = Vector2(14.1333, 34.8667)
+
+[node name="bumper" type="StaticBody2D"]
+modulate = Color(0, 0.678431, 0.819608, 0.384314)
+y_sort_enabled = true
+script = ExtResource("1_2plns")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_7ye6x")
+animation = &"up"
+offset = Vector2(0, -27)
+
+[node name="rota" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="up" type="MeshInstance2D" parent="rota"]
+modulate = Color(1, 1, 1, 0.172549)
+position = Vector2(0, -75)
+rotation = 3.14159
+scale = Vector2(30, 150)
+mesh = SubResource("BoxMesh_btcaw")
+
+[node name="Area2D" type="Area2D" parent="rota/up"]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="rota/up/Area2D"]
+position = Vector2(-1.3914e-07, -0.468333)
+scale = Vector2(0.00223214, 0.00223214)
+shape = SubResource("RectangleShape2D_lopxn")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="down" type="MeshInstance2D" parent="rota"]
+visible = false
+modulate = Color(1, 1, 1, 0.172549)
+position = Vector2(0, 75)
+scale = Vector2(30, 150)
+mesh = SubResource("BoxMesh_btcaw")
+
+[node name="Area2D" type="Area2D" parent="rota/down"]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="rota/down/Area2D"]
+position = Vector2(0, -0.55)
+scale = Vector2(0.00223214, 0.00223214)
+shape = SubResource("RectangleShape2D_lopxn")
+disabled = true
+
+[node name="left" type="MeshInstance2D" parent="rota"]
+visible = false
+modulate = Color(1, 1, 1, 0.172549)
+position = Vector2(-75, -16)
+rotation = 1.5708
+scale = Vector2(30, 150)
+mesh = SubResource("BoxMesh_btcaw")
+
+[node name="Area2D" type="Area2D" parent="rota/left"]
+collision_layer = 129
+collision_mask = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="rota/left/Area2D"]
+position = Vector2(0.133333, -0.566667)
+scale = Vector2(0.00223214, 0.00223214)
+shape = SubResource("RectangleShape2D_lopxn")
+disabled = true
+
+[node name="right" type="MeshInstance2D" parent="rota"]
+visible = false
+modulate = Color(1, 1, 1, 0.172549)
+position = Vector2(75, -16)
+rotation = -1.5708
+scale = Vector2(30, 150)
+mesh = SubResource("BoxMesh_btcaw")
+
+[node name="Area2D" type="Area2D" parent="rota/right"]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="rota/right/Area2D"]
+position = Vector2(-0.133333, -0.566667)
+scale = Vector2(0.00223214, 0.00223214)
+shape = SubResource("RectangleShape2D_lopxn")
+disabled = true
+
+[node name="Bump" type="Area2D" parent="."]
+position = Vector2(0, -13)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bump"]
+position = Vector2(0, -27.5)
+shape = SubResource("RectangleShape2D_mag23")
+disabled = true
+
+[node name="rebond" type="Timer" parent="."]
+one_shot = true
+
+[node name="up" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_p8iwf")
+disabled = true
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="right" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -9)
+shape = SubResource("RectangleShape2D_83538")
+disabled = true
+
+[node name="down" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_lopxn")
+disabled = true
+
+[node name="left" type="CollisionShape2D" parent="."]
+position = Vector2(9.06667, -7)
+shape = SubResource("RectangleShape2D_ih5if")
+disabled = true
+
+[connection signal="body_entered" from="rota/up/Area2D" to="." method="_on_put_body_entered"]
+[connection signal="body_exited" from="rota/up/Area2D" to="." method="_on_put_body_exited"]
+[connection signal="body_entered" from="rota/down/Area2D" to="." method="_on_put_body_entered"]
+[connection signal="body_exited" from="rota/down/Area2D" to="." method="_on_put_body_exited"]
+[connection signal="body_entered" from="rota/left/Area2D" to="." method="_on_put_body_entered"]
+[connection signal="body_exited" from="rota/left/Area2D" to="." method="_on_put_body_exited"]
+[connection signal="body_entered" from="rota/right/Area2D" to="." method="_on_put_body_entered"]
+[connection signal="body_exited" from="rota/right/Area2D" to="." method="_on_put_body_exited"]
+[connection signal="body_entered" from="Bump" to="." method="_on_bump_body_entered"]
+[connection signal="timeout" from="rebond" to="." method="_on_rebond_timeout"]

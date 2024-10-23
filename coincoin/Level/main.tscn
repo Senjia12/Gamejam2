@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=65 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" path="res://UI/mana/spell_cost.gd" id="29_wrche"]
 [ext_resource type="Texture2D" uid="uid://bk5s4meothho2" path="res://UI/mana/image.png" id="30_wxwx8"]
 [ext_resource type="Texture2D" uid="uid://bvws5n5voidyn" path="res://UI/mana/image (6).png" id="31_l11uv"]
+[ext_resource type="PackedScene" uid="uid://bql0pjoptnjj1" path="res://batiment/bumper/bumper.tscn" id="39_cea0g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r3k5b"]
 radius = 162.788
@@ -47,6 +48,9 @@ radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_624vs"]
 radius = 1027.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5cws"]
+radius = 196.023
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v671"]
 texture = ExtResource("7_iuip1")
@@ -526,7 +530,6 @@ radius = 80.16
 
 [node name="Cam controller" type="Camera2D" parent="."]
 position = Vector2(0, -137)
-zoom = Vector2(4, 4)
 limit_left = -5000
 limit_top = -5000
 limit_right = 5000
@@ -586,6 +589,13 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse a squellette/FOW revealer/Area2D"]
 shape = SubResource("CircleShape2D_624vs")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Fosse a squellette"]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse a squellette/StaticBody2D2"]
+shape = SubResource("CircleShape2D_l5cws")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 z_index = -1000
@@ -1306,6 +1316,8 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
 shape = SubResource("CircleShape2D_6oos5")
+
+[node name="bumper" parent="." instance=ExtResource("39_cea0g")]
 
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="body_entered" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_entered"]
