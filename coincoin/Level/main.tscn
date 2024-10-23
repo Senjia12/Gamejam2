@@ -1281,6 +1281,40 @@ shape = SubResource("CircleShape2D_5w1cw")
 [node name="Timer" type="Timer" parent="Spell cost"]
 autostart = true
 
+[node name="Spell cost" type="Node2D" parent="Spell cost"]
+script = ExtResource("29_wrche")
+
+[node name="spell cost" type="CanvasLayer" parent="Spell cost/Spell cost"]
+
+[node name="mana bar" type="TextureProgressBar" parent="Spell cost/Spell cost/spell cost"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -292.5
+offset_bottom = 292.5
+grow_horizontal = 0
+grow_vertical = 2
+max_value = 20.0
+step = 0.1
+value = 5.0
+fill_mode = 3
+texture_under = ExtResource("30_wxwx8")
+texture_progress = ExtResource("31_l11uv")
+
+[node name="Area2D" type="Area2D" parent="Spell cost/Spell cost"]
+visible = false
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell cost/Spell cost/Area2D"]
+shape = SubResource("CircleShape2D_5w1cw")
+
+[node name="Timer" type="Timer" parent="Spell cost/Spell cost"]
+autostart = true
+
 [node name="night aura" type="Node2D" parent="."]
 
 [node name="night aura" type="ColorRect" parent="night aura"]
@@ -1327,5 +1361,6 @@ shape = SubResource("CircleShape2D_6oos5")
 [connection signal="pressed" from="CanvasLayer/achat bati/tour d\'aggro/buy" to="CanvasLayer/achat bati/tour d\'aggro" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
 [connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spell cost/Spell cost/Timer" to="Spell cost/Spell cost" method="_on_timer_timeout"]
 [connection signal="body_entered" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_exited"]

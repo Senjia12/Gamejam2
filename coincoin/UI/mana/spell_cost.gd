@@ -23,10 +23,21 @@ func cost(mana):
 	return true
 	
 func summon_tier():
+
 	if summon_spell == "summon spell":
 		summon_cost = 4
 	
-	if summon_spell == "summon spell t2_skeleton":
+	if summon_spell == "summon spell t2 skeleton":
+		summon_cost = 6
+	
+	if summon_spell == "summon spell t3 explosive skeleton":
+		summon_cost = 9
+	
+	if summon_spell == "summon spell t2 golem":
+		summon_cost = 7
+
+	if summon_spell == "summon spell t3 ice storm golem":
+		summon_cost = 11
 
 #différents summons
 var summon_spell = "summon spell"

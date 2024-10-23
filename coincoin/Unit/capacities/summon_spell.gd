@@ -8,9 +8,10 @@ extends Area2D
 
 @onready var player = get_parent()
 @onready var cooldown_multiplier = player.cooldown_multiplier
-@onready var spell_cost = get_node("res://UI/mana/spell_cost.gd")
+@onready var spell_cost = get_parent().get_parent().get_node("Spell cost")
 @onready var summon_cost = spell_cost.summon_cost
 @onready var summon_spell = spell_cost.summon_spell
+
 
 const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
 var summon_radius = 100
