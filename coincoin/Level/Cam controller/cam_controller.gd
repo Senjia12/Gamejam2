@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.is_pressed():
+		if event.is_pressed() && Globals.can_zoom:
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				if get_zoom() >= Vector2(0.5,0.5):
 					set_zoom(zoom / 1.2)

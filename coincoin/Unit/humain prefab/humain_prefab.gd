@@ -19,11 +19,12 @@ var looking := "down"
 var timer_start := false
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
+var bump_velocity := Vector2.ZERO
 
 var reavealer := 0
 
 func reset_target():
-	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 32)
+	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 140)
 
 
 func _ready() -> void:
@@ -32,11 +33,23 @@ func _ready() -> void:
 	$"ennemi near"/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
-	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 32)
+	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 140)
 
 func _physics_process(delta: float) -> void:
 	if !humain_in_range:
 		move_along_path(delta)
+
+
+func bump(dir):
+	if dir == "up":
+		bump_velocity = Vector2.UP
+	elif dir == "right":
+		bump_velocity = Vector2.RIGHT
+	elif dir == "down":
+		bump_velocity = Vector2.DOWN
+	elif dir == "left":
+		bump_velocity = Vector2.LEFT
+	$"delay rebond".start()
 
 func move_to(pos):
 	var navigation = get_node("NavigationAgent2D")
@@ -54,6 +67,7 @@ func move_along_path(delta):
 		velocity = movement
 		$"check front".look_at(global_position + velocity)
 		if $"check front".get_overlapping_bodies() == [] or $"check front".get_overlapping_bodies() == [self]:
+			velocity += bump_velocity * 1000
 			move_and_slide()
 	
 			if abs(direction.x) <= 0.5:
@@ -146,3 +160,7 @@ func _on_tp_haut_animation_changed() -> void:
 
 func _on_timer_timeout() -> void:
 	hide()
+
+
+func _on_delay_rebond_timeout() -> void:
+	bump_velocity = Vector2.ZERO

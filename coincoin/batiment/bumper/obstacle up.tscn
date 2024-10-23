@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dyr1snscesqla"]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D"]
+position = Vector2(-2.18557e-07, -0.5)
+rotation = 3.14159
+scale = Vector2(0.0333333, 0.00666667)
+vertices = PackedVector2Array(-25, -17, -25, 6, 24, 6, 24, -17)
+affect_navigation_mesh = true

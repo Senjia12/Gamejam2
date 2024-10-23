@@ -299,6 +299,10 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_aujte")
 animation = &"attack left"
 
+[node name="delay rebond" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="body_entered" from="Attack_range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Attack_range" to="." method="_on_attack_range_body_exited"]
 [connection signal="body_entered" from="ennemi near" to="." method="_on_ennemi_near_body_entered"]
@@ -306,3 +310,4 @@ animation = &"attack left"
 [connection signal="timeout" from="attack cd" to="." method="_on_attack_cd_timeout"]
 [connection signal="animation_changed" from="tp haut" to="." method="_on_tp_haut_animation_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="delay rebond" to="." method="_on_delay_rebond_timeout"]
