@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://byauyvuqltrvw"]
+[gd_scene load_steps=11 format=3 uid="uid://byauyvuqltrvw"]
 
 [ext_resource type="Script" path="res://Unit/nécromancien/nécromancien.gd" id="1_jlaiv"]
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
@@ -7,9 +7,21 @@
 [ext_resource type="Script" path="res://Unit/capacities/summon_spell.gd" id="5_3xl4r"]
 [ext_resource type="Texture2D" uid="uid://bqw123g6lvnug" path="res://UI/shader/light.png" id="6_oi4u0"]
 [ext_resource type="Script" path="res://Level/fow_revealer.gd" id="7_3oo88"]
+[ext_resource type="Texture2D" uid="uid://thib7u3t2wvm" path="res://Unit/nécromancien/nécro base.png" id="8_p7ksd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xbhf"]
 radius = 400.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kghp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_p7ksd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_jlaiv")
@@ -38,6 +50,9 @@ script = ExtResource("5_3xl4r")
 [node name="summon_spell_cd" type="Timer" parent="summon_spell"]
 wait_time = 15.0
 
+[node name="dispawn_cd" type="Timer" parent="summon_spell"]
+wait_time = 30.0
+
 [node name="FOW revealer" type="PointLight2D" parent="." groups=["fow"]]
 blend_mode = 2
 texture = ExtResource("6_oi4u0")
@@ -51,9 +66,13 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FOW revealer/Area2D"]
 shape = SubResource("CircleShape2D_7xbhf")
 
+[node name="necro" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kghp3")
+
 [connection signal="timeout" from="offensive_spell/offensive_spell_cd" to="offensive_spell" method="_on_offensive_spell_cd_timeout"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
 [connection signal="timeout" from="control_spell/control_spell_cd" to="control_spell" method="_on_control_spell_cd_timeout"]
 [connection signal="timeout" from="summon_spell/summon_spell_cd" to="summon_spell" method="_on_summon_spell_cd_timeout"]
+[connection signal="timeout" from="summon_spell/dispawn_cd" to="summon_spell" method="_on_dispawn_cd_timeout"]
 [connection signal="body_entered" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_exited"]
