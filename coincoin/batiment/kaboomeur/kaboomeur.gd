@@ -19,8 +19,10 @@ func _physics_process(delta: float) -> void:
 				set_modulate("ffffff")
 				$MeshInstance2D.queue_free()
 				$Area2D/CollisionShape2D.disabled = false
+				Globals.is_pausing_bat = false
 			elif Input.is_action_just_pressed("click_droit") or Input.is_action_just_pressed("esc"):
 				Globals.bone_counter.add_bones(price)
+				Globals.is_pausing_bat = false
 				queue_free()
 		else:
 			hide()

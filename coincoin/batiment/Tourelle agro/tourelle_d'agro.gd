@@ -22,8 +22,10 @@ func _physics_process(delta: float) -> void:
 				var nav_instance = nav.instantiate()
 				nav_instance.global_position = global_position
 				add_child(nav_instance)
+				Globals.is_pausing_bat = false
 			elif Input.is_action_just_pressed("click_droit") or Input.is_action_just_pressed("esc"):
 				Globals.bone_counter.add_bones(price)
+				Globals.is_pausing_bat = false
 				queue_free()
 		else:
 			hide()

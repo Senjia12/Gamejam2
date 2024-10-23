@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=63 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -29,7 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://b74v2tx5yh5mt" path="res://UI/achat squellette/ui_invocsqueletarchert.png" id="18_i3vpa"]
 [ext_resource type="Texture2D" uid="uid://sgj7p62oaxct" path="res://UI/achat squellette/ui_invocgros.png" id="20_lis2n"]
 [ext_resource type="Texture2D" uid="uid://ghj70d1f3p5n" path="res://UI/achat squellette/ui_invocgeant.png" id="21_btisa"]
+[ext_resource type="Texture2D" uid="uid://beg4cp6jmyok2" path="res://UI/batiment/uii_explo.png" id="26_2smfs"]
+[ext_resource type="Script" path="res://UI/batiment/achat bat.gd" id="27_te5or"]
+[ext_resource type="Texture2D" uid="uid://btgc5xrpyvrja" path="res://UI/batiment/uii_skull_gold.png" id="27_y638d"]
 [ext_resource type="Shader" path="res://UI/shader/night aura.gdshader" id="28_ijpyy"]
+[ext_resource type="Texture2D" uid="uid://gujn3ijpcjlw" path="res://UI/batiment/uii_tour_archer.png" id="28_k6ak8"]
 [ext_resource type="Script" path="res://Level/night_aura.gd" id="29_ly362"]
 [ext_resource type="Script" path="res://UI/mana/spell_cost.gd" id="29_wrche"]
 [ext_resource type="Texture2D" uid="uid://bk5s4meothho2" path="res://UI/mana/image.png" id="30_wxwx8"]
@@ -180,6 +184,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.5]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/achat bati:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/achat bati:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6xvkw"]
 resource_name = "day nighy"
@@ -303,6 +331,30 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.75, 1.0, 1.0, 0.75, 0.5, 0.5, 0.75]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/achat bati:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 5.96667, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/achat bati:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 5.96667, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1hnvk"]
@@ -761,7 +813,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette arché" type="TextureRect" parent="CanvasLayer/achat squellette"]
-visible = false
 layout_mode = 2
 texture = ExtResource("18_i3vpa")
 expand_mode = 5
@@ -800,7 +851,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette range" type="TextureRect" parent="CanvasLayer/achat squellette"]
-visible = false
 layout_mode = 2
 texture = ExtResource("17_68tkg")
 expand_mode = 5
@@ -839,7 +889,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="squellette mortier" type="TextureRect" parent="CanvasLayer/achat squellette"]
-visible = false
 layout_mode = 2
 texture = ExtResource("18_i3vpa")
 expand_mode = 5
@@ -993,9 +1042,148 @@ text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="achat batiment" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="achat bati" type="Control" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="explos" type="TextureRect" parent="CanvasLayer/achat bati"]
+visible = false
+offset_left = -252.0
+offset_top = -66.0
+offset_right = -164.0
+offset_bottom = 4.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("26_2smfs")
+script = ExtResource("27_te5or")
+
+[node name="Label" type="Label" parent="CanvasLayer/achat bati/explos"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.5556
+offset_top = -26.6667
+offset_right = 18.4444
+offset_bottom = 4.33331
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="buy" type="Button" parent="CanvasLayer/achat bati/explos"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="tour d\'archer" type="TextureRect" parent="CanvasLayer/achat bati"]
+offset_left = -252.0
+offset_top = -66.0
+offset_right = -164.0
+offset_bottom = 4.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("28_k6ak8")
+script = ExtResource("27_te5or")
+bat_type = "poti archer"
+price = 25
+
+[node name="Label" type="Label" parent="CanvasLayer/achat bati/tour d\'archer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.5556
+offset_top = -26.6667
+offset_right = 18.4444
+offset_bottom = 4.33331
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "25"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="buy" type="Button" parent="CanvasLayer/achat bati/tour d\'archer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="tour d\'aggro" type="TextureRect" parent="CanvasLayer/achat bati"]
+offset_left = -388.0
+offset_top = -66.0
+offset_right = -300.0
+offset_bottom = 4.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("27_y638d")
+script = ExtResource("27_te5or")
+bat_type = "agro"
+price = 25
+
+[node name="Label" type="Label" parent="CanvasLayer/achat bati/tour d\'aggro"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.5556
+offset_top = -26.6667
+offset_right = 18.4444
+offset_bottom = 4.33331
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "25"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="buy" type="Button" parent="CanvasLayer/achat bati/tour d\'aggro"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 19.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="pause menu" type="ColorRect" parent="CanvasLayer"]
 process_mode = 3
@@ -1122,6 +1310,9 @@ shape = SubResource("CircleShape2D_6oos5")
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]
 [connection signal="animation_finished" from="day_night cycle" to="day_night cycle" method="_on_animation_finished"]
 [connection signal="timeout" from="day_night cycle/day duration" to="day_night cycle" method="_on_day_duration_timeout"]
+[connection signal="pressed" from="CanvasLayer/achat bati/explos/buy" to="CanvasLayer/achat bati/explos" method="_on_buy_pressed"]
+[connection signal="pressed" from="CanvasLayer/achat bati/tour d\'archer/buy" to="CanvasLayer/achat bati/tour d\'archer" method="_on_buy_pressed"]
+[connection signal="pressed" from="CanvasLayer/achat bati/tour d\'aggro/buy" to="CanvasLayer/achat bati/tour d\'aggro" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
 [connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
 [connection signal="body_entered" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_entered"]
