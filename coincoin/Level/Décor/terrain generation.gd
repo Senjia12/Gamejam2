@@ -55,7 +55,6 @@ func _ready() -> void:
 				if new_spawn_pos.distance_to(y) < 1500:
 					new_spawn_pos = Vector2.ZERO
 		var village_instance = VILLAGE.instantiate()
-		print(new_spawn_pos)
 		village_instance.global_position = new_spawn_pos
 		village_instance.difficulty = diff * i * 2 + 3
 		$NavigationRegion2D.add_child(village_instance)

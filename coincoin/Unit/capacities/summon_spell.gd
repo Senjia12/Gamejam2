@@ -15,8 +15,11 @@ var summon_radius = 100
 var can_summon = true
 var spawn_number = 3
 
+var parent_node
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	parent_node = get_parent().spawn_node
 
 func _process(delta: float) -> void:
 	var summon_spell = "summon spell"

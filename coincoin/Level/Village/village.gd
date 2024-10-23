@@ -103,7 +103,6 @@ func _on_decale_timeout() -> void:
 		spawn_point.append($"look spawn".global_position)
 		if spawn_point.size() > 3:
 			$"look spawn".queue_free()
-			print(spawn_point)
 			return
 	$"look spawn".global_position = global_position * 2 + Vector2(randi()%(132*difficulty) - 66 * difficulty,randi()%(132*difficulty) - 66 * difficulty)
 

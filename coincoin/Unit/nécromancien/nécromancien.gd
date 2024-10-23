@@ -7,6 +7,7 @@ var regen = 1.0
 var pv_max = 100
 var pv = 100
 var nb_ames = 10
+@onready var spawn_node: NavigationRegion2D = $"../Terrain/NavigationRegion2D"
 
 
 func _ready() -> void:
