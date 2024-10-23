@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") && !selecting && Globals.unit_select != []:
 		a_pressed = true
 		Input.set_custom_mouse_cursor(EPEE)
-	if Input.is_action_just_released("click_gauche") && a_pressed && Globals.unit_select != [] && Globals.is_pausing_bat:
+	if Input.is_action_just_released("click_gauche") && a_pressed && Globals.unit_select != [] && !Globals.is_pausing_bat:
 		Input.set_custom_mouse_cursor(BOTTE,0,Vector2(16,16))
 		a_pressed = false
 		var marqueur_instance = MARQUEUR.instantiate()
