@@ -9,7 +9,7 @@ extends TextureRect
 const KABOOMEUR = preload("res://batiment/kaboomeur/kaboomeur.tscn")
 const TOURELLE_D_AGRO = preload("res://batiment/Tourelle agro/tourelle_d'agro.tscn")
 const TOURELLE_D_ATTAQUE = preload("res://batiment/tourelle d'attaque/tourelle d'attaque.tscn")
-
+const BUMPER = preload("res://batiment/bumper/bumper.tscn")
 
 func _on_buy_pressed() -> void:
 	if !Globals.is_pausing_bat:
@@ -22,4 +22,7 @@ func _on_buy_pressed() -> void:
 				Globals.is_pausing_bat = true
 			elif bat_type == "poti archer":
 				spawn.add_child(TOURELLE_D_ATTAQUE.instantiate())
+				Globals.is_pausing_bat = true
+			elif bat_type == "bump":
+				spawn.add_child(BUMPER.instantiate())
 				Globals.is_pausing_bat = true

@@ -12,3 +12,7 @@ func take_damage(dmg):
 	hp -= dmg
 	if hp <= 0:
 		queue_free()
+
+
+func _on_dispawn_timeout() -> void:
+	queue_free()

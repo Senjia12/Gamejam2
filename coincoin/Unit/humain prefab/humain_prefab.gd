@@ -7,6 +7,8 @@ var real_speed := 5000
 @export var max_hp := 25
 var current_hp := 25
 
+var speed_mult := 1.0
+
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack: AnimatedSprite2D = $attack
 
@@ -39,7 +41,6 @@ func _physics_process(delta: float) -> void:
 	if !humain_in_range:
 		move_along_path(delta)
 
-
 func bump(dir):
 	if dir == "up":
 		bump_velocity = Vector2.UP
@@ -58,7 +59,7 @@ func move_to(pos):
 func move_along_path(delta):
 	var next_point = nav.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
-	var movement = direction * real_speed * delta
+	var movement = direction * real_speed * delta * speed_mult
 	var distance = global_position.distance_to(next_point)
 	
 	if movement.length()/100 > distance:

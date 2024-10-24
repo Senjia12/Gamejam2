@@ -12,4 +12,6 @@ var unit_select := []
 var is_pausing_bat := false
 var can_zoom := true
 
+var zone_gel = null
+
 var infamie := 1

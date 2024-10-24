@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dswovoihcdxwr"]
+
+[ext_resource type="Texture2D" uid="uid://dsqh5rrj5civ1" path="res://Unit/capacities/zone de ralentissement.png" id="1_yo7su"]
+[ext_resource type="Script" path="res://Unit/capacities/cage/zone_de_ralentissement.gd" id="2_3rh44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqw7l"]
+atlas = ExtResource("1_yo7su")
+region = Rect2(0, 0, 56, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8i11"]
+atlas = ExtResource("1_yo7su")
+region = Rect2(56, 0, 56, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i02hm"]
+atlas = ExtResource("1_yo7su")
+region = Rect2(112, 0, 56, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odh2s"]
+atlas = ExtResource("1_yo7su")
+region = Rect2(168, 0, 56, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7s3hc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqw7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8i11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i02hm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odh2s")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jb387"]
+radius = 31.0644
+
+[node name="zone de ralentissement" type="AnimatedSprite2D"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_7s3hc")
+frame = 1
+frame_progress = 0.191563
+script = ExtResource("2_3rh44")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jb387")
+
+[node name="delay" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]

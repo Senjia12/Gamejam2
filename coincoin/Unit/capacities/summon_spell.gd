@@ -29,7 +29,7 @@ var nb_golem = 0
 var nb_golem_icestorm = 0
 
 func _ready() -> void:
-	parent_node = get_parent().get_parent().get_node("Terrain").get_node("NavigationRegion2D")
+	parent_node = get_parent().get_parent()
 
 func _process(delta: float) -> void:
 	$summon_spell_cd.wait_time = cooldown_multiplier * $summon_spell_cd.wait_time #opti avec calcul quand amélio cd ?

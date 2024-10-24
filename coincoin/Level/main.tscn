@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bqw123g6lvnug" path="res://UI/shader/light.png" id="6_h4lyg"]
 [ext_resource type="Texture2D" uid="uid://dy183j5a4vt7v" path="res://Level/Décor/terrain/herbe.png" id="7_iuip1"]
 [ext_resource type="Script" path="res://Level/fow_revealer.gd" id="7_ol4v5"]
-[ext_resource type="PackedScene" uid="uid://didgcpblaia4b" path="res://Unit/poti squellette/poti squellette.tscn" id="8_85ant"]
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
@@ -36,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://gujn3ijpcjlw" path="res://UI/batiment/uii_tour_archer.png" id="28_k6ak8"]
 [ext_resource type="Script" path="res://Level/night_aura.gd" id="29_ly362"]
 [ext_resource type="Script" path="res://UI/mana/spell_cost.gd" id="29_wrche"]
+[ext_resource type="Texture2D" uid="uid://bt5hrllw4ke2w" path="res://UI/batiment/uii_bumper.png" id="30_j5m3s"]
 [ext_resource type="Texture2D" uid="uid://bk5s4meothho2" path="res://UI/mana/image.png" id="30_wxwx8"]
 [ext_resource type="Texture2D" uid="uid://bvws5n5voidyn" path="res://UI/mana/image (6).png" id="31_l11uv"]
 
@@ -538,9 +538,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("2_x58xy")
 
-[node name="Nécromancien" parent="." instance=ExtResource("3_6rrow")]
-position = Vector2(181, -95)
-
 [node name="Unit_select" type="Node2D" parent="."]
 z_index = 500
 script = ExtResource("4_xyjs5")
@@ -617,8 +614,8 @@ wait_time = 0.05
 one_shot = true
 autostart = true
 
-[node name="Squellette prefab" parent="Terrain/NavigationRegion2D" instance=ExtResource("8_85ant")]
-position = Vector2(188, -70)
+[node name="Nécromancien" parent="Terrain/NavigationRegion2D" instance=ExtResource("3_6rrow")]
+position = Vector2(181, -95)
 
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1205,10 +1202,10 @@ offset_top = -66.0
 offset_right = -300.0
 offset_bottom = 4.0
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("27_y638d")
+texture = ExtResource("30_j5m3s")
 script = ExtResource("27_te5or")
-bat_type = "agro"
-price = 25
+bat_type = "bump"
+price = 50
 
 [node name="Label" type="Label" parent="CanvasLayer/achat bati/bumper"]
 layout_mode = 1

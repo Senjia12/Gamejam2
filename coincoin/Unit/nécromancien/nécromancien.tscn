@@ -150,7 +150,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6t183"]
-radius = 7.3766
+radius = 4.61038
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_jlaiv")
@@ -198,9 +198,10 @@ shape = SubResource("CircleShape2D_7xbhf")
 [node name="necro" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kghp3")
 animation = &"walk_to_the_right"
+offset = Vector2(0, -13.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.55271e-15, 10)
+position = Vector2(0, -3)
 scale = Vector2(1.08451, 0.616638)
 shape = SubResource("CircleShape2D_6t183")
 

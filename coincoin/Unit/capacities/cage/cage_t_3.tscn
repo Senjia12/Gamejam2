@@ -22,3 +22,8 @@ offset = Vector2(0, -33)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 7.015)
 polygon = PackedVector2Array(-49, -28, -27, -35, -12, -36, 0, -37, 13, -36, 28, -35, 47, -31, 49, -15, 30, -9, 9, -8, -11, -8, -30, -9, -49, -16, -49, -28, -53, -31, -59, -19, -51, -10, -33, -5, -9, -4, 10, -4, 31, -6, 50, -11, 59, -18, 53, -31, 29, -38, 0, -41, -28, -39, -53, -31)
+
+[node name="despawn" type="Timer" parent="."]
+wait_time = 25.0
+
+[connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]
