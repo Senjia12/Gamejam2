@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://byauyvuqltrvw"]
+[gd_scene load_steps=48 format=3 uid="uid://byauyvuqltrvw"]
 
 [ext_resource type="Script" path="res://Unit/nécromancien/nécromancien.gd" id="1_jlaiv"]
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
 [ext_resource type="Script" path="res://Unit/capacities/defensive_spell.gd" id="3_4fvd8"]
+[ext_resource type="Texture2D" uid="uid://cq4uaobcuxo4u" path="res://Unit/capacities/offensif/ray.png" id="3_uyphu"]
 [ext_resource type="Script" path="res://Unit/capacities/control_spell.gd" id="4_vfuac"]
 [ext_resource type="Script" path="res://Unit/capacities/summon_spell.gd" id="5_3xl4r"]
 [ext_resource type="Texture2D" uid="uid://bqw123g6lvnug" path="res://UI/shader/light.png" id="6_oi4u0"]
@@ -12,6 +13,120 @@
 [ext_resource type="Texture2D" uid="uid://b2neepr7dxja7" path="res://Unit/nécromancien/Necro_face_1_marche.png" id="10_yyxyt"]
 [ext_resource type="Texture2D" uid="uid://62kiglucnda2" path="res://Unit/nécromancien/Necro_cote_1_marche.png" id="11_sujck"]
 [ext_resource type="FontFile" uid="uid://cxsyqol86cuds" path="res://UI/BabaMediumPixels.ttf" id="12_w1nhb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqagh"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 0, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3lhq"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 20, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddd20"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 40, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0tm3"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 60, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0p31"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 80, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbdbw"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 100, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xubm7"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 120, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jxng"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 0, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26gn0"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 20, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro8kf"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 40, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3sw1"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 60, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuod1"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 80, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8st3"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 100, 1000, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60c02"]
+atlas = ExtResource("3_uyphu")
+region = Rect2(0, 140, 1000, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsuma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqagh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3lhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddd20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0tm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0p31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbdbw")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_xubm7")
+}],
+"loop": false,
+"name": &"t2",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jxng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26gn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro8kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3sw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuod1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8st3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60c02")
+}],
+"loop": true,
+"name": &"t3",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trept"]
+size = Vector2(993, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15d3y"]
 radius = 160.028
@@ -162,11 +277,31 @@ collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_jlaiv")
 
-[node name="offensive_spell" type="Area2D" parent="."]
+[node name="offensive_spell" type="Node2D" parent="."]
+position = Vector2(0, -13)
 script = ExtResource("2_km2c4")
 
-[node name="offensive_spell_cd" type="Timer" parent="offensive_spell"]
-wait_time = 5.0
+[node name="cd" type="Timer" parent="offensive_spell"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ray" type="AnimatedSprite2D" parent="offensive_spell"]
+visible = false
+position = Vector2(518, 0)
+sprite_frames = SubResource("SpriteFrames_gsuma")
+animation = &"t3"
+
+[node name="ray t2" type="Area2D" parent="offensive_spell"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="offensive_spell/ray t2"]
+position = Vector2(229.5, 0)
+shape = SubResource("RectangleShape2D_trept")
+
+[node name="ray t3" type="Area2D" parent="offensive_spell"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="offensive_spell/ray t3"]
+position = Vector2(515.5, 0)
+shape = SubResource("RectangleShape2D_trept")
 
 [node name="defensive_spell" type="Area2D" parent="."]
 collision_layer = 4
@@ -249,7 +384,8 @@ text = "RESPWAN IN : 10 secondes"
 [node name="0_1" type="Timer" parent="respawn"]
 wait_time = 0.1
 
-[connection signal="timeout" from="offensive_spell/offensive_spell_cd" to="offensive_spell" method="_on_offensive_spell_cd_timeout"]
+[connection signal="timeout" from="offensive_spell/cd" to="offensive_spell" method="_on_cd_timeout"]
+[connection signal="animation_finished" from="offensive_spell/ray" to="offensive_spell" method="_on_ray_animation_finished"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
 [connection signal="timeout" from="control_spell/cd" to="control_spell" method="_on_cd_timeout"]
 [connection signal="timeout" from="summon_spell/summon_spell_cd" to="summon_spell" method="_on_summon_spell_cd_timeout"]

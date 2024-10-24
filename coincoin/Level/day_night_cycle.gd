@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_day_duration_timeout() -> void:
+	Globals.infamie += 1
 	Globals.night = true
 	for unit in get_tree().get_nodes_in_group("Unit"):
 		unit.enabled()
@@ -29,6 +30,7 @@ func _on_day_duration_timeout() -> void:
 func _on_animation_finished(anim_name: StringName) -> void:
 	Globals.unit_select = []
 	Input.set_custom_mouse_cursor(CURSEUR_BASE)
+	$"../Terrain/NavigationRegion2D".bake_navigation_polygon()
 	
 	Globals.night = false
 	$"day duration".start()

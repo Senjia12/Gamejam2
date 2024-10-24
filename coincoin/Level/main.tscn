@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=157 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://Level/fow_revealer.gd" id="7_ol4v5"]
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
-[ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
 [ext_resource type="Shader" path="res://UI/shader/blur.gdshader" id="10_hnh7q"]
 [ext_resource type="Texture2D" uid="uid://d1uo675bmndvh" path="res://UI/image.png" id="10_ldxxe"]
 [ext_resource type="Texture2D" uid="uid://cokvtcd1t40xj" path="res://UI/image (2).png" id="11_63304"]
@@ -48,8 +47,10 @@
 [ext_resource type="Texture2D" uid="uid://cafssgee8qnyp" path="res://arbre de compétence/livre_ferme.png" id="38_jvob3"]
 [ext_resource type="Texture2D" uid="uid://45x87i7r1tfm" path="res://arbre de compétence/summon/page_summon_non_interact.png" id="40_gn8vt"]
 [ext_resource type="Texture2D" uid="uid://dlulv3w5h8cui" path="res://arbre de compétence/page_0.png" id="40_pjd1i"]
+[ext_resource type="Texture2D" uid="uid://dmhklouh31t0g" path="res://UI/main menu/ecran_game_over_.png" id="41_44e3p"]
 [ext_resource type="Texture2D" uid="uid://b6dkhxsso16mr" path="res://arbre de compétence/page_01.png" id="41_cv26i"]
 [ext_resource type="Texture2D" uid="uid://ck4r5d7jdl1w0" path="res://arbre de compétence/summon/image (5).png" id="41_dy35e"]
+[ext_resource type="Script" path="res://Level/end_screen.gd" id="42_kls2o"]
 [ext_resource type="Texture2D" uid="uid://cay2ftwvtuy0k" path="res://arbre de compétence/summon/image (3).png" id="42_w7s3a"]
 [ext_resource type="Texture2D" uid="uid://c25jkw8weccpn" path="res://arbre de compétence/summon/image (7).png" id="43_lhlgj"]
 [ext_resource type="Texture2D" uid="uid://bj433ne7rgdto" path="res://arbre de compétence/summon/image.png" id="44_hitih"]
@@ -1332,7 +1333,6 @@ scale = Vector2(0.9, 0.9)
 
 [node name="control" type="TextureProgressBar" parent="CanvasLayer/ui_spell/spell"]
 layout_mode = 2
-step = 0.01
 value = 100.0
 fill_mode = 2
 texture_under = ExtResource("29_j15y1")
@@ -1452,14 +1452,40 @@ offset_bottom = -69.385
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="fps" type="Label" parent="CanvasLayer"]
-process_mode = 3
-offset_left = 137.0
-offset_top = 12.0
-offset_right = 177.0
-offset_bottom = 35.0
-text = "FPS : "
-script = ExtResource("9_wtiph")
+[node name="end_screen" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("41_44e3p")
+script = ExtResource("42_kls2o")
+
+[node name="Label" type="Label" parent="CanvasLayer/end_screen"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 558.0
+offset_right = 730.0
+offset_bottom = 590.0
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("15_yflrp")
+theme_override_font_sizes/font_size = 32
+text = "0 t'es mauvais"
+
+[node name="restart" type="Button" parent="CanvasLayer/end_screen"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 469.0
+offset_top = 295.0
+offset_right = 676.0
+offset_bottom = 370.0
+
+[node name="main menu" type="Button" parent="CanvasLayer/end_screen"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 473.0
+offset_top = 381.0
+offset_right = 680.0
+offset_bottom = 431.0
 
 [node name="spell book" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -2780,6 +2806,8 @@ autostart = true
 [connection signal="timeout" from="CanvasLayer/ui_spell/Timer" to="CanvasLayer/ui_spell" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/exp/access" to="CanvasLayer/exp" method="_on_access_pressed"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/end_screen/restart" to="CanvasLayer/end_screen" method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/end_screen/main menu" to="CanvasLayer/end_screen" method="_on_main_menu_pressed"]
 [connection signal="pressed" from="spell book/devant/open" to="spell book" method="_on_open_pressed"]
 [connection signal="pressed" from="spell book/page 0/Button" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/page 0/Button2" to="spell book" method="_on_next_pressed"]

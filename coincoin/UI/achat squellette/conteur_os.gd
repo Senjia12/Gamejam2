@@ -14,7 +14,7 @@ func take_damage(dmg):
 	display.text = str(current_bones)
 	Globals.bone_pill.update_state(current_bones)
 	if current_bones <= 0:
-		get_parent().queue_free()
+		$"../end_screen".show()
 
 
 

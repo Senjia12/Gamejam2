@@ -276,6 +276,7 @@ func _on_t_2_boom_pressed() -> void:
 		$"attack/barré trai".show()
 		$"attack/t2 trai".disabled = true
 		$"attack/t2 boom".texture_normal = HAUT_GAUCHE_AA
+		Globals.player.get_node("offensive_spell").tier = 2
 		point = 0
 		add_point(true)
 
@@ -284,6 +285,7 @@ func _on_t_3_boom_pressed() -> void:
 	if attack_tier == "t2 boom" && point > 0:
 		attack_tier = "t3 boom"
 		$"attack/t3 boom".texture_normal = BAS_GAUCHE_AA
+		Globals.player.get_node("offensive_spell").tier = 3
 		point = 0
 		add_point(true)
 
@@ -294,6 +296,8 @@ func _on_t_2_trai_pressed() -> void:
 		$"attack/barré boom".show()
 		$"attack/t2 boom".disabled = true
 		$"attack/t2 trai".texture_normal = HAUT_DROITE_AA
+		Globals.player.get_node("offensive_spell").tier = 2
+		Globals.player.get_node("offensive_spell").state = "ray"
 		point = 0
 		add_point(true)
 
@@ -302,6 +306,7 @@ func _on_t_3_trai_pressed() -> void:
 	if attack_tier == "t2 trai" && point > 0:
 		attack_tier = "t3 trai"
 		$"attack/t3 trai".texture_normal = BAS_GAUCHE_AA
+		Globals.player.get_node("offensive_spell").tier = 3
 		point = 0
 		add_point(true)
 
