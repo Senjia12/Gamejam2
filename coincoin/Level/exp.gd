@@ -26,3 +26,4 @@ func add_exp(exp):
 func _on_access_pressed() -> void:
 	spell_book.show()
 	$access.texture_normal = BOUTTON
+	get_tree().paused = true

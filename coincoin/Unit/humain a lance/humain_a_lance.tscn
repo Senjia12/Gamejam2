@@ -334,9 +334,9 @@ animations = [{
 
 [node name="Humain prefab" instance=ExtResource("1_cdscf")]
 speed = 3500
-range = 3.0
+range = 5.0
 attack_damage = 15
-max_hp = 35
+max_hp = 50
 
 [node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_21ncv")
@@ -344,5 +344,5 @@ offset = Vector2(0, -17)
 
 [node name="attack" parent="." index="10"]
 sprite_frames = SubResource("SpriteFrames_4hj71")
-animation = &"attack down"
-offset = Vector2(0, -5)
+animation = &"attack up"
+offset = Vector2(0, -21)

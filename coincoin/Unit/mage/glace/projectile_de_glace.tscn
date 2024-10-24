@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxc1dpdaldw2f"]
+
+[ext_resource type="Script" path="res://Unit/mage/glace/projectile_de_glace.gd" id="1_d7t30"]
+[ext_resource type="Texture2D" uid="uid://chr351cylgn6q" path="res://Unit/mage/glace/projectile bleu.png" id="2_6npjd"]
+
+[node name="projectile de glace" type="Node2D"]
+script = ExtResource("1_d7t30")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6npjd")

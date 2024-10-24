@@ -12,7 +12,7 @@ var light = true
 
 func _physics_process(delta: float) -> void:
 	if !put:
-		if !Globals.night:
+		if Globals.night:
 			global_position = get_global_mouse_position()
 			if Input.is_action_just_pressed("click_gauche") && $MeshInstance2D/Area2D.get_overlapping_bodies() == []:
 				put = true

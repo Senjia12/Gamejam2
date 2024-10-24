@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=156 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
 [ext_resource type="Shader" path="res://UI/shader/blur.gdshader" id="10_hnh7q"]
-[ext_resource type="PackedScene" uid="uid://b42qqqnxn6l11" path="res://Unit/squellette distance/squellette distance.tscn" id="10_j0g6s"]
 [ext_resource type="Texture2D" uid="uid://d1uo675bmndvh" path="res://UI/image.png" id="10_ldxxe"]
 [ext_resource type="Texture2D" uid="uid://cokvtcd1t40xj" path="res://UI/image (2).png" id="11_63304"]
 [ext_resource type="Texture2D" uid="uid://b6f3mwv8lv8sb" path="res://UI/image (1).png" id="12_kqbog"]
@@ -33,11 +32,14 @@
 [ext_resource type="Texture2D" uid="uid://btgc5xrpyvrja" path="res://UI/batiment/uii_skull_gold.png" id="27_y638d"]
 [ext_resource type="Shader" path="res://UI/shader/night aura.gdshader" id="28_ijpyy"]
 [ext_resource type="Texture2D" uid="uid://gujn3ijpcjlw" path="res://UI/batiment/uii_tour_archer.png" id="28_k6ak8"]
+[ext_resource type="Script" path="res://Level/ui_spell.gd" id="29_bh37q"]
+[ext_resource type="Texture2D" uid="uid://cshpcoepglwhg" path="res://UI/capa/image (1).png" id="29_j15y1"]
 [ext_resource type="Script" path="res://Level/night_aura.gd" id="29_ly362"]
 [ext_resource type="Script" path="res://UI/mana/spell_cost.gd" id="29_wrche"]
+[ext_resource type="Texture2D" uid="uid://dbcldbmg3jhwv" path="res://UI/capa/image (2).png" id="30_dsbi4"]
 [ext_resource type="Texture2D" uid="uid://bt5hrllw4ke2w" path="res://UI/batiment/uii_bumper.png" id="30_j5m3s"]
-[ext_resource type="Texture2D" uid="uid://bk5s4meothho2" path="res://UI/mana/image.png" id="30_wxwx8"]
-[ext_resource type="Texture2D" uid="uid://bvws5n5voidyn" path="res://UI/mana/image (6).png" id="31_l11uv"]
+[ext_resource type="Texture2D" uid="uid://crd6wso581w8p" path="res://UI/capa/image (3).png" id="31_3i0i5"]
+[ext_resource type="Texture2D" uid="uid://4jqo5lv6goaq" path="res://UI/capa/image.png" id="32_tnk1f"]
 [ext_resource type="Texture2D" uid="uid://cxoimj3n626to" path="res://UI/exp/boutton.png" id="33_1n5fq"]
 [ext_resource type="Texture2D" uid="uid://uav1cspr1rh0" path="res://UI/exp/uiiiexpvide.png" id="34_rim2h"]
 [ext_resource type="Script" path="res://Level/exp.gd" id="34_x4her"]
@@ -45,6 +47,8 @@
 [ext_resource type="Script" path="res://arbre de compétence/spell_book.gd" id="38_0xx66"]
 [ext_resource type="Texture2D" uid="uid://cafssgee8qnyp" path="res://arbre de compétence/livre_ferme.png" id="38_jvob3"]
 [ext_resource type="Texture2D" uid="uid://45x87i7r1tfm" path="res://arbre de compétence/summon/page_summon_non_interact.png" id="40_gn8vt"]
+[ext_resource type="Texture2D" uid="uid://dlulv3w5h8cui" path="res://arbre de compétence/page_0.png" id="40_pjd1i"]
+[ext_resource type="Texture2D" uid="uid://b6dkhxsso16mr" path="res://arbre de compétence/page_01.png" id="41_cv26i"]
 [ext_resource type="Texture2D" uid="uid://ck4r5d7jdl1w0" path="res://arbre de compétence/summon/image (5).png" id="41_dy35e"]
 [ext_resource type="Texture2D" uid="uid://cay2ftwvtuy0k" path="res://arbre de compétence/summon/image (3).png" id="42_w7s3a"]
 [ext_resource type="Texture2D" uid="uid://c25jkw8weccpn" path="res://arbre de compétence/summon/image (7).png" id="43_lhlgj"]
@@ -59,14 +63,23 @@
 [ext_resource type="Texture2D" uid="uid://xlqce5v56noy" path="res://arbre de compétence/livre_fermedos.png" id="51_0j6to"]
 [ext_resource type="Texture2D" uid="uid://dvh7ea2e4c7no" path="res://arbre de compétence/defense + control/image (15).png" id="51_a66d3"]
 [ext_resource type="Texture2D" uid="uid://ckoynujvyjdov" path="res://arbre de compétence/defense + control/image.png" id="52_hn6em"]
+[ext_resource type="Texture2D" uid="uid://bd1msbrafspgo" path="res://arbre de compétence/offensif/livre_offensiveI.png" id="53_iggfq"]
 [ext_resource type="Texture2D" uid="uid://cpwmyslvsrimf" path="res://arbre de compétence/defense + control/image (13).png" id="53_wycbo"]
+[ext_resource type="Texture2D" uid="uid://cjx12q4g2je7n" path="res://arbre de compétence/offensif/haut gauche a.png" id="54_6b8uq"]
 [ext_resource type="Texture2D" uid="uid://h73jly6rnsi0" path="res://arbre de compétence/defense + control/image (2).png" id="54_crik6"]
+[ext_resource type="Texture2D" uid="uid://cae1b10vgwjlg" path="res://arbre de compétence/offensif/haut gauche.png" id="55_65bsc"]
 [ext_resource type="Texture2D" uid="uid://bifeiwbhl2s5s" path="res://arbre de compétence/defense + control/image (14).png" id="55_ga3gi"]
 [ext_resource type="Texture2D" uid="uid://d1qtk41xgyiyf" path="res://arbre de compétence/defense + control/image (1).png" id="56_bh52s"]
+[ext_resource type="Texture2D" uid="uid://c5c0l2vuo1u3y" path="res://arbre de compétence/offensif/bas gauche a.png" id="56_w1b2v"]
+[ext_resource type="Texture2D" uid="uid://bb5uuhwo2y5bt" path="res://arbre de compétence/offensif/bas gauche.png" id="57_fi1t7"]
 [ext_resource type="Texture2D" uid="uid://c8grhhrjkgrnu" path="res://arbre de compétence/defense + control/image (12).png" id="57_is2xk"]
 [ext_resource type="Texture2D" uid="uid://dxoym6gx0xrrf" path="res://arbre de compétence/defense + control/image (3).png" id="58_lh3el"]
+[ext_resource type="Texture2D" uid="uid://da5airg5yu6dy" path="res://arbre de compétence/offensif/haut droite a.png" id="58_sv7q3"]
 [ext_resource type="Texture2D" uid="uid://bkijqgdb01ejr" path="res://arbre de compétence/defense + control/image (11).png" id="59_82ecp"]
+[ext_resource type="Texture2D" uid="uid://yjwbx1gtvyq7" path="res://arbre de compétence/offensif/haut droite.png" id="59_mqlfg"]
 [ext_resource type="Texture2D" uid="uid://cue5ye3n8xfyf" path="res://arbre de compétence/defense + control/image (4).png" id="60_algir"]
+[ext_resource type="Texture2D" uid="uid://darkrt3xatmbf" path="res://arbre de compétence/offensif/bas droite a.png" id="60_esnsy"]
+[ext_resource type="Texture2D" uid="uid://bdg0sbhqwjqwb" path="res://arbre de compétence/offensif/bas droite.png" id="61_c7b8u"]
 [ext_resource type="Texture2D" uid="uid://fvh1gmdsrts7" path="res://arbre de compétence/defense + control/image (10).png" id="61_qln1b"]
 [ext_resource type="Texture2D" uid="uid://d0mc4xfqemt7r" path="res://arbre de compétence/defense + control/image (5).png" id="62_exh33"]
 [ext_resource type="Texture2D" uid="uid://bdtb6hdnpm6dr" path="res://arbre de compétence/defense + control/image (9).png" id="63_b30oc"]
@@ -74,6 +87,50 @@
 [ext_resource type="Texture2D" uid="uid://cabhw3frglm6n" path="res://arbre de compétence/defense + control/image (8).png" id="65_m41fj"]
 [ext_resource type="Texture2D" uid="uid://dms7syn40ug7j" path="res://arbre de compétence/defense + control/image (7).png" id="66_68ug8"]
 [ext_resource type="Texture2D" uid="uid://cr8mslfhkpc44" path="res://arbre de compétence/image (16).png" id="68_qx6nd"]
+[ext_resource type="Texture2D" uid="uid://d2rb61r0k0ai1" path="res://arbre de compétence/trans/trrancepage1.png" id="78_fbnh7"]
+[ext_resource type="Texture2D" uid="uid://cybpai46lg72y" path="res://arbre de compétence/summon spell/summonspellpage.png" id="78_uhr1y"]
+[ext_resource type="Texture2D" uid="uid://00uiase7p0hr" path="res://arbre de compétence/summon spell/haut gauche a.png" id="79_867fs"]
+[ext_resource type="Texture2D" uid="uid://bbtpdtg87hwyu" path="res://arbre de compétence/trans/assi tda.png" id="79_ovy0p"]
+[ext_resource type="Texture2D" uid="uid://d0nnqeho8ca26" path="res://arbre de compétence/summon spell/haut gauche.png" id="80_md1q3"]
+[ext_resource type="Texture2D" uid="uid://dfrtfcijawd1d" path="res://arbre de compétence/trans/assi td.png" id="80_yep8p"]
+[ext_resource type="Texture2D" uid="uid://b2ikj80tupc0v" path="res://arbre de compétence/trans/assi bda.png" id="81_4vi5c"]
+[ext_resource type="Texture2D" uid="uid://0d6acfa0bep4" path="res://arbre de compétence/summon spell/bas gauche a.png" id="81_x4vm1"]
+[ext_resource type="Texture2D" uid="uid://w62tlne64njn" path="res://UI/cerbeau/image.png" id="81_yg8fk"]
+[ext_resource type="Texture2D" uid="uid://duy5onlrawu4n" path="res://UI/cerbeau/image (2).png" id="82_7653d"]
+[ext_resource type="Texture2D" uid="uid://dp5wp2rvcnhkh" path="res://arbre de compétence/summon spell/bas gauche.png" id="82_i58l2"]
+[ext_resource type="Texture2D" uid="uid://bfb0dpowsoo0n" path="res://arbre de compétence/trans/assi bd.png" id="82_imayo"]
+[ext_resource type="Texture2D" uid="uid://mem6c0hu763o" path="res://arbre de compétence/trans/assi tga.png" id="83_doghw"]
+[ext_resource type="Texture2D" uid="uid://cqo01f26cy0j1" path="res://arbre de compétence/summon spell/haut droite a.png" id="83_nps2h"]
+[ext_resource type="Texture2D" uid="uid://bkkb3taiao33o" path="res://arbre de compétence/summon spell/haut droite.png" id="84_dbx0d"]
+[ext_resource type="Texture2D" uid="uid://l15ci277nx7u" path="res://arbre de compétence/trans/assi tg.png" id="84_i8cbv"]
+[ext_resource type="Texture2D" uid="uid://bjewgkmo307r0" path="res://arbre de compétence/summon spell/bas droite a.png" id="85_0c0j2"]
+[ext_resource type="Texture2D" uid="uid://p1yyckyjto2j" path="res://arbre de compétence/trans/assi bga.png" id="85_h8y77"]
+[ext_resource type="Texture2D" uid="uid://bugtpvs75tcut" path="res://arbre de compétence/summon spell/bad droite.png" id="86_6xipo"]
+[ext_resource type="Texture2D" uid="uid://cpyuljunlko3g" path="res://arbre de compétence/trans/assi bg.png" id="86_xrx2q"]
+[ext_resource type="Texture2D" uid="uid://bsavqod2hbj1y" path="res://arbre de compétence/summon spell/2 haut gauche a.png" id="87_eyitf"]
+[ext_resource type="Texture2D" uid="uid://dep1e05lg3fyk" path="res://arbre de compétence/trans/b cho tga.png" id="87_mgb1n"]
+[ext_resource type="Texture2D" uid="uid://crtrf0yt1wvx2" path="res://arbre de compétence/trans/b cho tg.png" id="88_7jjix"]
+[ext_resource type="Texture2D" uid="uid://by0j1pvvjtke7" path="res://arbre de compétence/summon spell/2 haut gauche.png" id="88_orkh3"]
+[ext_resource type="Texture2D" uid="uid://putcatywcrlv" path="res://arbre de compétence/trans/b cho tda.png" id="89_5clk1"]
+[ext_resource type="Texture2D" uid="uid://bgygr7bouu5bv" path="res://arbre de compétence/summon spell/2 bas gauche a.png" id="89_ws8rs"]
+[ext_resource type="Texture2D" uid="uid://c6o08vtlxn3m6" path="res://arbre de compétence/summon spell/2 bas gauche.png" id="90_mf8o1"]
+[ext_resource type="Texture2D" uid="uid://6gvdlgcvrnvd" path="res://arbre de compétence/trans/b cho td.png" id="90_s78yw"]
+[ext_resource type="Texture2D" uid="uid://b6uac62grqxy6" path="res://arbre de compétence/trans/b cho bga.png" id="91_kqiaa"]
+[ext_resource type="Texture2D" uid="uid://3rtvam4bsktv" path="res://arbre de compétence/summon spell/2 haut droite a.png" id="91_m2nq2"]
+[ext_resource type="Texture2D" uid="uid://diafbrpxb4oqb" path="res://arbre de compétence/summon spell/2 haut droite.png" id="92_kcmxd"]
+[ext_resource type="Texture2D" uid="uid://bku155genn4rh" path="res://arbre de compétence/trans/b cho bg.png" id="92_xjka7"]
+[ext_resource type="Texture2D" uid="uid://blxd3s5fom6i4" path="res://arbre de compétence/summon spell/2 bas droite a.png" id="93_4ma58"]
+[ext_resource type="Texture2D" uid="uid://rh687x2073yb" path="res://arbre de compétence/trans/t cho bda.png" id="93_o2oxj"]
+[ext_resource type="Texture2D" uid="uid://dg7bh3ti2wne1" path="res://arbre de compétence/summon spell/2 bas droite.png" id="94_poh51"]
+[ext_resource type="Texture2D" uid="uid://0xankl8wye8f" path="res://arbre de compétence/trans/t cho bd.png" id="94_wx743"]
+[ext_resource type="Texture2D" uid="uid://c3851pnenbb00" path="res://arbre de compétence/trans/r cho tga.png" id="95_e25aa"]
+[ext_resource type="Texture2D" uid="uid://861c2eayvqay" path="res://arbre de compétence/trans/t cho tg.png" id="96_jrbph"]
+[ext_resource type="Texture2D" uid="uid://c26u1ffxq18cg" path="res://arbre de compétence/trans/r cho tda.png" id="97_8ot65"]
+[ext_resource type="Texture2D" uid="uid://b6ff60mwls35n" path="res://arbre de compétence/trans/r cho td.png" id="98_ovwwy"]
+[ext_resource type="Texture2D" uid="uid://cg4xr34gvksnx" path="res://arbre de compétence/trans/r cho bga.png" id="99_clwxj"]
+[ext_resource type="Texture2D" uid="uid://but4qxvi528oi" path="res://arbre de compétence/trans/r cho bg.png" id="100_fpqb4"]
+[ext_resource type="Texture2D" uid="uid://bqbrfskrhmrx4" path="res://arbre de compétence/trans/r cho bda.png" id="101_hhu55"]
+[ext_resource type="Texture2D" uid="uid://b6eefxs162sn3" path="res://arbre de compétence/trans/r cho bd.png" id="102_rjmct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dfrv"]
 radius = 11.0
@@ -631,6 +688,7 @@ tile_set = SubResource("TileSet_t4kdc")
 script = ExtResource("8_qxubo")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Terrain"]
+visible = false
 z_index = 1000
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ihopg")
@@ -645,28 +703,10 @@ one_shot = true
 autostart = true
 
 [node name="Nécromancien" parent="Terrain/NavigationRegion2D" instance=ExtResource("3_6rrow")]
-position = Vector2(181, -95)
+position = Vector2(0, -135)
 
-[node name="Squellette prefab" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
-position = Vector2(209, 106)
-
-[node name="Squellette prefab2" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
-position = Vector2(327, -80)
-
-[node name="Squellette prefab3" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
-position = Vector2(61, -191)
-
-[node name="Squellette prefab4" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
-position = Vector2(-169, -191)
-
-[node name="Squellette prefab5" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
-position = Vector2(-293, 21)
-
-[node name="Squellette prefab6" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
-position = Vector2(-156, 217)
-
-[node name="Squellette prefab7" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
-position = Vector2(75, 230)
+[node name="nécro spawn" type="Node2D" parent="Terrain/NavigationRegion2D"]
+position = Vector2(0, -125)
 
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1127,6 +1167,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="tour d\'archer" type="TextureRect" parent="CanvasLayer/achat bati"]
+visible = false
 layout_mode = 0
 offset_left = -252.0
 offset_top = -66.0
@@ -1216,6 +1257,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="bumper" type="TextureRect" parent="CanvasLayer/achat bati"]
+visible = false
 layout_mode = 0
 offset_left = -388.0
 offset_top = -66.0
@@ -1258,6 +1300,75 @@ offset_left = 8.0
 offset_top = 19.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ui_spell" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 103.0
+offset_top = -40.0
+offset_right = 320.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("29_bh37q")
+
+[node name="spell" type="HBoxContainer" parent="CanvasLayer/ui_spell"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.5
+offset_top = -65.0
+offset_right = 130.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.9, 0.9)
+
+[node name="control" type="TextureProgressBar" parent="CanvasLayer/ui_spell/spell"]
+layout_mode = 2
+step = 0.01
+value = 100.0
+fill_mode = 2
+texture_under = ExtResource("29_j15y1")
+texture_progress = ExtResource("29_j15y1")
+tint_under = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="défense" type="TextureProgressBar" parent="CanvasLayer/ui_spell/spell"]
+layout_mode = 2
+step = 0.01
+value = 100.0
+fill_mode = 2
+texture_under = ExtResource("30_dsbi4")
+texture_progress = ExtResource("30_dsbi4")
+tint_under = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="attack" type="TextureProgressBar" parent="CanvasLayer/ui_spell/spell"]
+layout_mode = 2
+step = 0.01
+value = 100.0
+fill_mode = 2
+texture_under = ExtResource("31_3i0i5")
+texture_progress = ExtResource("31_3i0i5")
+tint_under = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="summon" type="TextureProgressBar" parent="CanvasLayer/ui_spell/spell"]
+layout_mode = 2
+step = 0.01
+value = 100.0
+fill_mode = 2
+texture_under = ExtResource("32_tnk1f")
+texture_progress = ExtResource("32_tnk1f")
+tint_under = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/ui_spell"]
+wait_time = 0.1
+autostart = true
 
 [node name="exp" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1351,6 +1462,7 @@ text = "FPS : "
 script = ExtResource("9_wtiph")
 
 [node name="spell book" type="CanvasLayer" parent="."]
+process_mode = 3
 visible = false
 script = ExtResource("38_0xx66")
 
@@ -1378,6 +1490,49 @@ offset_left = 707.0
 offset_top = 389.0
 offset_right = 864.0
 offset_bottom = 519.0
+
+[node name="page 0" type="TextureRect" parent="spell book"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("40_pjd1i")
+
+[node name="Button" type="Button" parent="spell book/page 0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 481.0
+offset_right = 210.0
+offset_bottom = 555.0
+
+[node name="Button2" type="Button" parent="spell book/page 0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 951.0
+offset_top = 504.0
+offset_right = 1036.0
+offset_bottom = 578.0
+
+[node name="page 1" type="TextureRect" parent="spell book"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("41_cv26i")
+
+[node name="Button" type="Button" parent="spell book/page 1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 481.0
+offset_right = 210.0
+offset_bottom = 555.0
+
+[node name="Button2" type="Button" parent="spell book/page 1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 951.0
+offset_top = 504.0
+offset_right = 1036.0
+offset_bottom = 578.0
 
 [node name="summoning" type="TextureRect" parent="spell book"]
 visible = false
@@ -1533,6 +1688,162 @@ offset_left = -129.0
 offset_top = 138.0
 offset_right = 16.0
 offset_bottom = 190.0
+texture = ExtResource("49_he6eg")
+
+[node name="attack" type="TextureRect" parent="spell book"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("53_iggfq")
+
+[node name="t2 boom" type="TextureButton" parent="spell book/attack"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("54_6b8uq")
+texture_disabled = ExtResource("55_65bsc")
+
+[node name="t3 boom" type="TextureButton" parent="spell book/attack"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("56_w1b2v")
+texture_disabled = ExtResource("57_fi1t7")
+
+[node name="t2 trai" type="TextureButton" parent="spell book/attack"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("58_sv7q3")
+texture_disabled = ExtResource("59_mqlfg")
+
+[node name="t3 trai" type="TextureButton" parent="spell book/attack"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+disabled = true
+texture_normal = ExtResource("60_esnsy")
+texture_disabled = ExtResource("61_c7b8u")
+
+[node name="button" type="TextureRect" parent="spell book/attack"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("49_xlpf2")
+
+[node name="t2 boom" type="Button" parent="spell book/attack/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 598.0
+offset_top = 381.0
+offset_right = -384.0
+offset_bottom = -210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 boom" type="Button" parent="spell book/attack/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 610.0
+offset_top = 503.0
+offset_right = -372.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t2 trai" type="Button" parent="spell book/attack/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 849.0
+offset_top = 331.0
+offset_right = -133.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 trai" type="Button" parent="spell book/attack/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 851.0
+offset_top = 462.0
+offset_right = -131.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="next" type="Button" parent="spell book/attack/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 953.0
+offset_top = 513.0
+offset_right = -126.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="prev" type="Button" parent="spell book/attack/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 489.0
+offset_right = -951.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="barré boom" type="TextureRect" parent="spell book/attack"]
+visible = false
+layout_mode = 0
+offset_left = 613.0
+offset_top = 383.0
+offset_right = 758.0
+offset_bottom = 435.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/attack/barré boom"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 131.0
+offset_right = 157.0
+offset_bottom = 183.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré trai" type="TextureRect" parent="spell book/attack"]
+visible = false
+layout_mode = 0
+offset_left = 862.0
+offset_top = 337.0
+offset_right = 1007.0
+offset_bottom = 389.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/attack/barré trai"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 130.0
+offset_right = 144.0
+offset_bottom = 182.0
 texture = ExtResource("49_he6eg")
 
 [node name="defense && control" type="TextureRect" parent="spell book"]
@@ -1749,6 +2060,611 @@ offset_right = 74.0
 offset_bottom = 194.0
 texture = ExtResource("49_he6eg")
 
+[node name="summon" type="TextureRect" parent="spell book"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("78_uhr1y")
+
+[node name="t2 sca" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("79_867fs")
+texture_disabled = ExtResource("80_md1q3")
+
+[node name="t3 sca" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("81_x4vm1")
+texture_disabled = ExtResource("82_i58l2")
+
+[node name="t2 sra" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("83_nps2h")
+texture_disabled = ExtResource("84_dbx0d")
+
+[node name="t3 sra" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("85_0c0j2")
+texture_disabled = ExtResource("86_6xipo")
+
+[node name="t2 bau" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("87_eyitf")
+texture_disabled = ExtResource("88_orkh3")
+
+[node name="t3 bau" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("89_ws8rs")
+texture_disabled = ExtResource("90_mf8o1")
+
+[node name="t2 slau" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("91_m2nq2")
+texture_disabled = ExtResource("92_kcmxd")
+
+[node name="t3 slau" type="TextureButton" parent="spell book/summon"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("93_4ma58")
+texture_disabled = ExtResource("94_poh51")
+
+[node name="button" type="Control" parent="spell book/summon"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="t2 sca" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 340.0
+offset_right = 320.0
+offset_bottom = 386.0
+
+[node name="t3 sca" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 446.0
+offset_right = 331.0
+offset_bottom = 492.0
+
+[node name="t2 sra" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 332.0
+offset_right = 555.0
+offset_bottom = 378.0
+
+[node name="t3 sra" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 440.0
+offset_right = 560.0
+offset_bottom = 486.0
+
+[node name="t2 bau" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 304.0
+offset_right = 777.0
+offset_bottom = 350.0
+
+[node name="t3 bau" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 424.0
+offset_right = 781.0
+offset_bottom = 470.0
+
+[node name="t2 slau" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 351.0
+offset_right = 1028.0
+offset_bottom = 397.0
+
+[node name="t3 slau" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 460.0
+offset_right = 1020.0
+offset_bottom = 506.0
+
+[node name="next" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 506.0
+offset_right = 1027.0
+offset_bottom = 568.0
+
+[node name="prev" type="Button" parent="spell book/summon/button"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 485.0
+offset_right = 191.0
+offset_bottom = 547.0
+
+[node name="barré sca" type="TextureRect" parent="spell book/summon"]
+visible = false
+layout_mode = 0
+offset_left = 157.0
+offset_top = 333.0
+offset_right = 302.0
+offset_bottom = 385.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/summon/barré sca"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 109.0
+offset_right = 150.0
+offset_bottom = 161.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré sra" type="TextureRect" parent="spell book/summon"]
+visible = false
+layout_mode = 0
+offset_left = 387.0
+offset_top = 330.0
+offset_right = 532.0
+offset_bottom = 382.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/summon/barré sra"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 106.0
+offset_right = 147.0
+offset_bottom = 158.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré bau" type="TextureRect" parent="spell book/summon"]
+visible = false
+layout_mode = 0
+offset_left = 611.0
+offset_top = 299.0
+offset_right = 756.0
+offset_bottom = 351.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/summon/barré bau"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 118.0
+offset_right = 147.0
+offset_bottom = 170.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré slau" type="TextureRect" parent="spell book/summon"]
+visible = false
+layout_mode = 0
+offset_left = 864.0
+offset_top = 347.0
+offset_right = 1009.0
+offset_bottom = 399.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/summon/barré slau"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 110.0
+offset_right = 129.0
+offset_bottom = 162.0
+texture = ExtResource("49_he6eg")
+
+[node name="trans" type="TextureRect" parent="spell book"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("78_fbnh7")
+
+[node name="t2 smo" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("83_doghw")
+texture_disabled = ExtResource("84_i8cbv")
+
+[node name="t3 smo" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("85_h8y77")
+texture_disabled = ExtResource("86_xrx2q")
+
+[node name="t2 resi" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("79_ovy0p")
+texture_disabled = ExtResource("80_yep8p")
+
+[node name="t3 resi" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("81_4vi5c")
+texture_disabled = ExtResource("82_imayo")
+
+[node name="t2 gc" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("87_mgb1n")
+texture_disabled = ExtResource("88_7jjix")
+
+[node name="t3 gc" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("89_5clk1")
+texture_disabled = ExtResource("90_s78yw")
+
+[node name="t2 dmg" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("91_kqiaa")
+texture_disabled = ExtResource("92_xjka7")
+
+[node name="t3 dmg" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("93_o2oxj")
+texture_disabled = ExtResource("94_wx743")
+
+[node name="t2 fas" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("95_e25aa")
+texture_disabled = ExtResource("96_jrbph")
+
+[node name="t3 fas" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("97_8ot65")
+texture_disabled = ExtResource("98_ovwwy")
+
+[node name="t2 hp" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("99_clwxj")
+texture_disabled = ExtResource("100_fpqb4")
+
+[node name="t3 hp" type="TextureButton" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+disabled = true
+texture_normal = ExtResource("101_hhu55")
+texture_disabled = ExtResource("102_rjmct")
+
+[node name="button" type="TextureRect" parent="spell book/trans"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("49_xlpf2")
+
+[node name="t2 smo" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 130.0
+offset_top = 302.0
+offset_right = -852.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 smo" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = 441.0
+offset_right = -853.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t2 resi" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 395.0
+offset_top = 272.0
+offset_right = -587.0
+offset_bottom = -319.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 resi" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 384.0
+offset_top = 430.0
+offset_right = -598.0
+offset_bottom = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t2 gc" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 737.0
+offset_top = 167.0
+offset_right = -296.0
+offset_bottom = -438.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 gc" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 879.0
+offset_top = 207.0
+offset_right = -154.0
+offset_bottom = -398.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t2 dmg" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 724.0
+offset_top = 300.0
+offset_right = -309.0
+offset_bottom = -305.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 dmg" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 891.0
+offset_top = 302.0
+offset_right = -142.0
+offset_bottom = -303.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t2 fas" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 682.0
+offset_top = 379.0
+offset_right = -351.0
+offset_bottom = -226.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 fas" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 896.0
+offset_top = 418.0
+offset_right = -137.0
+offset_bottom = -187.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t2 hp" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 671.0
+offset_top = 530.0
+offset_right = -362.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="t3 hp" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 827.0
+offset_top = 526.0
+offset_right = -206.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="next" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 953.0
+offset_top = 513.0
+offset_right = -126.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="prev" type="Button" parent="spell book/trans/button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 489.0
+offset_right = -951.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="barré smo" type="TextureRect" parent="spell book/trans"]
+visible = false
+layout_mode = 0
+offset_left = 153.0
+offset_top = 308.0
+offset_right = 298.0
+offset_bottom = 360.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/trans/barré smo"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 133.0
+offset_right = 137.0
+offset_bottom = 185.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré resi" type="TextureRect" parent="spell book/trans"]
+visible = false
+layout_mode = 0
+offset_left = 403.0
+offset_top = 281.0
+offset_right = 548.0
+offset_bottom = 333.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/trans/barré resi"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 149.0
+offset_right = 144.0
+offset_bottom = 201.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré gc" type="TextureRect" parent="spell book/trans"]
+visible = false
+layout_mode = 0
+offset_left = 730.0
+offset_top = 163.0
+offset_right = 875.0
+offset_bottom = 215.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/trans/barré gc"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 38.0
+offset_right = 288.0
+offset_bottom = 90.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré dmg" type="TextureRect" parent="spell book/trans"]
+visible = false
+layout_mode = 0
+offset_left = 716.0
+offset_top = 301.0
+offset_right = 861.0
+offset_bottom = 353.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/trans/barré dmg"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = -1.0
+offset_right = 312.0
+offset_bottom = 51.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré fas" type="TextureRect" parent="spell book/trans"]
+visible = false
+layout_mode = 0
+offset_left = 686.0
+offset_top = 370.0
+offset_right = 831.0
+offset_bottom = 422.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/trans/barré fas"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 46.0
+offset_right = 341.0
+offset_bottom = 98.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré hp" type="TextureRect" parent="spell book/trans"]
+visible = false
+layout_mode = 0
+offset_left = 673.0
+offset_top = 520.0
+offset_right = 818.0
+offset_bottom = 572.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/trans/barré hp"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = -2.0
+offset_right = 296.0
+offset_bottom = 50.0
+texture = ExtResource("49_he6eg")
+
 [node name="derrière" type="TextureRect" parent="spell book"]
 visible = false
 offset_right = 40.0
@@ -1776,22 +2692,19 @@ script = ExtResource("29_wrche")
 [node name="spell cost" type="CanvasLayer" parent="Spell cost"]
 
 [node name="mana bar" type="TextureProgressBar" parent="Spell cost/spell cost"]
-anchors_preset = 6
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -292.5
-offset_bottom = 292.5
+offset_left = -164.0
+offset_right = -19.0
+offset_bottom = 101.0
 grow_horizontal = 0
-grow_vertical = 2
-max_value = 20.0
+scale = Vector2(1.5, 1.5)
 step = 0.1
-value = 5.0
+value = 50.0
 fill_mode = 3
-texture_under = ExtResource("30_wxwx8")
-texture_progress = ExtResource("31_l11uv")
+texture_under = ExtResource("81_yg8fk")
+texture_progress = ExtResource("82_7653d")
 
 [node name="Area2D" type="Area2D" parent="Spell cost"]
 visible = false
@@ -1804,39 +2717,9 @@ shape = SubResource("CircleShape2D_5w1cw")
 [node name="Timer" type="Timer" parent="Spell cost"]
 autostart = true
 
-[node name="Spell cost" type="Node2D" parent="Spell cost"]
-script = ExtResource("29_wrche")
-
-[node name="spell cost" type="CanvasLayer" parent="Spell cost/Spell cost"]
-
-[node name="mana bar" type="TextureProgressBar" parent="Spell cost/Spell cost/spell cost"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -292.5
-offset_bottom = 292.5
-grow_horizontal = 0
-grow_vertical = 2
-max_value = 20.0
-step = 0.1
-value = 5.0
-fill_mode = 3
-texture_under = ExtResource("30_wxwx8")
-texture_progress = ExtResource("31_l11uv")
-
-[node name="Area2D" type="Area2D" parent="Spell cost/Spell cost"]
-visible = false
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell cost/Spell cost/Area2D"]
-shape = SubResource("CircleShape2D_5w1cw")
-
-[node name="Timer" type="Timer" parent="Spell cost/Spell cost"]
-autostart = true
+[node name="freeze duartion" type="Timer" parent="Spell cost"]
+wait_time = 4.0
+one_shot = true
 
 [node name="night aura" type="Node2D" parent="."]
 
@@ -1873,6 +2756,17 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/Area2D"]
 shape = SubResource("CircleShape2D_6oos5")
 
+[node name="humain detect" type="Area2D" parent="night aura"]
+position = Vector2(-125.502, -125.502)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="night aura/humain detect"]
+shape = SubResource("CircleShape2D_6oos5")
+
+[node name="Timer" type="Timer" parent="night aura"]
+autostart = true
+
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="body_entered" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_exited"]
@@ -1883,15 +2777,26 @@ shape = SubResource("CircleShape2D_6oos5")
 [connection signal="pressed" from="CanvasLayer/achat bati/tour d\'archer/buy" to="CanvasLayer/achat bati/tour d\'archer" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/achat bati/tour d\'aggro/buy" to="CanvasLayer/achat bati/tour d\'aggro" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/achat bati/bumper/buy" to="CanvasLayer/achat bati/bumper" method="_on_buy_pressed"]
+[connection signal="timeout" from="CanvasLayer/ui_spell/Timer" to="CanvasLayer/ui_spell" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/exp/access" to="CanvasLayer/exp" method="_on_access_pressed"]
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="spell book/devant/open" to="spell book" method="_on_open_pressed"]
+[connection signal="pressed" from="spell book/page 0/Button" to="spell book" method="_on_prev_pressed"]
+[connection signal="pressed" from="spell book/page 0/Button2" to="spell book" method="_on_next_pressed"]
+[connection signal="pressed" from="spell book/page 1/Button" to="spell book" method="_on_prev_pressed"]
+[connection signal="pressed" from="spell book/page 1/Button2" to="spell book" method="_on_next_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/t2 cac" to="spell book" method="_on_t_2_cac_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/t3 cac" to="spell book" method="_on_t_3_cac_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/t3 range" to="spell book" method="_on_t_3_range_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/t2 range" to="spell book" method="_on_t_2_range_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/next" to="spell book" method="_on_next_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/prev" to="spell book" method="_on_prev_pressed"]
+[connection signal="pressed" from="spell book/attack/button/t2 boom" to="spell book" method="_on_t_2_boom_pressed"]
+[connection signal="pressed" from="spell book/attack/button/t3 boom" to="spell book" method="_on_t_3_boom_pressed"]
+[connection signal="pressed" from="spell book/attack/button/t2 trai" to="spell book" method="_on_t_2_trai_pressed"]
+[connection signal="pressed" from="spell book/attack/button/t3 trai" to="spell book" method="_on_t_3_trai_pressed"]
+[connection signal="pressed" from="spell book/attack/button/next" to="spell book" method="_on_next_pressed"]
+[connection signal="pressed" from="spell book/attack/button/prev" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/defense && control/button/t2 shield" to="spell book" method="_on_t_2_shield_pressed"]
 [connection signal="pressed" from="spell book/defense && control/button/t3 shield" to="spell book" method="_on_t_3_shield_pressed"]
 [connection signal="pressed" from="spell book/defense && control/button/t2 ombre" to="spell book" method="_on_t_2_ombre_pressed"]
@@ -1902,9 +2807,34 @@ shape = SubResource("CircleShape2D_6oos5")
 [connection signal="pressed" from="spell book/defense && control/button/t3 slow" to="spell book" method="_on_t_3_slow_pressed"]
 [connection signal="pressed" from="spell book/defense && control/button/next" to="spell book" method="_on_next_pressed"]
 [connection signal="pressed" from="spell book/defense && control/button/prev" to="spell book" method="_on_prev_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t2 sca" to="spell book" method="_on_t_2_sca_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t3 sca" to="spell book" method="_on_t_3_sca_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t2 sra" to="spell book" method="_on_t_2_sra_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t3 sra" to="spell book" method="_on_t_3_sra_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t2 bau" to="spell book" method="_on_t_2_bau_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t3 bau" to="spell book" method="_on_t_3_bau_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t2 slau" to="spell book" method="_on_t_2_slau_pressed"]
+[connection signal="pressed" from="spell book/summon/button/t3 slau" to="spell book" method="_on_t_3_slau_pressed"]
+[connection signal="pressed" from="spell book/summon/button/next" to="spell book" method="_on_next_pressed"]
+[connection signal="pressed" from="spell book/summon/button/prev" to="spell book" method="_on_prev_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t2 smo" to="spell book" method="_on_t_2_smo_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t3 smo" to="spell book" method="_on_t_3_smo_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t2 resi" to="spell book" method="_on_t_2_resi_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t3 resi" to="spell book" method="_on_t_3_resi_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t2 gc" to="spell book" method="_on_t_2_gc_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t3 gc" to="spell book" method="_on_t_3_gc_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t2 dmg" to="spell book" method="_on_t_2_dmg_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t3 dmg" to="spell book" method="_on_t_3_dmg_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t2 fas" to="spell book" method="_on_t_2_fas_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t3 fas" to="spell book" method="_on_t_3_fas_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t2 hp" to="spell book" method="_on_t_2_hp_pressed"]
+[connection signal="pressed" from="spell book/trans/button/t3 hp" to="spell book" method="_on_t_3_hp_pressed"]
+[connection signal="pressed" from="spell book/trans/button/next" to="spell book" method="_on_next_pressed"]
+[connection signal="pressed" from="spell book/trans/button/prev" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/derrière/Button" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/back" to="spell book" method="_on_back_pressed"]
 [connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
-[connection signal="timeout" from="Spell cost/Spell cost/Timer" to="Spell cost/Spell cost" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spell cost/freeze duartion" to="Spell cost" method="_on_freeze_duartion_timeout"]
 [connection signal="body_entered" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="night aura/Timer" to="night aura/night aura" method="_on_timer_timeout"]

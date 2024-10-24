@@ -6,9 +6,10 @@
 
 [node name="Humain nulle" instance=ExtResource("1_0wckm")]
 speed = 3500
+range = 4.0
 max_hp = 15
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = ExtResource("2_musog")
 animation = &"move right"
 offset = Vector2(0, -14)

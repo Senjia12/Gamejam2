@@ -7,9 +7,19 @@ const BOTTE = preload("res://UI/botte.png")
 
 var activate := false
 
+var tier := ""
+
+
+func scale_up(scale_mult):
+	scale *= scale_mult
+	$"../Area2D".scale *= scale_mult
+	
+
+
 func _physics_process(delta: float) -> void:
 	area_2d.global_position = Globals.player.global_position
-	global_position = Globals.player.global_position - Vector2(126,126)
+	$"../humain detect".global_position = area_2d.global_position
+	global_position = Globals.player.global_position - Vector2(126,126) * scale.x
 	if Input.is_action_just_pressed("shift"):
 		if !activate && !Globals.night:
 			activate = true
@@ -54,3 +64,20 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		body.disabled()
 		if Globals.unit_select != [body] and Globals.unit_select != []:
 			Input.set_custom_mouse_cursor(CURSEUR_BASE)
+
+
+func _on_timer_timeout() -> void:
+	if tier == "regen":
+		for i in $"../Area2D".get_overlapping_bodies():
+			if i.is_in_group("Unit"):
+				if i.max_hp < i.current_hp:
+					i.current_hp += 1
+	else:
+		if tier == "slow":
+			for i in $"../humain detect".get_overlapping_bodies():
+				if i.is_in_group("Humain"):
+					i.real_speed = i.speed / 2
+		if tier == "dmg":
+			for i in $"../humain detect".get_overlapping_bodies():
+				if i.is_in_group("Humain"):
+					i.take_damage(5)
