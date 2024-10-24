@@ -44,3 +44,9 @@ texture = ExtResource("2_qs6of")
 [node name="BouclierGrand" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("3_c6wac")
+
+[node name="shield_regen_cd" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="shield_regen_cd" to="." method="_on_shield_regen_cd_timeout"]

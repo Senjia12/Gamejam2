@@ -10,34 +10,35 @@ extends Area2D
 @onready var cooldown_multiplier = player.cooldown_multiplier
 
 
-const poti_squelette_preload = preload("res://Unit/poti squellette/poti squellette.tscn")
+const t1 = preload("res://Unit/poti squellette/poti squellette.tscn")
+@warning_ignore("shadowed_global_identifier")
+const range = preload("res://Unit/squellette archer/squellette_archer.tscn")
+const cac = preload("res://Unit/gros quellette/squellette_gros.tscn")
+
 var summon_radius = 100
 var can_summon = true
-var spawn_number = 3
 var summoned_creatures = []
 var parent_node
+
+#summon de base
 var summon_spell = "summon spell"
 var summon_cost = 4
-
-#creatures
-var creature = poti_squellette_instance
+var spawn_number = 3
+var creature = t1
 
 #scores
 var nb_spawn = 0
 var nb_summon_spell = 0
 var nb_squelettes_t1 = 0
-var nb_t2_cac = 0
-var nb_t3_cac = 0
-var nb_t2_range = 0
-var nb_t3_range = 0
+var nb_cac_summoned = 0
+var nb_range_summoned = 0
 
 func _ready() -> void:
 	parent_node = get_parent().get_parent()
 
 func _process(delta: float) -> void:
 	$summon_spell_cd.wait_time = cooldown_multiplier * $summon_spell_cd.wait_time #opti avec calcul quand amélio cd ?
-	#summon_cost à recalculer ?
-	
+
 	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(summon_cost)==true && get_overlapping_bodies()== []:
 		can_summon = false
 		nb_summon_spell += 1
@@ -45,19 +46,25 @@ func _process(delta: float) -> void:
 		$dispawn_cd.start()
 		
 		if summon_spell == "summon spell":
-			summon_t1()
+			nb_squelettes_t1 += spawn_number
+			summon_radius = 60
+			summon_creature()
 		
 		if summon_spell == "summon spell t2 armed skeleton cac":
-			summon_t2_cac()
+			nb_cac_summoned += spawn_number
+			summon_creature()
 		
 		if summon_spell == "summon spell t3 armed skeleton cac":
-			summon_t3_cac()
+			nb_cac_summoned += spawn_number
+			summon_creature()
 			
 		if summon_spell == "summon spell t2 armed skeleton range":
-			summon_t2_range()
+			nb_range_summoned += spawn_number
+			summon_creature()
 		
 		if summon_spell == "summon spell t3 armed skeleton range":
-			summon_t3_range()
+			nb_range_summoned += spawn_number
+			summon_creature()
 
 ## VARIABLES : 
 #summon_radius = rayon cercle de spwan autour du player
@@ -67,110 +74,47 @@ func _process(delta: float) -> void:
 #spawn_number = nombre d'unités qui spawnent
 #dispawn_cd_end = timer pour dispawn les unités summonned
 
-func summon_t1():
-	spawn_number = 3
+func summon_creature():
 	nb_spawn += spawn_number
-	nb_squelettes_t1 += spawn_number
-	summon_radius = 100
 	var angle_gap_between = TAU / spawn_number
 	
 	for i in range (spawn_number):
 		var spawn_angle = i * angle_gap_between
 		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		var poti_squellette_instance = poti_squelette_preload.instantiate()
+		var creature_instance = creature.instantiate()
 
-		poti_squellette_instance.global_position = spawn_position + global_position
-		parent_node.add_child(poti_squellette_instance)
-		summoned_creatures.append(poti_squellette_instance)
-
-
-func summon_t2_cac():
-	spawn_number = 5
-	nb_spawn += spawn_number
-	nb_t2_cac += spawn_number
-	summon_radius = 100
-	var angle_gap_between = TAU / spawn_number
+		creature_instance.global_position = spawn_position + global_position
+		parent_node.add_child(creature_instance)
+		summoned_creatures.append(creature_instance)
 	
-	for i in range (spawn_number):
-		var spawn_angle = i * angle_gap_between
-		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		var poti_squellette_instance = poti_squelette_preload.instantiate()
-
-		poti_squellette_instance.global_position = spawn_position + global_position
-		parent_node.add_child(poti_squellette_instance)
-		summoned_creatures.append(poti_squellette_instance)
-
-func summon_t3_cac():
-	spawn_number = 10
-	nb_spawn += spawn_number
-	nb_t3_cac += spawn_number
 	summon_radius = 100
-	var angle_gap_between = TAU / spawn_number
-	
-	for i in range (spawn_number):
-		var spawn_angle = i * angle_gap_between
-		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		var poti_squellette_instance = poti_squelette_preload.instantiate()
-
-		poti_squellette_instance.global_position = spawn_position + global_position
-		parent_node.add_child(poti_squellette_instance)
-		summoned_creatures.append(poti_squellette_instance)
-
-func summon_t2_range():
-	spawn_number = 1
-	nb_spawn += spawn_number
-	nb_t2_range += spawn_number
-	summon_radius = 150
-	var angle_gap_between = TAU / spawn_number
-
-	for i in range (spawn_number):
-		var spawn_angle = i * angle_gap_between
-		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		var poti_squellette_instance = poti_squelette_preload.instantiate()
-
-		poti_squellette_instance.global_position = spawn_position + global_position
-		parent_node.add_child(poti_squellette_instance)
-		summoned_creatures.append(poti_squellette_instance)
-
-
-func summon_t3_range():
-	spawn_number = 1
-	nb_spawn += spawn_number
-	nb_t3_range += spawn_number
-	summon_radius = 200
-	var angle_gap_between = TAU / spawn_number
-	var poti_squellette_instance = poti_squelette_preload.instantiate()
-
-	for i in range (spawn_number):
-		var spawn_angle = i * angle_gap_between
-		var spawn_position = Vector2(cos(spawn_angle) * summon_radius, sin(spawn_angle) * summon_radius)
-		
-		poti_squellette_instance.global_position = spawn_position + global_position
-		parent_node.add_child(poti_squellette_instance)
-		summoned_creatures.append(poti_squellette_instance)
 
 func summon_update():
 	
 	if summon_spell == "summon spell":
 		summon_cost = 4
 		spawn_number = 3
-		creature = 
+		creature = t1
 		
 	if summon_spell == "summon spell t2 armed skeleton cac":
 		summon_cost = 7
 		spawn_number = 5
+		creature = cac
 		
 	if summon_spell == "summon spell t3 armed skeleton cac":
 		summon_cost = 11
 		spawn_number = 10
+		creature = cac
 	
 	if summon_spell == "summon spell t2 armed skeleton range":
 		summon_cost = 7
 		spawn_number = 5
+		creature = range
 		
 	if summon_spell == "summon spell t3 armed skeleton range":
 		summon_cost = 11
 		spawn_number = 10
+		creature = range
 
 func _on_summon_spell_cd_timeout() -> void:
 	can_summon = true

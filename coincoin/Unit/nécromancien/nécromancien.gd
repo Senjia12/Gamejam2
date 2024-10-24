@@ -8,6 +8,7 @@ var pv_max = 100
 var pv = 100
 var nb_ames = 10
 var player_direction = "idle_forward"
+var insensible
 
 func _ready() -> void:
 	Globals.player = self
@@ -55,10 +56,3 @@ func _physics_process(delta):
 
 		elif player_direction == "back":
 			$necro.play("idle_backward")
-
-
-		
-		
-		
-		
-		
