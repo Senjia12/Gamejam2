@@ -190,8 +190,9 @@ speed = 2500
 range = 4.0
 attack_damage = 15
 max_hp = 30
+taille = 2
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_7frot")
 animation = &"disable down"
 offset = Vector2(0, -19)

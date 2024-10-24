@@ -4,7 +4,10 @@ extends CharacterBody2D
 @export var range := 1.0
 @export var attack_damage := 5
 @export var max_hp := 25
+var shield := 0
 var current_hp := 25
+
+@export var taille := 1
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack: AnimatedSprite2D = $attack
@@ -99,7 +102,10 @@ func move_along_path(delta):
 
 
 func take_damage(dmg):
-	current_hp -= dmg
+	if shield > 0:
+		shield -= dmg
+	else:
+		current_hp -= dmg
 	if current_hp <= 0:
 		var cadavre_instance = cadavre.instantiate()
 		cadavre_instance.global_position = global_position

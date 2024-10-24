@@ -58,7 +58,9 @@ shape = SubResource("CircleShape2D_jb387")
 
 [node name="delay" type="Timer" parent="."]
 wait_time = 5.0
+autostart = true
 
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]

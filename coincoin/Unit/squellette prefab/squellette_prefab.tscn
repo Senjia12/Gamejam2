@@ -164,6 +164,7 @@ position = Vector2(1.75, 1)
 shape = SubResource("RectangleShape2D_2lk8f")
 
 [node name="FOW revealer" type="PointLight2D" parent="." groups=["fow"]]
+visible = false
 energy = 0.5
 blend_mode = 2
 texture = ExtResource("4_2b0uh")
@@ -177,6 +178,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FOW revealer/Area2D"]
 shape = SubResource("CircleShape2D_1d2re")
+
+[node name="Timer" type="Timer" parent="FOW revealer"]
+wait_time = 0.001
+one_shot = true
+autostart = true
 
 [node name="marqueur" type="Sprite2D" parent="."]
 visible = false
@@ -197,3 +203,4 @@ animation = &"attack up"
 [connection signal="timeout" from="attack cd" to="." method="_on_attack_cd_timeout"]
 [connection signal="body_entered" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="FOW revealer/Timer" to="FOW revealer" method="_on_timer_timeout"]
