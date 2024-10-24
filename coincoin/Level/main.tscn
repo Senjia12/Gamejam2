@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=98 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -72,6 +72,7 @@
 [ext_resource type="Texture2D" uid="uid://rl3eckyq4dew" path="res://arbre de compétence/defense + control/image (6).png" id="64_y1l6t"]
 [ext_resource type="Texture2D" uid="uid://cabhw3frglm6n" path="res://arbre de compétence/defense + control/image (8).png" id="65_m41fj"]
 [ext_resource type="Texture2D" uid="uid://dms7syn40ug7j" path="res://arbre de compétence/defense + control/image (7).png" id="66_68ug8"]
+[ext_resource type="Texture2D" uid="uid://cr8mslfhkpc44" path="res://arbre de compétence/image (16).png" id="68_qx6nd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dfrv"]
 radius = 11.0
@@ -1345,7 +1346,6 @@ grow_vertical = 2
 color = Color(0.121569, 0, 0.00784314, 1)
 
 [node name="devant" type="TextureRect" parent="spell book"]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("38_jvob3")
@@ -1397,13 +1397,13 @@ texture_normal = ExtResource("47_fijcc")
 texture_disabled = ExtResource("48_lrork")
 
 [node name="button" type="TextureRect" parent="spell book/summoning"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("49_xlpf2")
 
 [node name="t2 cac" type="Button" parent="spell book/summoning/button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1416,6 +1416,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="t3 cac" type="Button" parent="spell book/summoning/button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1428,6 +1429,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="t3 range" type="Button" parent="spell book/summoning/button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1440,6 +1442,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="t2 range" type="Button" parent="spell book/summoning/button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1452,6 +1455,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="next" type="Button" parent="spell book/summoning/button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1464,6 +1468,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="prev" type="Button" parent="spell book/summoning/button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1485,6 +1490,7 @@ offset_bottom = 293.0
 texture = ExtResource("49_he6eg")
 
 [node name="barré" type="TextureRect" parent="spell book/summoning/barré cac"]
+layout_mode = 0
 offset_left = -7.0
 offset_top = 282.0
 offset_right = 138.0
@@ -1501,6 +1507,7 @@ offset_bottom = 367.0
 texture = ExtResource("49_he6eg")
 
 [node name="barré" type="TextureRect" parent="spell book/summoning/barré range"]
+layout_mode = 0
 offset_left = -129.0
 offset_top = 138.0
 offset_right = 16.0
@@ -1508,11 +1515,13 @@ offset_bottom = 190.0
 texture = ExtResource("49_he6eg")
 
 [node name="defense && control" type="TextureRect" parent="spell book"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("50_t1owc")
 
 [node name="t2 shield" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
@@ -1520,6 +1529,7 @@ texture_normal = ExtResource("51_a66d3")
 texture_disabled = ExtResource("52_hn6em")
 
 [node name="t3 shield" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
@@ -1527,6 +1537,7 @@ texture_normal = ExtResource("53_wycbo")
 texture_disabled = ExtResource("54_crik6")
 
 [node name="t2 ombre" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
@@ -1534,6 +1545,7 @@ texture_normal = ExtResource("55_ga3gi")
 texture_disabled = ExtResource("56_bh52s")
 
 [node name="t3 ombre" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
@@ -1541,6 +1553,7 @@ texture_normal = ExtResource("57_is2xk")
 texture_disabled = ExtResource("58_lh3el")
 
 [node name="t2 cage" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
@@ -1548,6 +1561,7 @@ texture_normal = ExtResource("59_82ecp")
 texture_disabled = ExtResource("60_algir")
 
 [node name="t3 cage" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
@@ -1555,6 +1569,7 @@ texture_normal = ExtResource("61_qln1b")
 texture_disabled = ExtResource("62_exh33")
 
 [node name="t2 slow" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
@@ -1562,11 +1577,156 @@ texture_normal = ExtResource("63_b30oc")
 texture_disabled = ExtResource("64_y1l6t")
 
 [node name="t3 slow" type="TextureButton" parent="spell book/defense && control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 disabled = true
 texture_normal = ExtResource("65_m41fj")
 texture_disabled = ExtResource("66_68ug8")
+
+[node name="button" type="Control" parent="spell book/defense && control"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="t2 shield" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 384.0
+offset_right = 324.0
+offset_bottom = 430.0
+
+[node name="t3 shield" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 506.0
+offset_right = 393.0
+offset_bottom = 552.0
+
+[node name="t2 ombre" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 340.0
+offset_right = 568.0
+offset_bottom = 386.0
+
+[node name="t3 ombre" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 447.0
+offset_right = 574.0
+offset_bottom = 493.0
+
+[node name="t2 cage" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 312.0
+offset_right = 781.0
+offset_bottom = 358.0
+
+[node name="t3 cage" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 409.0
+offset_right = 772.0
+offset_bottom = 455.0
+
+[node name="t2 slow" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 361.0
+offset_right = 1023.0
+offset_bottom = 407.0
+
+[node name="t3 slow" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 498.0
+offset_right = 947.0
+offset_bottom = 544.0
+
+[node name="next" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 506.0
+offset_right = 1027.0
+offset_bottom = 568.0
+
+[node name="prev" type="Button" parent="spell book/defense && control/button"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 485.0
+offset_right = 191.0
+offset_bottom = 547.0
+
+[node name="barré shield" type="TextureRect" parent="spell book/defense && control"]
+visible = false
+layout_mode = 0
+offset_left = 158.0
+offset_top = 381.0
+offset_right = 303.0
+offset_bottom = 433.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/defense && control/barré shield"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 122.0
+offset_right = 213.0
+offset_bottom = 174.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré ombre" type="TextureRect" parent="spell book/defense && control"]
+visible = false
+layout_mode = 0
+offset_left = 408.0
+offset_top = 334.0
+offset_right = 553.0
+offset_bottom = 386.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/defense && control/barré ombre"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 111.0
+offset_right = 147.0
+offset_bottom = 163.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré cage" type="TextureRect" parent="spell book/defense && control"]
+visible = false
+layout_mode = 0
+offset_left = 617.0
+offset_top = 308.0
+offset_right = 762.0
+offset_bottom = 360.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/defense && control/barré cage"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 90.0
+offset_right = 135.0
+offset_bottom = 142.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré slow" type="TextureRect" parent="spell book/defense && control"]
+visible = false
+layout_mode = 0
+offset_left = 854.0
+offset_top = 355.0
+offset_right = 999.0
+offset_bottom = 407.0
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/defense && control/barré slow"]
+layout_mode = 0
+offset_left = -71.0
+offset_top = 142.0
+offset_right = 74.0
+offset_bottom = 194.0
+texture = ExtResource("49_he6eg")
 
 [node name="derrière" type="TextureRect" parent="spell book"]
 visible = false
@@ -1575,11 +1735,19 @@ offset_bottom = 40.0
 texture = ExtResource("51_0j6to")
 
 [node name="Button" type="Button" parent="spell book/derrière"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 290.0
 offset_top = 402.0
 offset_right = 443.0
 offset_bottom = 516.0
+
+[node name="back" type="TextureButton" parent="spell book"]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 203.0
+offset_bottom = 66.0
+texture_normal = ExtResource("68_qx6nd")
 
 [node name="Spell cost" type="Node2D" parent="."]
 script = ExtResource("29_wrche")
@@ -1703,7 +1871,18 @@ shape = SubResource("CircleShape2D_6oos5")
 [connection signal="pressed" from="spell book/summoning/button/t2 range" to="spell book" method="_on_t_2_range_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/next" to="spell book" method="_on_next_pressed"]
 [connection signal="pressed" from="spell book/summoning/button/prev" to="spell book" method="_on_prev_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t2 shield" to="spell book" method="_on_t_2_shield_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t3 shield" to="spell book" method="_on_t_3_shield_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t2 ombre" to="spell book" method="_on_t_2_ombre_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t3 ombre" to="spell book" method="_on_t_3_ombre_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t2 cage" to="spell book" method="_on_t_2_cage_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t3 cage" to="spell book" method="_on_t_3_cage_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t2 slow" to="spell book" method="_on_t_2_slow_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/t3 slow" to="spell book" method="_on_t_3_slow_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/next" to="spell book" method="_on_next_pressed"]
+[connection signal="pressed" from="spell book/defense && control/button/prev" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/derrière/Button" to="spell book" method="_on_prev_pressed"]
+[connection signal="pressed" from="spell book/back" to="spell book" method="_on_back_pressed"]
 [connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spell cost/Spell cost/Timer" to="Spell cost/Spell cost" method="_on_timer_timeout"]
 [connection signal="body_entered" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_entered"]

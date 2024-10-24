@@ -6,8 +6,8 @@ const CAGE_T_12 = preload("res://Unit/capacities/cage/cage_t_12.tscn")
 const CAGE_T_3 = preload("res://Unit/capacities/cage/cage_t_3.tscn")
 const ZONE_DE_RALENTISSEMENT = preload("res://Unit/capacities/cage/zone_de_ralentissement.tscn")
 
-var control_type = "zone"
-var tier = 2
+var control_type = "cage"
+var tier = 1
 
 var ysort
 
