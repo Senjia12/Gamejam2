@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 #dispawn_cd_end = timer pour dispawn les unités summonned
 
 func summon_t1():
-	spawn_number = 10
+	spawn_number = 3
 	nb_spawn += spawn_number
 	nb_squelettes_t1 += spawn_number
 	summon_radius = 100
@@ -84,7 +84,7 @@ func summon_t2_cac():
 	spawn_number = 5
 	nb_spawn += spawn_number
 	nb_t2_cac += spawn_number
-	summon_radius = 150
+	summon_radius = 100
 	var angle_gap_between = TAU / spawn_number
 	
 	for i in range (spawn_number):
@@ -100,7 +100,7 @@ func summon_t3_cac():
 	spawn_number = 10
 	nb_spawn += spawn_number
 	nb_t3_cac += spawn_number
-	summon_radius = 200
+	summon_radius = 100
 	var angle_gap_between = TAU / spawn_number
 	
 	for i in range (spawn_number):
