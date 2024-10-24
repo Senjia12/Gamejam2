@@ -27,11 +27,6 @@ const VALID__SHIELD_T_3 = preload("res://arbre de compétence/defense + control/
 const VALID__SLOW_T_2 = preload("res://arbre de compétence/defense + control/validé slow t2.png")
 const VALID__SLOW_T_3 = preload("res://arbre de compétence/defense + control/validé slow t3.png")
 
-
-func _ready() -> void:
-	add_point(false)
-
-
 func add_point(reset):
 	if !reset:
 		point = 1

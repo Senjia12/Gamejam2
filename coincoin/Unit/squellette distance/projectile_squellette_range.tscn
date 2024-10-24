@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://brhya5jc7pcgt"]
+
+[ext_resource type="Script" path="res://Unit/squellette distance/projectile_squellette_range.gd" id="1_ae5tf"]
+[ext_resource type="Texture2D" uid="uid://pmm47nhxbrou" path="res://Unit/squellette distance/projectile.png" id="2_jy7ag"]
+
+[node name="projectile squellette range" type="Node2D"]
+script = ExtResource("1_ae5tf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jy7ag")

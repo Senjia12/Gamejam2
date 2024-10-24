@@ -394,8 +394,9 @@ animations = [{
 
 [node name="Squellette gros" instance=ExtResource("1_ab8c0")]
 speed = 3000
-range = 2.0
-max_hp = 50
+range = 3.0
+attack_damage = 10
+max_hp = 75
 taille = 2
 
 [node name="AnimatedSprite2D" parent="." index="4"]
@@ -406,5 +407,4 @@ offset = Vector2(0, -12.5)
 
 [node name="attack" parent="." index="9"]
 sprite_frames = SubResource("SpriteFrames_6cnbg")
-animation = &"attack d down"
 offset = Vector2(0, -12)

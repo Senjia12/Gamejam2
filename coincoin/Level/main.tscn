@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=99 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
 [ext_resource type="Script" path="res://UI/fps.gd" id="9_wtiph"]
 [ext_resource type="Shader" path="res://UI/shader/blur.gdshader" id="10_hnh7q"]
+[ext_resource type="PackedScene" uid="uid://b42qqqnxn6l11" path="res://Unit/squellette distance/squellette distance.tscn" id="10_j0g6s"]
 [ext_resource type="Texture2D" uid="uid://d1uo675bmndvh" path="res://UI/image.png" id="10_ldxxe"]
 [ext_resource type="Texture2D" uid="uid://cokvtcd1t40xj" path="res://UI/image (2).png" id="11_63304"]
 [ext_resource type="Texture2D" uid="uid://b6f3mwv8lv8sb" path="res://UI/image (1).png" id="12_kqbog"]
@@ -630,7 +631,6 @@ tile_set = SubResource("TileSet_t4kdc")
 script = ExtResource("8_qxubo")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Terrain"]
-visible = false
 z_index = 1000
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ihopg")
@@ -646,6 +646,27 @@ autostart = true
 
 [node name="Nécromancien" parent="Terrain/NavigationRegion2D" instance=ExtResource("3_6rrow")]
 position = Vector2(181, -95)
+
+[node name="Squellette prefab" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
+position = Vector2(209, 106)
+
+[node name="Squellette prefab2" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
+position = Vector2(327, -80)
+
+[node name="Squellette prefab3" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
+position = Vector2(61, -191)
+
+[node name="Squellette prefab4" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
+position = Vector2(-169, -191)
+
+[node name="Squellette prefab5" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
+position = Vector2(-293, 21)
+
+[node name="Squellette prefab6" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
+position = Vector2(-156, 217)
+
+[node name="Squellette prefab7" parent="Terrain/NavigationRegion2D" instance=ExtResource("10_j0g6s")]
+position = Vector2(75, 230)
 
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true

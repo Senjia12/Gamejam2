@@ -28,6 +28,10 @@ var looking := "down"
 
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
+
+@export var is_range := false
+
+
 func _ready() -> void:
 	$Attack_range/CollisionShape2D.scale = Vector2(range,range)
 	$"decal attack"/CollisionShape2D.scale = Vector2(range,range)
@@ -118,6 +122,19 @@ func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Humain"):
 		if !humain_in_range:
 			$"attack cd".start()
+			var dir_to_humain = global_position.direction_to($Attack_range.get_overlapping_bodies()[0].global_position)
+		
+			if abs(dir_to_humain.x) > 0.5:
+				if dir_to_humain.x > 0:
+					looking = "right"
+				else:
+					looking = "left"
+			else:
+				if dir_to_humain.y > 0:
+					looking = "down"
+				else:
+					looking = "up"
+		
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Humain"):
@@ -130,7 +147,24 @@ func _on_attack_cd_timeout() -> void:
 	if $Attack_range.get_overlapping_bodies() != []:
 		attack.show()
 		animatedSprite.hide()
-		$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
+		if is_range:
+			get_node("projectile").launch($Attack_range.get_overlapping_bodies()[0])
+		else:
+			$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
+		
+		var dir_to_humain = global_position.direction_to($Attack_range.get_overlapping_bodies()[0].global_position)
+		
+		if abs(dir_to_humain.x) > 0.5:
+			if dir_to_humain.x > 0:
+				looking = "right"
+			else:
+				looking = "left"
+		else:
+			if dir_to_humain.y > 0:
+				looking = "down"
+			else:
+				looking = "up"
+		
 		if disable:
 			attack.play("attack d " + looking)
 		else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b56qou85dfsdh"]
+[gd_scene load_steps=29 format=3 uid="uid://b56qou85dfsdh"]
 
 [ext_resource type="PackedScene" uid="uid://sw0ptkaim85x" path="res://Unit/squellette prefab/squellette_prefab.tscn" id="1_t8fsr"]
 [ext_resource type="Texture2D" uid="uid://ce5fo2frei6j8" path="res://Unit/squellette mortier/Squelette_artilleur_face_2.png" id="2_12otb"]
@@ -171,6 +171,39 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ahkc"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack d down",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack d right",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack d up",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack down",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack right",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack up",
+"speed": 4.0
+}]
+
 [node name="Squellette mortier" instance=ExtResource("1_t8fsr")]
 speed = 2000
 range = 6.0
@@ -182,3 +215,8 @@ sprite_frames = SubResource("SpriteFrames_3awu6")
 animation = &"move right"
 speed_scale = 2.0
 offset = Vector2(0, -17)
+
+[node name="attack" parent="." index="9"]
+visible = true
+sprite_frames = SubResource("SpriteFrames_8ahkc")
+animation = &"attack d down"

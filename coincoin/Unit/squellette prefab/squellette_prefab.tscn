@@ -193,6 +193,7 @@ offset = Vector2(-0.5, -14)
 
 [node name="attack" type="AnimatedSprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_hl6cp")
 animation = &"attack up"
 

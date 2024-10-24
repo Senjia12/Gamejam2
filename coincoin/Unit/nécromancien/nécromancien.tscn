@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://byauyvuqltrvw"]
+[gd_scene load_steps=30 format=3 uid="uid://byauyvuqltrvw"]
 
 [ext_resource type="Script" path="res://Unit/nécromancien/nécromancien.gd" id="1_jlaiv"]
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
@@ -152,6 +152,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m7wjj"]
+radius = 3.0
+height = 12.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_jlaiv")
 
@@ -204,6 +208,11 @@ shape = SubResource("CircleShape2D_7xbhf")
 sprite_frames = SubResource("SpriteFrames_kghp3")
 animation = &"walk_to_the_right"
 offset = Vector2(0, -13.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_m7wjj")
 
 [connection signal="timeout" from="offensive_spell/offensive_spell_cd" to="offensive_spell" method="_on_offensive_spell_cd_timeout"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
