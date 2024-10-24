@@ -19,6 +19,9 @@ var parent_node
 var summon_spell = "summon spell"
 var summon_cost = 4
 
+#creatures
+var creature = poti_squellette_instance
+
 #scores
 var nb_spawn = 0
 var nb_summon_spell = 0
@@ -39,6 +42,7 @@ func _process(delta: float) -> void:
 		can_summon = false
 		nb_summon_spell += 1
 		$summon_spell_cd.start()
+		$dispawn_cd.start()
 		
 		if summon_spell == "summon spell":
 			summon_t1()
@@ -150,6 +154,7 @@ func summon_update():
 	if summon_spell == "summon spell":
 		summon_cost = 4
 		spawn_number = 3
+		creature = 
 		
 	if summon_spell == "summon spell t2 armed skeleton cac":
 		summon_cost = 7
@@ -171,4 +176,5 @@ func _on_summon_spell_cd_timeout() -> void:
 	can_summon = true
 
 func _on_dispawn_cd_timeout() -> void:
-	summoned_creatures.queue_free()
+	for i in summoned_creatures:
+		i.queue_free()
