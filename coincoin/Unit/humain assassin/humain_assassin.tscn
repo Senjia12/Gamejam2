@@ -194,11 +194,11 @@ animations = [{
 }]
 
 [node name="Humain assassin" instance=ExtResource("1_pc0lp")]
-range = 2.0
 attack_damage = 25
 max_hp = 20
+exp = 15
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_vkkgi")
 animation = &"move up"
 offset = Vector2(0, -12.5)

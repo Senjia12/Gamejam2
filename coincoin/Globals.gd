@@ -5,6 +5,7 @@ var night := false
 var bone_counter
 var bone_pill
 var mana
+var exp
 
 var player
 var unit_select := []

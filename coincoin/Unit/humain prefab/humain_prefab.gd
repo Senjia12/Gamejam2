@@ -5,6 +5,7 @@ var real_speed := 5000
 @export var range := 1.0
 @export var attack_damage := 5
 @export var max_hp := 25
+@export var exp := 5
 var current_hp := 25
 
 var speed_mult := 1.0
@@ -98,6 +99,7 @@ func take_damage(dmg):
 		var cadavre_instance = cadavre.instantiate()
 		cadavre_instance.global_position = global_position
 		get_parent().add_child(cadavre_instance)
+		Globals.exp.add_exp(exp)
 		queue_free()
 
 func reavealed():

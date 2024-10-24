@@ -396,14 +396,15 @@ animations = [{
 speed = 3000
 range = 2.0
 max_hp = 50
+taille = 2
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_cuv88")
 frame = 3
 frame_progress = 0.48587
 offset = Vector2(0, -12.5)
 
-[node name="attack" parent="." index="8"]
+[node name="attack" parent="." index="9"]
 sprite_frames = SubResource("SpriteFrames_6cnbg")
 animation = &"attack d down"
 offset = Vector2(0, -12)

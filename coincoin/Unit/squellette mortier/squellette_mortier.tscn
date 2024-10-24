@@ -177,7 +177,8 @@ range = 6.0
 attack_damage = 15
 max_hp = 30
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_3awu6")
 animation = &"move right"
+speed_scale = 2.0
 offset = Vector2(0, -17)

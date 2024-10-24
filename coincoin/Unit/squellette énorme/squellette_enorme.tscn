@@ -190,8 +190,9 @@ speed = 3000
 range = 3.0
 attack_damage = 15
 max_hp = 150
+taille = 3
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_ecj4m")
 animation = &"move right"
 offset = Vector2(0, -26)
