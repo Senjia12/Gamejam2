@@ -33,7 +33,7 @@ func _physics_process(delta):
 			$necro.play("walk_to_the_right")
 			player_direction = "left"
 	
-		if velocity.y > 0:
+		elif velocity.y > 0:
 			$necro.play("walk_forward")
 			player_direction = "front"
 	
@@ -42,19 +42,18 @@ func _physics_process(delta):
 			player_direction = "back"
 	
 	else:
-		
-		if player_direction == "right":
-			$necro.flip_h = false
-			$necro.play("idle_right")
-
-		if player_direction == "left":
-			$necro.flip_h = true
-			$necro.play("idle_right")
-
 		if player_direction == "front":
 			$necro.play("idle_forward")
 
-		if player_direction == "back":
+		elif player_direction == "left":
+			$necro.flip_h = true
+			$necro.play("idle_right")
+
+		elif player_direction == "right":
+			$necro.flip_h = false
+			$necro.play("idle_right")
+
+		elif player_direction == "back":
 			$necro.play("idle_backward")
 
 
