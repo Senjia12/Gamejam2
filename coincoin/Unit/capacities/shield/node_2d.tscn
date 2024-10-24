@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bltp8sih4davj"]
+[gd_scene load_steps=7 format=3 uid="uid://gr6daq22dw7n"]
 
 [ext_resource type="Texture2D" uid="uid://r5ltd0u6s5dj" path="res://Unit/capacities/shield/Bouclier_petit.png" id="1_lngwr"]
 [ext_resource type="Texture2D" uid="uid://dm3engo2dwbr3" path="res://Unit/capacities/shield/Bouclier_moyen.png" id="2_21cpi"]
