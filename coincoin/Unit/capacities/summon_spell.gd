@@ -23,10 +23,10 @@ var summon_cost = 4
 var nb_spawn = 0
 var nb_summon_spell = 0
 var nb_squelettes_t1 = 0
-var nb_squelettes_t2 = 0
-var nb_squelettes_t3 = 0
-var nb_golem = 0
-var nb_golem_icestorm = 0
+var nb_t2_cac = 0
+var nb_t3_cac = 0
+var nb_t2_range = 0
+var nb_t3_range = 0
 
 func _ready() -> void:
 	parent_node = get_parent().get_parent()
@@ -43,17 +43,17 @@ func _process(delta: float) -> void:
 		if summon_spell == "summon spell":
 			summon_t1()
 		
-		if summon_spell == "summon spell t2 armed skeleton":
-			summon_t2_skeleton()
+		if summon_spell == "summon spell t2 armed skeleton cac":
+			summon_t2_cac()
 		
-		if summon_spell == "summon spell t3 explosive armed skeleton":
-			summon_t3_skeleton()
+		if summon_spell == "summon spell t3 armed skeleton cac":
+			summon_t3_cac()
 			
-		if summon_spell == "summon spell t2 golem":
-			summon_t2_golem()
+		if summon_spell == "summon spell t2 armed skeleton range":
+			summon_t2_range()
 		
-		if summon_spell == "summon spell t3 ice storm golem":
-			summon_t3_golem()
+		if summon_spell == "summon spell t3 armed skeleton range":
+			summon_t3_range()
 
 ## VARIABLES : 
 #summon_radius = rayon cercle de spwan autour du player
@@ -80,10 +80,10 @@ func summon_t1():
 		summoned_creatures.append(poti_squellette_instance)
 
 
-func summon_t2_skeleton():
+func summon_t2_cac():
 	spawn_number = 5
 	nb_spawn += spawn_number
-	nb_squelettes_t2 += spawn_number
+	nb_t2_cac += spawn_number
 	summon_radius = 150
 	var angle_gap_between = TAU / spawn_number
 	
@@ -96,10 +96,10 @@ func summon_t2_skeleton():
 		parent_node.add_child(poti_squellette_instance)
 		summoned_creatures.append(poti_squellette_instance)
 
-func summon_t3_skeleton():
+func summon_t3_cac():
 	spawn_number = 10
 	nb_spawn += spawn_number
-	nb_squelettes_t3 += spawn_number
+	nb_t3_cac += spawn_number
 	summon_radius = 200
 	var angle_gap_between = TAU / spawn_number
 	
@@ -112,10 +112,10 @@ func summon_t3_skeleton():
 		parent_node.add_child(poti_squellette_instance)
 		summoned_creatures.append(poti_squellette_instance)
 
-func summon_t2_golem():
+func summon_t2_range():
 	spawn_number = 1
 	nb_spawn += spawn_number
-	nb_golem += spawn_number
+	nb_t2_range += spawn_number
 	summon_radius = 150
 	var angle_gap_between = TAU / spawn_number
 
@@ -129,10 +129,10 @@ func summon_t2_golem():
 		summoned_creatures.append(poti_squellette_instance)
 
 
-func summon_t3_golem():
+func summon_t3_range():
 	spawn_number = 1
 	nb_spawn += spawn_number
-	nb_golem_icestorm += spawn_number
+	nb_t3_range += spawn_number
 	summon_radius = 200
 	var angle_gap_between = TAU / spawn_number
 	var poti_squellette_instance = poti_squelette_preload.instantiate()
@@ -144,6 +144,28 @@ func summon_t3_golem():
 		poti_squellette_instance.global_position = spawn_position + global_position
 		parent_node.add_child(poti_squellette_instance)
 		summoned_creatures.append(poti_squellette_instance)
+
+func summon_update():
+	
+	if summon_spell == "summon spell":
+		summon_cost = 4
+		spawn_number = 3
+		
+	if summon_spell == "summon spell t2 armed skeleton cac":
+		summon_cost = 7
+		spawn_number = 5
+		
+	if summon_spell == "summon spell t3 armed skeleton cac":
+		summon_cost = 11
+		spawn_number = 10
+	
+	if summon_spell == "summon spell t2 armed skeleton range":
+		summon_cost = 7
+		spawn_number = 5
+		
+	if summon_spell == "summon spell t3 armed skeleton range":
+		summon_cost = 11
+		spawn_number = 10
 
 func _on_summon_spell_cd_timeout() -> void:
 	can_summon = true
