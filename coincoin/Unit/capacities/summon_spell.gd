@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	$summon_spell_cd.wait_time = cooldown_multiplier * $summon_spell_cd.wait_time #opti avec calcul quand amélio cd ?
 	#summon_cost à recalculer ?
 	
-	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(summon_cost)==true:
+	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(summon_cost)==true && get_overlapping_bodies()== []:
 		can_summon = false
 		nb_summon_spell += 1
 		$summon_spell_cd.start()
@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 #dispawn_cd_end = timer pour dispawn les unités summonned
 
 func summon_t1():
-	spawn_number = 3
+	spawn_number = 10
 	nb_spawn += spawn_number
 	nb_squelettes_t1 += spawn_number
 	summon_radius = 100

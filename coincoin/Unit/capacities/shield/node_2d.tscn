@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://bltp8sih4davj"]
+
+[ext_resource type="Texture2D" uid="uid://r5ltd0u6s5dj" path="res://Unit/capacities/shield/Bouclier_petit.png" id="1_lngwr"]
+[ext_resource type="Texture2D" uid="uid://dm3engo2dwbr3" path="res://Unit/capacities/shield/Bouclier_moyen.png" id="2_21cpi"]
+[ext_resource type="Texture2D" uid="uid://bmnbed0mm4e6w" path="res://Unit/capacities/shield/Bouclier_grand.png" id="3_4dk4p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_grrck"]
+radius = 24.0832
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oyh7b"]
+radius = 32.3883
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b1a4"]
+radius = 41.0488
+
+[node name="shield" type="Node2D"]
+
+[node name="shield_t1" type="Area2D" parent="."]
+
+[node name="BouclierPetit" type="Sprite2D" parent="shield_t1"]
+texture = ExtResource("1_lngwr")
+
+[node name="BouclierMoyen" type="Sprite2D" parent="shield_t1"]
+texture = ExtResource("2_21cpi")
+
+[node name="BouclierGrand" type="Sprite2D" parent="shield_t1"]
+texture = ExtResource("3_4dk4p")
+
+[node name="shield_t2" type="Area2D" parent="."]
+
+[node name="BouclierPetit" type="Sprite2D" parent="shield_t2"]
+texture = ExtResource("1_lngwr")
+
+[node name="BouclierMoyen" type="Sprite2D" parent="shield_t2"]
+texture = ExtResource("2_21cpi")
+
+[node name="BouclierGrand" type="Sprite2D" parent="shield_t2"]
+texture = ExtResource("3_4dk4p")
+
+[node name="shield_t3" type="Area2D" parent="."]
+
+[node name="BouclierPetit" type="Sprite2D" parent="shield_t3"]
+texture = ExtResource("1_lngwr")
+
+[node name="BouclierMoyen" type="Sprite2D" parent="shield_t3"]
+texture = ExtResource("2_21cpi")
+
+[node name="BouclierGrand" type="Sprite2D" parent="shield_t3"]
+texture = ExtResource("3_4dk4p")
+
+[node name="tiny_explosion" type="CollisionShape2D" parent="shield_t3"]
+visible = false
+shape = SubResource("CircleShape2D_grrck")
+
+[node name="medium_explosion" type="CollisionShape2D" parent="shield_t3"]
+visible = false
+shape = SubResource("CircleShape2D_oyh7b")
+
+[node name="grand" type="CollisionShape2D" parent="shield_t3"]
+visible = false
+shape = SubResource("CircleShape2D_4b1a4")

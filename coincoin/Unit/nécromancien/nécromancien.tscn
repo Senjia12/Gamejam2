@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://b2neepr7dxja7" path="res://Unit/nécromancien/Necro_face_1_marche.png" id="10_yyxyt"]
 [ext_resource type="Texture2D" uid="uid://62kiglucnda2" path="res://Unit/nécromancien/Necro_cote_1_marche.png" id="11_sujck"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_15d3y"]
+radius = 160.028
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xbhf"]
 radius = 400.0
 
@@ -149,9 +152,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6t183"]
-radius = 4.61038
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_jlaiv")
 
@@ -162,10 +162,15 @@ script = ExtResource("2_km2c4")
 wait_time = 5.0
 
 [node name="defensive_spell" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("3_4fvd8")
 
 [node name="defensive_spell_cd" type="Timer" parent="defensive_spell"]
 wait_time = 7.0
+
+[node name="nearby_defended_allies" type="CollisionShape2D" parent="defensive_spell"]
+shape = SubResource("CircleShape2D_15d3y")
 
 [node name="control_spell" type="Node2D" parent="."]
 script = ExtResource("4_vfuac")
@@ -199,11 +204,6 @@ shape = SubResource("CircleShape2D_7xbhf")
 sprite_frames = SubResource("SpriteFrames_kghp3")
 animation = &"walk_to_the_right"
 offset = Vector2(0, -13.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-scale = Vector2(1.08451, 0.616638)
-shape = SubResource("CircleShape2D_6t183")
 
 [connection signal="timeout" from="offensive_spell/offensive_spell_cd" to="offensive_spell" method="_on_offensive_spell_cd_timeout"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]

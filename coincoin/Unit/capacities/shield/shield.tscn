@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5wwn2c773i2l"]
+
+[ext_resource type="Script" path="res://Unit/capacities/shield/shield.gd" id="1_3t7qh"]
+[ext_resource type="Texture2D" uid="uid://r5ltd0u6s5dj" path="res://Unit/capacities/shield/Bouclier_petit.png" id="1_xqf5a"]
+[ext_resource type="Texture2D" uid="uid://dm3engo2dwbr3" path="res://Unit/capacities/shield/Bouclier_moyen.png" id="2_qs6of"]
+[ext_resource type="Texture2D" uid="uid://bmnbed0mm4e6w" path="res://Unit/capacities/shield/Bouclier_grand.png" id="3_c6wac"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_grrck"]
+radius = 24.0832
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oyh7b"]
+radius = 32.3883
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b1a4"]
+radius = 41.0488
+
+[node name="shield" type="Node2D"]
+visible = false
+script = ExtResource("1_3t7qh")
+
+[node name="shield_t3" type="Area2D" parent="."]
+visible = false
+
+[node name="tiny_explosion" type="CollisionShape2D" parent="shield_t3"]
+visible = false
+shape = SubResource("CircleShape2D_grrck")
+
+[node name="medium_explosion" type="CollisionShape2D" parent="shield_t3"]
+visible = false
+shape = SubResource("CircleShape2D_oyh7b")
+
+[node name="grand" type="CollisionShape2D" parent="shield_t3"]
+visible = false
+shape = SubResource("CircleShape2D_4b1a4")
+
+[node name="BouclierPetit" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xqf5a")
+
+[node name="BouclierMoyen" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_qs6of")
+
+[node name="BouclierGrand" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_c6wac")
