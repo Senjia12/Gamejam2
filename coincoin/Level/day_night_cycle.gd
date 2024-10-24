@@ -3,7 +3,6 @@ extends AnimationPlayer
 const CURSEUR_BASE = preload("res://UI/curseur base.png")
 @export var light_mix := 1.0
 
-
 func _ready() -> void:
 	_on_animation_finished("duck")
 

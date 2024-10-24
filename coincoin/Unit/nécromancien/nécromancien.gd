@@ -8,7 +8,13 @@ var pv_max = 100
 var pv = 100
 var nb_ames = 10
 var player_direction = "idle_forward"
-var insensible
+
+var insensible := false
+
+var respawn_time := 00
+
+@onready var n_cro_spawn: Node2D = $"../nécro spawn"
+
 
 func _ready() -> void:
 	Globals.player = self
@@ -16,6 +22,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
+	if Globals.night or Globals.nécro_mort:
+		$necro.play("idle_forward")
+		global_position = n_cro_spawn.global_position
+		return
 	velocity.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	velocity.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	velocity = velocity.normalized()
@@ -56,3 +66,26 @@ func _physics_process(delta):
 
 		elif player_direction == "back":
 			$necro.play("idle_backward")
+
+func take_damage(dmg):
+	if insensible:return
+	if !Globals.mana.cost(dmg):
+		global_position = n_cro_spawn.global_position
+		Globals.nécro_mort = true
+		$"mort cd".start()
+		$"respawn/0_1".start()
+		respawn_time = 100
+		$respawn/Label.show()
+		set_modulate("ffffff00")
+
+
+func _on_mort_cd_timeout() -> void:
+	Globals.nécro_mort = false
+	$"respawn/0_1".stop()
+	$respawn/Label.hide()
+	set_modulate("ffffff")
+
+
+func _on__1_timeout() -> void:
+	respawn_time -= 1
+	$respawn/Label.text = "Respawn in : " + str(int(respawn_time/10)) + "." + str(respawn_time%10)

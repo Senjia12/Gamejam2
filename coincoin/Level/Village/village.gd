@@ -1,6 +1,10 @@
 extends Node2D
 
 
+var unit_from_village := []
+
+var is_raided := false
+
 @export var difficulty := 10
 var x_diff := 232
 var y_diff := 264
@@ -15,12 +19,20 @@ const HUMAIN_ASSASSIN = preload("res://Unit/humain assassin/humain_assassin.tscn
 const HUMAIN_BOUCLIER = preload("res://Unit/humain bouclier/humain_bouclier.tscn")
 const HUMAIN_A_LANCE = preload("res://Unit/humain a lance/humain_a_lance.tscn")
 
+const MAGE_FEU = preload("res://Unit/mage/feu/mage feu.tscn")
+const MAGE_GLACE = preload("res://Unit/mage/glace/mage glace.tscn")
+const MAGE_SOIN = preload("res://Unit/mage/soin/mage_soin.tscn")
+
+
 
 var truc_a_spawn := {
 	"assassin" : 0,
 	"noob" : 0,
 	"bouclier" : 0,
 	"lance" : 0,
+	"mage_feu" : 0,
+	"mage_glace" : 0,
+	"mage_soin" : 0
 }
 
 
@@ -58,10 +70,18 @@ func next_wave():
 		truc_a_spawn.noob = 20
 		truc_a_spawn.bouclier = (budget - 20) / 4
 		truc_a_spawn.lance = (budget - 20) / 4
+	elif budget < 60:
+		truc_a_spawn.assassin = budget / 8
+		truc_a_spawn.bouclier = budget / 4
+		truc_a_spawn.lance = budget / 4
 	else:
 		truc_a_spawn.assassin = budget / 8
 		truc_a_spawn.bouclier = budget / 4
 		truc_a_spawn.lance = budget / 4
+		truc_a_spawn.mage_feu = budget / 40
+		truc_a_spawn.mage_soin = budget / 40
+		truc_a_spawn.mage_glace = budget / 40
+		
 	
 	$"spawn delay".start()
 
@@ -91,11 +111,29 @@ func _on_spawn_timeout() -> void:
 		elif truc_a_spawn.lance > 0:
 			unit_instance = HUMAIN_A_LANCE.instantiate()
 			truc_a_spawn.lance -= 1
+		elif truc_a_spawn.mage_feu > 0:
+			unit_instance = MAGE_FEU.instantiate()
+			truc_a_spawn.mage_feu -= 1
+		elif truc_a_spawn.mage_soin > 0:
+			unit_instance = MAGE_SOIN.instantiate()
+			truc_a_spawn.mage_soin -= 1
+		elif truc_a_spawn.mage_glace > 0:
+			unit_instance = MAGE_GLACE.instantiate()
+			truc_a_spawn.mage_glace -= 1
 		else:
 			$spawn.stop()
 			return
 		unit_instance.global_position = spawn_point[i]
 		get_parent().add_child(unit_instance)
+		unit_from_village.append(unit_instance)
+		unit_instance.village = self
+
+func couik(villageois):
+	unit_from_village.erase(villageois)
+	if unit_from_village == [] && is_raided:
+		Globals.bone_counter.add_bones(difficulty * 50)
+		Globals.exp.add_exp(difficulty * 10)
+		queue_free()
 
 
 func _on_decale_timeout() -> void:
@@ -109,3 +147,13 @@ func _on_decale_timeout() -> void:
 
 func _on_spawn_delay_timeout() -> void:
 	$spawn.start()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Unit"):
+		is_raided = true
+		Globals.infamie += 2
+		next_wave()
+		next_wave()
+		next_wave()
+		next_wave()

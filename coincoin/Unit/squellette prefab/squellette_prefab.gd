@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 @export var speed := 5000
+var base_speed := 0
 @export var range := 1.0
 @export var attack_damage := 5
 @export var max_hp := 25
 var shield := 0
 var current_hp := 25
+var init_dmg := 0
+var insensible := false
 
 @export var taille := 1
 
@@ -38,6 +41,8 @@ func _ready() -> void:
 	current_hp = max_hp
 	animatedSprite.play("idle down")
 	fow_revealer.enable = false
+	base_speed = speed
+	update_stat()
 
 
 func disabled():
@@ -62,6 +67,14 @@ func _physics_process(delta: float) -> void:
 	if is_moving == true or is_a_moving && !humain_in_range:
 		if Globals.night or in_night_arura:
 			move_along_path(delta)
+
+func update_stat():
+	if init_dmg == 0:
+		init_dmg = attack_damage
+	max_hp *= Globals.squ_hp_mult
+	current_hp *= Globals.squ_hp_mult
+	attack_damage = init_dmg * Globals.squ_dmg_mult
+	speed = base_speed * Globals.squ_sp_mult
 
 func move_to(pos):
 	var navigation = get_node("NavigationAgent2D")
@@ -106,6 +119,7 @@ func move_along_path(delta):
 
 
 func take_damage(dmg):
+	if insensible:return
 	if shield > 0:
 		shield -= dmg
 	else:

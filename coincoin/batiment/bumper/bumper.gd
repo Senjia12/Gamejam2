@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if !put:
-		if !Globals.night:
+		if Globals.night:
 			global_position = get_global_mouse_position()
 			if Input.is_action_just_pressed("click_gauche") && rota.get_node(rot).get_child(0).get_overlapping_bodies() == []:
 				put = true

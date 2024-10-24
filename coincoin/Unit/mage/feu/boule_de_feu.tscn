@@ -1,0 +1,125 @@
+[gd_scene load_steps=18 format=3 uid="uid://t5ofe1ql7mk5"]
+
+[ext_resource type="Texture2D" uid="uid://bbgdfc2tlpwlg" path="res://Unit/mage/feu/projectile.png" id="1_8jdy4"]
+[ext_resource type="Script" path="res://Unit/mage/feu/boule_de_feu.gd" id="1_ov1to"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rxdg"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w0es"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02vg3"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bendk"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5xvh"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8khj"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(72, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdkh4"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(90, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j7qk"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(108, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfu12"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(126, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh7y0"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(144, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daiwn"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(162, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w01u"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(180, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfltw"]
+atlas = ExtResource("1_8jdy4")
+region = Rect2(198, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pukpm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rxdg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w0es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02vg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bendk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5xvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8khj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdkh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j7qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfu12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh7y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daiwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w01u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfltw")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjf6l"]
+
+[node name="boule de feu" type="Node2D"]
+script = ExtResource("1_ov1to")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pukpm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mjf6l")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

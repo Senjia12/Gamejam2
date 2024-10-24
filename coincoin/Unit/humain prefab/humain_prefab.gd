@@ -8,6 +8,8 @@ var real_speed := 5000
 @export var exp := 5
 var current_hp := 25
 
+@export var mage := false
+
 var speed_mult := 1.0
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -23,7 +25,7 @@ var timer_start := false
 @onready var cadavre = preload("res://Unit/cadavre/cadavre.tscn")
 
 var bump_velocity := Vector2.ZERO
-
+var village
 var reavealer := 0
 
 func reset_target():
@@ -88,9 +90,9 @@ func move_along_path(delta):
 					looking = "right"
 					animatedSprite.play("move right")
 			
-			if velocity == Vector2.ZERO:
+			if velocity == Vector2.ZERO && $Attack_range.get_overlapping_bodies() == []:
 				animatedSprite.play("idle " + looking)
-		else:
+		elif $Attack_range.get_overlapping_bodies() == []:
 			animatedSprite.play("idle " + looking)
 
 func take_damage(dmg):
@@ -100,6 +102,7 @@ func take_damage(dmg):
 		cadavre_instance.global_position = global_position
 		get_parent().add_child(cadavre_instance)
 		Globals.exp.add_exp(exp)
+		village.couik(self)
 		queue_free()
 
 func reavealed():
@@ -127,6 +130,18 @@ func _on_attack_range_body_entered(body: Node2D) -> void:
 		if !timer_start:
 			timer_start = true
 			$"attack cd".start()
+			var dir_to_humain = global_position.direction_to($Attack_range.get_overlapping_bodies()[0].global_position)
+			if abs(dir_to_humain.x) > 0.5:
+				if dir_to_humain.x > 0:
+					looking = "right"
+				else:
+					looking = "left"
+			else:
+				if dir_to_humain.y > 0:
+					looking = "down"
+				else:
+					looking = "up"
+
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("squellette"):
@@ -136,15 +151,36 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 			attack.hide()
 			animatedSprite.show()
 
+
 func _on_attack_cd_timeout() -> void:
 	if $Attack_range.get_overlapping_bodies() != []:
 		if $Attack_range.get_overlapping_bodies()[0].is_in_group("fosse a squellette"):
 			Globals.bone_counter.take_damage(attack_damage)
-		else:
+			attack.show()
+			animatedSprite.hide()
+		elif !mage:
 			attack.show()
 			animatedSprite.hide()
 			$Attack_range.get_overlapping_bodies()[0].take_damage(attack_damage)
-			attack.play("attack " + looking)
+		else:
+			attack.show()
+			animatedSprite.hide()
+			get_node("projectile").launch()
+		var dir_to_humain = global_position.direction_to($Attack_range.get_overlapping_bodies()[0].global_position)
+		
+		if abs(dir_to_humain.x) > 0.5:
+			if dir_to_humain.x > 0:
+				looking = "right"
+			else:
+				looking = "left"
+		else:
+			if dir_to_humain.y > 0:
+				looking = "down"
+			else:
+				looking = "up"
+		
+		
+		attack.play("attack " + looking)
 
 
 func _on_ennemi_near_body_entered(body: Node2D) -> void:

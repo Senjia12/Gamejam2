@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://cegk7h3edupr3"]
+
+[ext_resource type="Script" path="res://Unit/squellette mortier/mortier.gd" id="1_s0gsu"]
+[ext_resource type="Texture2D" uid="uid://cmdht1frfxfmb" path="res://Unit/squellette mortier/projectile.png" id="2_hptdv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6qfi"]
+atlas = ExtResource("2_hptdv")
+region = Rect2(0, 0, 28, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im3om"]
+atlas = ExtResource("2_hptdv")
+region = Rect2(0, 0, 28, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l67fm"]
+atlas = ExtResource("2_hptdv")
+region = Rect2(28, 0, 28, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctdaq"]
+atlas = ExtResource("2_hptdv")
+region = Rect2(56, 0, 28, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibful"]
+atlas = ExtResource("2_hptdv")
+region = Rect2(84, 0, 28, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij2jj"]
+atlas = ExtResource("2_hptdv")
+region = Rect2(112, 0, 28, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqwaj"]
+atlas = ExtResource("2_hptdv")
+region = Rect2(140, 0, 28, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gbimg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6qfi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im3om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l67fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctdaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibful")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij2jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqwaj")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_slrtb"]
+radius = 41.0488
+
+[node name="mortier" type="Node2D"]
+script = ExtResource("1_s0gsu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gbimg")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_slrtb")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

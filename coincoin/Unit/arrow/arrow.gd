@@ -12,5 +12,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	global_position += global_position.direction_to(t_pos) * delta * 1000
 	if global_position.distance_to(t_pos) <= 16:
-		target.take_damage(15)
+		if target != null:
+			target.take_damage(15 * Globals.squ_dmg_mult)
 		queue_free()
