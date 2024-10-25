@@ -8,37 +8,86 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h032s"]
 shader = ExtResource("2_vam73")
-shader_parameter/lod = 3.515
+shader_parameter/lod = 0.0
 shader_parameter/mix_percentage = 0.3
-
-[sub_resource type="Animation" id="Animation_8ghrk"]
-resource_name = "show"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 648), Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_w0eud"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:position")
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 648)]
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/quit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(479, 887.21)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/play:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(324, 669.51)]
+}
+
+[sub_resource type="Animation" id="Animation_8ghrk"]
+resource_name = "show"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.69]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/quit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(479, 887.21), Vector2(479, 487.21)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/play:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(324, 669.51), Vector2(324, 319.51)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uejgc"]
@@ -71,8 +120,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 648.0
-offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -84,9 +131,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -97.0
-offset_top = 163.21
+offset_top = 563.21
 offset_right = 97.0
-offset_bottom = 221.21
+offset_bottom = 621.21
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_2oq4k")
@@ -99,9 +146,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -252.0
-offset_top = -54.49
+offset_top = 345.51
 offset_right = 252.0
-offset_bottom = 67.51
+offset_bottom = 467.51
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("5_nhp8c")

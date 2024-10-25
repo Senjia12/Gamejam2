@@ -129,7 +129,7 @@ animations = [{
 size = Vector2(993, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15d3y"]
-radius = 160.028
+radius = 76.9415
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xbhf"]
 radius = 400.0
@@ -332,7 +332,6 @@ wait_time = 15.0
 wait_time = 10.0
 
 [node name="nearby_defended_allies" type="CollisionShape2D" parent="summon_spell"]
-visible = false
 shape = SubResource("CircleShape2D_15d3y")
 
 [node name="FOW revealer" type="PointLight2D" parent="." groups=["fow"]]

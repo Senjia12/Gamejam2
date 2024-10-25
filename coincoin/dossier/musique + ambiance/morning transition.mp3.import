@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3nriedp7gxir"
+path="res://.godot/imported/morning transition.mp3-a51aad826772c8cf969d34b8417eb162.mp3str"
+
+[deps]
+
+source_file="res://dossier/musique + ambiance/morning transition.mp3"
+dest_files=["res://.godot/imported/morning transition.mp3-a51aad826772c8cf969d34b8417eb162.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

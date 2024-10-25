@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1ar1te7b0nyn"
+path="res://.godot/imported/jour music 03.mp3-0f9bffd6d44c0cfa060ffe85f1010b10.mp3str"
+
+[deps]
+
+source_file="res://dossier/musique + ambiance/jour music 03.mp3"
+dest_files=["res://.godot/imported/jour music 03.mp3-0f9bffd6d44c0cfa060ffe85f1010b10.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b458j3f3n5v7l"
+path="res://.godot/imported/night transition.mp3-62626a43f625b47b393cbc190dc54ecb.mp3str"
+
+[deps]
+
+source_file="res://dossier/musique + ambiance/night transition.mp3"
+dest_files=["res://.godot/imported/night transition.mp3-62626a43f625b47b393cbc190dc54ecb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

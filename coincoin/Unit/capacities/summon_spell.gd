@@ -39,7 +39,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$summon_spell_cd.wait_time = cooldown_multiplier * $summon_spell_cd.wait_time #opti avec calcul quand amélio cd ?
 
-	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(summon_cost)==true && get_overlapping_bodies()== []:
+	if Input.is_action_just_pressed("summon_spell") && can_summon==true && Globals.mana.cost(summon_cost)==true && get_overlapping_bodies()== [get_parent()]:
 		can_summon = false
 		nb_summon_spell += 1
 		$summon_spell_cd.start()
@@ -65,6 +65,10 @@ func _process(delta: float) -> void:
 		if summon_spell == "summon spell t3 armed skeleton range":
 			nb_range_summoned += spawn_number
 			summon_creature()
+	else:
+		print(can_summon)
+		print(get_overlapping_bodies())
+		print(summon_cost)
 
 ## VARIABLES : 
 #summon_radius = rayon cercle de spwan autour du player

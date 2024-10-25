@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://i166012at4iw"
+path="res://.godot/imported/night music02.mp3-23b8f2d4d5c674743ddb07fef47789b4.mp3str"
+
+[deps]
+
+source_file="res://dossier/musique + ambiance/night music02.mp3"
+dest_files=["res://.godot/imported/night music02.mp3-23b8f2d4d5c674743ddb07fef47789b4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
