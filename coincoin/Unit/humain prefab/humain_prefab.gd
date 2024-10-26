@@ -8,6 +8,8 @@ var real_speed := 5000
 @export var exp := 5
 var current_hp := 25
 
+var is_raided = false
+
 @export var mage := false
 
 var speed_mult := 1.0
@@ -29,7 +31,7 @@ var village
 var reavealer := 0
 
 func reset_target():
-	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 140)
+	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 32)
 
 
 func _ready() -> void:
@@ -38,7 +40,7 @@ func _ready() -> void:
 	$"ennemi near"/CollisionShape2D.scale = Vector2(range,range)
 	current_hp = max_hp
 	animatedSprite.play("idle down")
-	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 140)
+	move_to(Vector2.ZERO + Vector2.ZERO.direction_to(global_position) * 32)
 
 func _physics_process(delta: float) -> void:
 	if !humain_in_range:
@@ -102,6 +104,7 @@ func take_damage(dmg):
 		cadavre_instance.global_position = global_position
 		get_parent().add_child(cadavre_instance)
 		Globals.exp.add_exp(exp)
+		Globals.score += exp * 20
 		village.couik(self)
 		queue_free()
 
@@ -109,20 +112,24 @@ func reavealed():
 	reavealer += 1
 	show()
 	real_speed = speed
+	if Globals.first:
+		Globals.first = false
+		Globals.poti_squellette.talk(["Look ! Humans are coming ! Use your offensive spell on them !"])
 
 
 func unreavealed():
 	reavealer -= 1
 	if reavealer <= 0:
-		hide()
+		#hide()
 		reavealer = 0
-		real_speed = speed * 2
+		#real_speed = speed * 2
 
 
 func run():
-	$"tp haut".play("default")
-	$"tp bas".play("default")
-	$Timer.start()
+	if !is_raided:
+		$"tp haut".play("default")
+		$"tp bas".play("default")
+		$Timer.start()
 
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
@@ -154,6 +161,7 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 
 func _on_attack_cd_timeout() -> void:
 	if $Attack_range.get_overlapping_bodies() != []:
+		$hit.play()
 		if $Attack_range.get_overlapping_bodies()[0].is_in_group("fosse a squellette"):
 			Globals.bone_counter.take_damage(attack_damage)
 			attack.show()

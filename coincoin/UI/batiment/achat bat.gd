@@ -26,3 +26,4 @@ func _on_buy_pressed() -> void:
 			elif bat_type == "bump":
 				spawn.add_child(BUMPER.instantiate())
 				Globals.is_pausing_bat = true
+			$"../../../ui".play()

@@ -42,20 +42,20 @@ region = Rect2(0, 0, 13, 17)
 atlas = ExtResource("7_m6eht")
 region = Rect2(0, 0, 13, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u72kq"]
-atlas = ExtResource("8_2v8dc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou3th"]
+atlas = ExtResource("10_vjah2")
 region = Rect2(0, 0, 13, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wipjb"]
-atlas = ExtResource("8_2v8dc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_apxmu"]
+atlas = ExtResource("10_vjah2")
 region = Rect2(13, 0, 13, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_212a5"]
-atlas = ExtResource("8_2v8dc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2bp7"]
+atlas = ExtResource("10_vjah2")
 region = Rect2(26, 0, 13, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_02tt0"]
-atlas = ExtResource("8_2v8dc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_27b6x"]
+atlas = ExtResource("10_vjah2")
 region = Rect2(39, 0, 13, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frdky"]
@@ -74,20 +74,20 @@ region = Rect2(26, 0, 13, 18)
 atlas = ExtResource("9_cuk76")
 region = Rect2(39, 0, 13, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ou3th"]
-atlas = ExtResource("10_vjah2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u72kq"]
+atlas = ExtResource("8_2v8dc")
 region = Rect2(0, 0, 13, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apxmu"]
-atlas = ExtResource("10_vjah2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wipjb"]
+atlas = ExtResource("8_2v8dc")
 region = Rect2(13, 0, 13, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2bp7"]
-atlas = ExtResource("10_vjah2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_212a5"]
+atlas = ExtResource("8_2v8dc")
 region = Rect2(26, 0, 13, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_27b6x"]
-atlas = ExtResource("10_vjah2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_02tt0"]
+atlas = ExtResource("8_2v8dc")
 region = Rect2(39, 0, 13, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgvxf"]
@@ -142,16 +142,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u72kq")
+"texture": SubResource("AtlasTexture_ou3th")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wipjb")
+"texture": SubResource("AtlasTexture_apxmu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_212a5")
+"texture": SubResource("AtlasTexture_a2bp7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_02tt0")
+"texture": SubResource("AtlasTexture_27b6x")
 }],
 "loop": true,
 "name": &"move down",
@@ -176,16 +176,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ou3th")
+"texture": SubResource("AtlasTexture_u72kq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_apxmu")
+"texture": SubResource("AtlasTexture_wipjb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2bp7")
+"texture": SubResource("AtlasTexture_212a5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_27b6x")
+"texture": SubResource("AtlasTexture_02tt0")
 }],
 "loop": true,
 "name": &"move up",
@@ -395,18 +395,19 @@ animations = [{
 
 [node name="Squellette archer" instance=ExtResource("1_p43im")]
 speed = 4000
-range = 11.0
+range = 13.0
 attack_damage = 10
 max_hp = 15
 is_range = true
 
 [node name="AnimatedSprite2D" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_vgvxf")
-animation = &"idle up"
+
+[node name="attack cd" parent="." index="5"]
+wait_time = 1.5
 
 [node name="attack" parent="." index="9"]
 sprite_frames = SubResource("SpriteFrames_3nt3j")
-animation = &"attack d right"
 offset = Vector2(0, -8.5)
 
 [node name="projectile" type="Node2D" parent="." index="10"]

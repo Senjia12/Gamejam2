@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dw0ixpjs3h8lo"
+path="res://.godot/imported/trot cheval.mp3-54edfa8651f926c91939c76011bd5830.mp3str"
+
+[deps]
+
+source_file="res://dossier/sfx/trot cheval.mp3"
+dest_files=["res://.godot/imported/trot cheval.mp3-54edfa8651f926c91939c76011bd5830.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

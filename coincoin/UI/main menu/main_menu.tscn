@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cawy6s6r24nn6"]
+[gd_scene load_steps=13 format=3 uid="uid://cawy6s6r24nn6"]
 
 [ext_resource type="Script" path="res://UI/main menu/main_menu.gd" id="1_6nex4"]
 [ext_resource type="Texture2D" uid="uid://c7gf2mgbakl6r" path="res://UI/main menu/ecran_titre4modif.png" id="1_nh08d"]
 [ext_resource type="Shader" path="res://UI/shader/blur.gdshader" id="2_vam73"]
+[ext_resource type="FontFile" uid="uid://cxsyqol86cuds" path="res://UI/BabaMediumPixels.ttf" id="3_01u6y"]
 [ext_resource type="Texture2D" uid="uid://dfqx7yknmfmki" path="res://UI/main menu/image (3).png" id="4_2oq4k"]
 [ext_resource type="Texture2D" uid="uid://db0p2rwpsfer1" path="res://UI/main menu/image.png" id="5_nhp8c"]
+[ext_resource type="AudioStream" uid="uid://ccbjgfn6qxkc7" path="res://dossier/musique + ambiance/night music1.mp3" id="6_djiwy"]
+[ext_resource type="AudioStream" uid="uid://bxnflel25l1dk" path="res://dossier/sfx/ui click 1.mp3" id="7_p3v2r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h032s"]
 shader = ExtResource("2_vam73")
@@ -114,6 +117,30 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_nh08d")
 
+[node name="Label" type="Label" parent="TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 174.0
+offset_top = 581.0
+offset_right = 949.0
+offset_bottom = 604.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_01u6y")
+theme_override_font_sizes/font_size = 20
+text = "the html version works but encounters some bugs, we recommend the window version"
+
+[node name="Label2" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 500.0
+offset_right = 945.0
+offset_bottom = 532.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_01u6y")
+theme_override_font_sizes/font_size = 32
+text = "Press any button"
+horizontal_alignment = 1
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_h032s")
 layout_mode = 1
@@ -159,5 +186,14 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_djiwy")
+autoplay = true
+
+[node name="ui" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_p3v2r")
+volume_db = 5.0
+
 [connection signal="pressed" from="ColorRect/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ColorRect/play" to="." method="_on_play_pressed"]
+[connection signal="animation_finished" from="show button" to="." method="_on_show_button_animation_finished"]

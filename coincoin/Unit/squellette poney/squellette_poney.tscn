@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://jk4bwpg5f8jk"]
+[gd_scene load_steps=62 format=3 uid="uid://jk4bwpg5f8jk"]
 
 [ext_resource type="PackedScene" uid="uid://sw0ptkaim85x" path="res://Unit/squellette prefab/squellette_prefab.tscn" id="1_q8utf"]
 [ext_resource type="Texture2D" uid="uid://dr2em4ktskuj6" path="res://Unit/squellette poney/Cheval_dos_2.png" id="2_1breb"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dhunhp6paobmi" path="res://Unit/squellette poney/attack d haut.png" id="13_0ndmm"]
 [ext_resource type="Texture2D" uid="uid://cebps3lfs7cxh" path="res://Unit/squellette poney/attack bas.png" id="14_fpg2y"]
 [ext_resource type="Texture2D" uid="uid://638ya7ph053k" path="res://Unit/squellette poney/attack haut.png" id="15_lvnym"]
+[ext_resource type="AudioStream" uid="uid://dw0ixpjs3h8lo" path="res://dossier/sfx/trot cheval.mp3" id="16_tjijb"]
+[ext_resource type="Script" path="res://Unit/squellette poney/trot.gd" id="17_pqe48"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7rpn"]
 atlas = ExtResource("2_1breb")
@@ -393,9 +395,9 @@ animations = [{
 
 [node name="Squellette poney" instance=ExtResource("1_q8utf")]
 speed = 7500
-range = 2.0
-attack_damage = 10
-max_hp = 40
+range = 5.0
+attack_damage = 20
+max_hp = 60
 taille = 2
 
 [node name="AnimatedSprite2D" parent="." index="4"]
@@ -406,3 +408,7 @@ offset = Vector2(0, -16.5)
 sprite_frames = SubResource("SpriteFrames_nvil3")
 animation = &"attack down"
 offset = Vector2(0, -12.5)
+
+[node name="trot" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = ExtResource("16_tjijb")
+script = ExtResource("17_pqe48")

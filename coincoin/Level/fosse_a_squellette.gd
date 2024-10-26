@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 
 @onready var state := [preload("res://Level/Décor/fosse/fosse 0.png"), preload("res://Level/Décor/fosse/fosse 1.png"), preload("res://Level/Décor/fosse/fosse 2.png"), preload("res://Level/Décor/fosse/fosse 3.png"), preload("res://Level/Décor/fosse/fosse 4.png"), preload("res://Level/Décor/fosse/fosse 5.png"), preload("res://Level/Décor/fosse/fosse 6.png"), preload("res://Level/Décor/fosse/fosse 7.png")]
@@ -19,31 +19,42 @@ var next_spawn
 
 func _ready() -> void:
 	Globals.bone_pill = self
+	update_state(50)
+
+
+func _physics_process(delta: float) -> void:
+	if reav:$"FOW revealer".texture_scale += Vector2(1,1)
 
 
 func spawn(what):
 	$"spawn pos".global_rotation = randi()%360
 	next_spawn = what
 	$delay.start()
+	$"../ui".play()
+	$spawn.play()
+
+var reav = false
+func reveale():
+	reav = true
 
 
 func update_state(squellette):
 	if squellette == 0:
-		texture = state[0]
+		frame = 0
 	elif squellette <= 20:
-		texture = state[1]
-	elif squellette <= 80:
-		texture = state[2]
-	elif squellette <= 200:
-		texture = state[3]
-	elif squellette <= 600:
-		texture = state[4]
-	elif squellette <= 1200:
-		texture = state[5]
-	elif squellette <= 2000:
-		texture = state[6]
+		frame = 1
+	elif squellette <= 60:
+		frame = 2
+	elif squellette <= 100:
+		frame = 3
+	elif squellette <= 150:
+		frame = 4
+	elif squellette <= 250:
+		frame = 5
+	elif squellette <= 500:
+		frame = 6
 	else:
-		texture = state[7]
+		frame = 7
 
 
 func _on_delay_timeout() -> void:

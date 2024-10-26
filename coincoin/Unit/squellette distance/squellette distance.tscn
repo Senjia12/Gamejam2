@@ -395,7 +395,7 @@ animations = [{
 
 [node name="Squellette prefab" instance=ExtResource("1_aseif")]
 speed = 2500
-range = 16.0
+range = 14.0
 attack_damage = 15
 max_hp = 30
 taille = 2
@@ -405,6 +405,9 @@ is_range = true
 sprite_frames = SubResource("SpriteFrames_7frot")
 animation = &"disable down"
 offset = Vector2(0, -19)
+
+[node name="attack cd" parent="." index="5"]
+wait_time = 1.5
 
 [node name="attack" parent="." index="9"]
 sprite_frames = SubResource("SpriteFrames_vwajo")

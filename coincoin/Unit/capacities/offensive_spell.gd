@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 						if i.is_in_group("Humain"):
 							i.take_damage(25)
 				elif tier == 3:
+					$ray.scale.x = 5
+					$"ray t3".scale.x = 5
 					$ray.play("t3")
 					for i in $"ray t2".get_overlapping_bodies():
 						if i.is_in_group("Humain"):

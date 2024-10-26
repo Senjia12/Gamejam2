@@ -14,7 +14,7 @@ var defensive_spell = "defense spell"
 var shield_scene_instance
 
 #var début game :
-var can_defend = true
+var can_defend = false
 var is_defending = false
 var defensive_cost = 4
 

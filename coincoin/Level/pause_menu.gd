@@ -16,3 +16,4 @@ func _physics_process(delta: float) -> void:
 func _on_resume_pressed() -> void:
 	hide()
 	get_tree().paused = false
+	$"../../ui".play()

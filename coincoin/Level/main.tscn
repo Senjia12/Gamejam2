@@ -1,20 +1,23 @@
-[gd_scene load_steps=160 format=4 uid="uid://cu0nevcv16fdi"]
+[gd_scene load_steps=189 format=4 uid="uid://cu0nevcv16fdi"]
 
 [ext_resource type="Script" path="res://Level/Cam controller/cam_controller.gd" id="2_x58xy"]
+[ext_resource type="Texture2D" uid="uid://r85ya6fnexh7" path="res://Level/image (2).png" id="3_1ryta"]
 [ext_resource type="PackedScene" uid="uid://byauyvuqltrvw" path="res://Unit/nécromancien/nécromancien.tscn" id="3_6rrow"]
 [ext_resource type="Script" path="res://Level/Cam controller/unit_select.gd" id="4_xyjs5"]
-[ext_resource type="Texture2D" uid="uid://b1h1ll51wx2ra" path="res://Level/Décor/fosse/fosse 0.png" id="5_38220"]
 [ext_resource type="Script" path="res://Level/fosse_a_squellette.gd" id="6_7g847"]
 [ext_resource type="Texture2D" uid="uid://bqw123g6lvnug" path="res://UI/shader/light.png" id="6_h4lyg"]
 [ext_resource type="Texture2D" uid="uid://dy183j5a4vt7v" path="res://Level/Décor/terrain/herbe.png" id="7_iuip1"]
 [ext_resource type="Script" path="res://Level/fow_revealer.gd" id="7_ol4v5"]
+[ext_resource type="AudioStream" uid="uid://ct7ttdpax21w7" path="res://dossier/sfx/invocation squelette.mp3" id="7_vhdu4"]
 [ext_resource type="Script" path="res://Level/Décor/terrain generation.gd" id="8_qxubo"]
 [ext_resource type="Script" path="res://Level/day_night_cycle.gd" id="9_d34sj"]
 [ext_resource type="Shader" path="res://UI/shader/blur.gdshader" id="10_hnh7q"]
 [ext_resource type="Texture2D" uid="uid://d1uo675bmndvh" path="res://UI/image.png" id="10_ldxxe"]
 [ext_resource type="Texture2D" uid="uid://cokvtcd1t40xj" path="res://UI/image (2).png" id="11_63304"]
 [ext_resource type="Texture2D" uid="uid://b6f3mwv8lv8sb" path="res://UI/image (1).png" id="12_kqbog"]
+[ext_resource type="Texture2D" uid="uid://brdambbu1fne0" path="res://UI/blabla squellette/image (4).png" id="12_o2ipr"]
 [ext_resource type="Texture2D" uid="uid://du5owmsa1h44x" path="res://UI/achat squellette/compteur_os.png" id="13_6ucth"]
+[ext_resource type="Script" path="res://Level/ui_poti_squellette.gd" id="13_d43rk"]
 [ext_resource type="Texture2D" uid="uid://cmcqbv7c78lfi" path="res://UI/achat squellette/ui_invoccheval.png" id="14_hp4yc"]
 [ext_resource type="Texture2D" uid="uid://qm4qayohc6o2" path="res://UI/achat squellette/ui_invocsquelett.png" id="14_phhdv"]
 [ext_resource type="Script" path="res://UI/achat squellette/conteur_os.gd" id="14_un8gy"]
@@ -54,6 +57,8 @@
 [ext_resource type="Texture2D" uid="uid://cay2ftwvtuy0k" path="res://arbre de compétence/summon/image (3).png" id="42_w7s3a"]
 [ext_resource type="Texture2D" uid="uid://c25jkw8weccpn" path="res://arbre de compétence/summon/image (7).png" id="43_lhlgj"]
 [ext_resource type="Texture2D" uid="uid://bj433ne7rgdto" path="res://arbre de compétence/summon/image.png" id="44_hitih"]
+[ext_resource type="Script" path="res://Level/intro.gd" id="45_q1n7n"]
+[ext_resource type="Texture2D" uid="uid://bd8hht344pmjf" path="res://UI/introduction.png" id="45_rylhr"]
 [ext_resource type="Texture2D" uid="uid://buaopalorii35" path="res://arbre de compétence/summon/image (4).png" id="45_y2v81"]
 [ext_resource type="Texture2D" uid="uid://cby0yx52glpvg" path="res://arbre de compétence/summon/image (2).png" id="46_61rw0"]
 [ext_resource type="Texture2D" uid="uid://des3n1ngyft16" path="res://arbre de compétence/summon/image (6).png" id="47_fijcc"]
@@ -132,9 +137,94 @@
 [ext_resource type="Texture2D" uid="uid://but4qxvi528oi" path="res://arbre de compétence/trans/r cho bg.png" id="100_fpqb4"]
 [ext_resource type="Texture2D" uid="uid://bqbrfskrhmrx4" path="res://arbre de compétence/trans/r cho bda.png" id="101_hhu55"]
 [ext_resource type="Texture2D" uid="uid://b6eefxs162sn3" path="res://arbre de compétence/trans/r cho bd.png" id="102_rjmct"]
+[ext_resource type="AudioStream" uid="uid://bqay3jc5ya6cq" path="res://dossier/sfx/page-flip1-178322.mp3" id="128_gihpg"]
+[ext_resource type="AudioStream" uid="uid://cwwt30p1ce6b2" path="res://dossier/sfx/page-flip2-178323.mp3" id="129_t1nbk"]
 [ext_resource type="AudioStream" uid="uid://c3nriedp7gxir" path="res://dossier/musique + ambiance/morning transition.mp3" id="133_5olne"]
+[ext_resource type="Script" path="res://Level/musique.gd" id="133_hx601"]
 [ext_resource type="AudioStream" uid="uid://w333xve48c4c" path="res://dossier/musique + ambiance/ambiance jour.mp3" id="134_3cyrl"]
 [ext_resource type="AudioStream" uid="uid://r76u8xhtumsa" path="res://dossier/musique + ambiance/ambiance nuit.mp3" id="135_ptu3f"]
+[ext_resource type="AudioStream" uid="uid://c1ar1te7b0nyn" path="res://dossier/musique + ambiance/jour music 03.mp3" id="137_fvicc"]
+[ext_resource type="AudioStream" uid="uid://b458j3f3n5v7l" path="res://dossier/musique + ambiance/night transition.mp3" id="138_hj241"]
+[ext_resource type="AudioStream" uid="uid://bxnflel25l1dk" path="res://dossier/sfx/ui click 1.mp3" id="140_fgvwt"]
+[ext_resource type="AudioStream" uid="uid://bwgogwr065v8n" path="res://dossier/musique + ambiance/medievl bosss.wav" id="144_afc1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5rii"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(0, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bbxt"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(165, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k2kx"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(330, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8obx"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(495, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4x0q"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(660, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbgwk"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(825, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcp42"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(990, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st6w0"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(1155, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx08e"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(1320, 0, 165, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5gsc"]
+atlas = ExtResource("3_1ryta")
+region = Rect2(1485, 0, 165, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1pyo2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5rii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bbxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k2kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8obx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4x0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbgwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcp42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st6w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx08e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5gsc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dfrv"]
 radius = 11.0
@@ -143,7 +233,7 @@ radius = 11.0
 radius = 1027.02
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5cws"]
-radius = 196.023
+radius = 108.296
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v671"]
 texture = ExtResource("7_iuip1")
@@ -155,9 +245,118 @@ tile_size = Vector2i(1500, 1500)
 sources/0 = SubResource("TileSetAtlasSource_8v671")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ihopg"]
-vertices = PackedVector2Array(184.211, -0.601563, 5943.86, -5879.91, 5792.12, 5707.04, 177.594, 42.4609, 175.258, -33.0469, 157.461, 76.0078, -5846.06, 5757.95, 122.938, 99.7422, 88.5, 115.391, 42.6563, 128.938, -4.32813, 131.023, -51.0234, 125.844, -95.5703, 112.367, -140.82, 91.3203, 155.5, -64.8672, -5921.93, -5778.08, 129.438, -84.4219, 87.8281, -107.313, 43.9766, -119.844, 0.1875, -125.047, -50.25, -120.93, -92.8516, -113.656, -129.594, -97.9063, -160.711, -79.0234, -178.313, -42.7188, -186.711, -16.4531, -190.031, 1.25, -188.891, 32.1094, -168.828, 63.3125)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4), PackedInt32Array(5, 3, 2), PackedInt32Array(5, 2, 6, 7), PackedInt32Array(8, 7, 6), PackedInt32Array(9, 8, 6), PackedInt32Array(10, 9, 6), PackedInt32Array(11, 10, 6), PackedInt32Array(12, 11, 6), PackedInt32Array(13, 12, 6), PackedInt32Array(1, 4, 14), PackedInt32Array(15, 1, 14, 16), PackedInt32Array(15, 16, 17), PackedInt32Array(15, 17, 18), PackedInt32Array(15, 18, 19), PackedInt32Array(15, 19, 20), PackedInt32Array(15, 20, 21), PackedInt32Array(15, 21, 22), PackedInt32Array(15, 22, 23), PackedInt32Array(6, 15, 23, 24), PackedInt32Array(6, 24, 25), PackedInt32Array(6, 25, 26), PackedInt32Array(6, 26, 27), PackedInt32Array(6, 27, 28), PackedInt32Array(6, 28, 13)])
+vertices = PackedVector2Array(75.7031, 6.14844, 5943.86, -5879.91, 5792.12, 5707.04, 63.2109, 29.8828, 69.0313, -17.8594, 46.5469, -43.7109, -5921.93, -5778.08, 22.0391, -58.8828, -4.32031, -60.0234, -35.2188, -56.7109, -61.0469, -41.4531, -5846.06, 5757.95, -75.2422, -20.1719, -80.2266, -1.45313, -75.2188, 27.3281, -53.6406, 45.3203, -26.8516, 59.8281, 6.03906, 62.1016, 42.3594, 51.8828)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4), PackedInt32Array(1, 4, 5), PackedInt32Array(6, 1, 5, 7), PackedInt32Array(6, 7, 8), PackedInt32Array(6, 8, 9), PackedInt32Array(6, 9, 10), PackedInt32Array(11, 6, 10, 12), PackedInt32Array(11, 12, 13), PackedInt32Array(11, 13, 14), PackedInt32Array(2, 11, 14, 15), PackedInt32Array(2, 15, 16), PackedInt32Array(2, 16, 17), PackedInt32Array(2, 17, 18), PackedInt32Array(2, 18, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-5932, -5788, -5856, 5768, 5802, 5717, 5954, -5890)])
+
+[sub_resource type="Animation" id="Animation_xqo4c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_67pex"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bcgo"]
+_data = {
+"RESET": SubResource("Animation_xqo4c"),
+"show": SubResource("Animation_67pex")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_hbitj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -78, 27, 0, 0, 0, 0, -68, 18, 0, 0, 0, 0, -57, 12, 0, 0, 0, 0, -49, 8, 0, 0, 0, 0, -39, 4, 0, 0, 0, 0, -22, 0, 0, 0, 0, 0, -9, -2, 0, 0, 0, 0, 5, -4, 0, 0, 0, 0, 35, -4, 0, 0, 0, 0, 55, -1, 0, 0, 0, 0, 70, 2, 0, 0, 0, 0, 88, 7, 0, 0, 0, 0, 105, 16, 0, 0, 0, 0, 118, 27)
+}
+point_count = 14
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxe0"]
+shader = ExtResource("10_hnh7q")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.2
+
+[sub_resource type="Animation" id="Animation_qlxxh"]
+resource_name = "intro"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(9, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("intro/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b450a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("intro/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_devlo"]
+_data = {
+"RESET": SubResource("Animation_b450a"),
+"intro": SubResource("Animation_qlxxh")
+}
 
 [sub_resource type="Animation" id="Animation_ys2np"]
 length = 0.001
@@ -460,17 +659,6 @@ _data = {
 "day nighy": SubResource("Animation_6xvkw")
 }
 
-[sub_resource type="Curve2D" id="Curve2D_hbitj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -78, 27, 0, 0, 0, 0, -68, 18, 0, 0, 0, 0, -57, 12, 0, 0, 0, 0, -49, 8, 0, 0, 0, 0, -39, 4, 0, 0, 0, 0, -22, 0, 0, 0, 0, 0, -9, -2, 0, 0, 0, 0, 5, -4, 0, 0, 0, 0, 35, -4, 0, 0, 0, 0, 55, -1, 0, 0, 0, 0, 70, 2, 0, 0, 0, 0, 88, 7, 0, 0, 0, 0, 105, 16, 0, 0, 0, 0, 118, 27)
-}
-point_count = 14
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxe0"]
-shader = ExtResource("10_hnh7q")
-shader_parameter/lod = 5.0
-shader_parameter/mix_percentage = 0.2
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_5w1cw"]
 radius = 139.23
 
@@ -636,9 +824,10 @@ script = ExtResource("2_x58xy")
 z_index = 500
 script = ExtResource("4_xyjs5")
 
-[node name="Fosse a squellette" type="Sprite2D" parent="."]
+[node name="Fosse a squellette" type="AnimatedSprite2D" parent="."]
 z_index = -500
-texture = ExtResource("5_38220")
+sprite_frames = SubResource("SpriteFrames_1pyo2")
+speed_scale = 0.0
 script = ExtResource("6_7g847")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Fosse a squellette" groups=["fosse a squellette", "squellette"]]
@@ -646,12 +835,12 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fosse a squellette/StaticBody2D"]
-polygon = PackedVector2Array(-162, 4, -152, 38, -101, 81, -48, 95, -1, 98, 50, 93, 95, 78, 128, 58, 153, 22, 160, 1, 155, -24, 134, -51, 95, -77, 48, -93, -1, -100, -48, -95, -102, -78, -141, -56, -159, -26)
+polygon = PackedVector2Array(-60, -1, -57, -13, -51, -22, -40, -33, -21, -40, 0, -42, 18, -39, 37, -30, 49, -16, 56, 2, 49, 20, 34, 34, 15, 40, 0, 43, -20, 42, -36, 35, -52, 25, -59, 12)
 
 [node name="spawn pos" type="Node2D" parent="Fosse a squellette"]
 
 [node name="pos" type="Node2D" parent="Fosse a squellette/spawn pos"]
-position = Vector2(199, 0)
+position = Vector2(132, 0)
 
 [node name="Area2D" type="Area2D" parent="Fosse a squellette/spawn pos/pos"]
 collision_layer = 4
@@ -685,6 +874,10 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse a squellette/StaticBody2D2"]
 shape = SubResource("CircleShape2D_l5cws")
 
+[node name="spawn" type="AudioStreamPlayer" parent="Fosse a squellette"]
+stream = ExtResource("7_vhdu4")
+volume_db = 10.0
+
 [node name="Terrain" type="TileMapLayer" parent="."]
 z_index = -1000
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD8////AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAP//AAAAAAAAAAADAP7/AAAAAAAAAAADAP3/AAAAAAAAAAACAP3/AAAAAAAAAAABAP3/AAAAAAAAAAAAAP3/AAAAAAAAAAD9//3/AAAAAAAAAAD8//3/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAADAPz/AAAAAAAAAAACAPz/AAAAAAAAAAABAPz/AAAAAAAAAAAAAPz/AAAAAAAAAAD///z/AAAAAAAAAAD+//z/AAAAAAAAAAD9//z/AAAAAAAAAAD8//z/AAAAAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAA=")
@@ -692,14 +885,9 @@ tile_set = SubResource("TileSet_t4kdc")
 script = ExtResource("8_qxubo")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Terrain"]
-visible = false
 z_index = 1000
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ihopg")
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Terrain/NavigationRegion2D"]
-vertices = PackedVector2Array(-172, -29, -161, -45, -140, -69, -116, -85, -81, -99, -47, -106, 0, -109, 43, -105, 85, -94, 120, -77, 145, -56, 165, -28, 171, 0, 164, 32, 145, 62, 116, 82, 84, 97, 45, 112, 0, 116, -49, 112, -94, 99, -134, 78, -157, 55, -173, 31, -177, 0)
-affect_navigation_mesh = true
 
 [node name="Delay" type="Timer" parent="Terrain/NavigationRegion2D"]
 wait_time = 0.05
@@ -712,24 +900,67 @@ position = Vector2(0, -135)
 [node name="nécro spawn" type="Node2D" parent="Terrain/NavigationRegion2D"]
 position = Vector2(0, -125)
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Terrain/NavigationRegion2D"]
+vertices = PackedVector2Array(-70, -1, -66, -16, -54, -34, -32, -47, -4, -50, 19, -49, 40, -36, 60, -13, 65, 5, 55, 24, 37, 43, 5, 52, -24, 50, -48, 37, -66, 22)
+affect_navigation_mesh = true
+
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="day_night cycle" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_1hnvk")
-}
-speed_scale = 0.05
-script = ExtResource("9_d34sj")
-light_mix = 0.5
-
-[node name="CanvasModulate" type="CanvasModulate" parent="day_night cycle"]
-
-[node name="day duration" type="Timer" parent="day_night cycle"]
-wait_time = 120.0
-one_shot = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI poti squellette" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -286.5
+offset_right = 286.5
+offset_bottom = 178.0
+grow_horizontal = 2
+texture = ExtResource("12_o2ipr")
+script = ExtResource("13_d43rk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI poti squellette"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 32.0
+offset_right = 540.0
+offset_bottom = 158.0
+theme_override_constants/outline_size = 6
+theme_override_constants/line_separation = 6
+theme_override_fonts/normal_font = ExtResource("15_yflrp")
+theme_override_font_sizes/normal_font_size = 16
+text = "It's daylight. The humans will try to raid your base. Be careful, if they take all your corpses, it's over for you ! You'd better use your spells to defend it."
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Button" type="Button" parent="CanvasLayer/UI poti squellette"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text_display" type="AnimationPlayer" parent="CanvasLayer/UI poti squellette"]
+libraries = {
+"": SubResource("AnimationLibrary_1bcgo")
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/UI poti squellette"]
+layout_mode = 0
+offset_left = 446.5
+offset_top = 142.0
+offset_right = 539.5
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("15_yflrp")
+text = "click to hide"
+
+[node name="90 s" type="Timer" parent="CanvasLayer/UI poti squellette"]
+wait_time = 90.0
+one_shot = true
+autostart = true
 
 [node name="day night" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -802,9 +1033,12 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "0"
+text = "50"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="CanvasLayer/conteur os"]
+wait_time = 0.2
 
 [node name="achat squellette" type="VBoxContainer" parent="CanvasLayer"]
 visible = false
@@ -883,7 +1117,7 @@ layout_mode = 2
 texture = ExtResource("18_i3vpa")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
-cost = 10
+cost = 5
 type = "squellette arché"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette arché"]
@@ -912,7 +1146,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "10"
+text = "5
+"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -922,7 +1157,7 @@ layout_mode = 2
 texture = ExtResource("17_68tkg")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
-cost = 30
+cost = 15
 type = "squellette range"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette range"]
@@ -951,7 +1186,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "30"
+text = "15"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -961,7 +1196,7 @@ layout_mode = 2
 texture = ExtResource("18_i3vpa")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
-cost = 75
+cost = 30
 type = "motier"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette mortier"]
@@ -990,7 +1225,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "75"
+text = "30
+"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -1000,7 +1236,7 @@ layout_mode = 2
 texture = ExtResource("14_hp4yc")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
-cost = 25
+cost = 5
 type = "ponney"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette ponnay"]
@@ -1029,7 +1265,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "25"
+text = "5
+"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -1039,7 +1276,7 @@ layout_mode = 2
 texture = ExtResource("20_lis2n")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
-cost = 25
+cost = 10
 type = "squellette gros"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette gros"]
@@ -1068,8 +1305,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "25
-"
+text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -1079,7 +1315,7 @@ layout_mode = 2
 texture = ExtResource("21_btisa")
 expand_mode = 5
 script = ExtResource("17_2p2yo")
-cost = 100
+cost = 50
 type = "squellette enomre"
 
 [node name="spawn" type="Button" parent="CanvasLayer/achat squellette/squellette énorme"]
@@ -1108,7 +1344,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.784314, 0.607843, 0.52549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("15_yflrp")
-text = "100"
+text = "50"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -1326,10 +1562,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -105.5
-offset_top = -65.0
-offset_right = 130.5
-offset_bottom = 8.0
+offset_left = -81.5
+offset_top = -66.0
+offset_right = 154.5
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.9, 0.9)
@@ -1343,6 +1579,7 @@ texture_progress = ExtResource("29_j15y1")
 tint_under = Color(0.568973, 0.568973, 0.568973, 1)
 
 [node name="défense" type="TextureProgressBar" parent="CanvasLayer/ui_spell/spell"]
+visible = false
 layout_mode = 2
 step = 0.01
 value = 100.0
@@ -1466,11 +1703,18 @@ texture = ExtResource("41_44e3p")
 script = ExtResource("42_kls2o")
 
 [node name="Label" type="Label" parent="CanvasLayer/end_screen"]
-layout_mode = 0
-offset_left = 522.0
-offset_top = 558.0
-offset_right = 730.0
-offset_bottom = 590.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -88.0
+offset_right = 162.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("15_yflrp")
 theme_override_font_sizes/font_size = 32
@@ -1492,6 +1736,38 @@ offset_top = 381.0
 offset_right = 680.0
 offset_bottom = 431.0
 
+[node name="intro" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_devlo")
+}
+script = ExtResource("45_q1n7n")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/intro"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3612.0
+offset_top = -4027.0
+offset_right = 3612.0
+offset_bottom = 4027.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/intro"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("45_rylhr")
+
 [node name="spell book" type="CanvasLayer" parent="."]
 process_mode = 3
 visible = false
@@ -1510,8 +1786,17 @@ grow_vertical = 2
 color = Color(0.121569, 0, 0.00784314, 1)
 
 [node name="devant" type="TextureRect" parent="spell book"]
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("38_jvob3")
 
 [node name="open" type="Button" parent="spell book/devant"]
@@ -1524,8 +1809,17 @@ offset_bottom = 519.0
 
 [node name="page 0" type="TextureRect" parent="spell book"]
 visible = false
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("40_pjd1i")
 
 [node name="Button" type="Button" parent="spell book/page 0"]
@@ -1545,8 +1839,18 @@ offset_right = 1036.0
 offset_bottom = 578.0
 
 [node name="page 1" type="TextureRect" parent="spell book"]
-offset_right = 1152.0
-offset_bottom = 648.0
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("41_cv26i")
 
 [node name="Button" type="Button" parent="spell book/page 1"]
@@ -1567,8 +1871,17 @@ offset_bottom = 578.0
 
 [node name="summoning" type="TextureRect" parent="spell book"]
 visible = false
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("40_gn8vt")
 
 [node name="t2 cac" type="TextureButton" parent="spell book/summoning"]
@@ -1723,8 +2036,17 @@ texture = ExtResource("49_he6eg")
 
 [node name="attack" type="TextureRect" parent="spell book"]
 visible = false
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("53_iggfq")
 
 [node name="t2 boom" type="TextureButton" parent="spell book/attack"]
@@ -1879,8 +2201,17 @@ texture = ExtResource("49_he6eg")
 
 [node name="defense && control" type="TextureRect" parent="spell book"]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("50_t1owc")
 
 [node name="t2 shield" type="TextureButton" parent="spell book/defense && control"]
@@ -2091,9 +2422,38 @@ offset_right = 74.0
 offset_bottom = 194.0
 texture = ExtResource("49_he6eg")
 
+[node name="barré tous" type="TextureRect" parent="spell book/defense && control"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 377.0
+offset_right = 254.0
+offset_bottom = 429.0
+rotation = -0.440257
+scale = Vector2(3, 3)
+texture = ExtResource("49_he6eg")
+
+[node name="barré" type="TextureRect" parent="spell book/defense && control/barré tous"]
+layout_mode = 0
+offset_left = 93.0402
+offset_top = -51.2345
+offset_right = 238.04
+offset_bottom = 0.765507
+rotation = 1.47674
+texture = ExtResource("49_he6eg")
+
 [node name="summon" type="TextureRect" parent="spell book"]
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("78_uhr1y")
 
 [node name="t2 sca" type="TextureButton" parent="spell book/summon"]
@@ -2306,8 +2666,17 @@ texture = ExtResource("49_he6eg")
 
 [node name="trans" type="TextureRect" parent="spell book"]
 visible = false
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("78_fbnh7")
 
 [node name="t2 smo" type="TextureButton" parent="spell book/trans"]
@@ -2698,8 +3067,17 @@ texture = ExtResource("49_he6eg")
 
 [node name="derrière" type="TextureRect" parent="spell book"]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("51_0j6to")
 
 [node name="Button" type="Button" parent="spell book/derrière"]
@@ -2716,6 +3094,26 @@ offset_top = 8.0
 offset_right = 203.0
 offset_bottom = 66.0
 texture_normal = ExtResource("68_qx6nd")
+
+[node name="flip" type="AudioStreamPlayer" parent="spell book"]
+stream = ExtResource("128_gihpg")
+
+[node name="flip2" type="AudioStreamPlayer" parent="spell book"]
+stream = ExtResource("129_t1nbk")
+
+[node name="day_night cycle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1hnvk")
+}
+speed_scale = 0.05
+script = ExtResource("9_d34sj")
+light_mix = 0.5
+
+[node name="CanvasModulate" type="CanvasModulate" parent="day_night cycle"]
+
+[node name="day duration" type="Timer" parent="day_night cycle"]
+wait_time = 120.0
+one_shot = true
 
 [node name="Spell cost" type="Node2D" parent="."]
 script = ExtResource("29_wrche")
@@ -2799,25 +3197,43 @@ shape = SubResource("CircleShape2D_6oos5")
 autostart = true
 
 [node name="Musique" type="Node2D" parent="."]
+script = ExtResource("133_hx601")
 
 [node name="morning transi" type="AudioStreamPlayer" parent="Musique"]
 stream = ExtResource("133_5olne")
+volume_db = 10.0
 
 [node name="morning ambiance" type="AudioStreamPlayer" parent="Musique"]
 stream = ExtResource("134_3cyrl")
 
 [node name="night transi" type="AudioStreamPlayer" parent="Musique"]
-stream = ExtResource("133_5olne")
+stream = ExtResource("138_hj241")
+volume_db = 10.0
 
 [node name="night ambiance" type="AudioStreamPlayer" parent="Musique"]
 stream = ExtResource("135_ptu3f")
+
+[node name="night musique" type="AudioStreamPlayer" parent="Musique"]
+stream = ExtResource("135_ptu3f")
+
+[node name="day musique" type="AudioStreamPlayer" parent="Musique"]
+stream = ExtResource("137_fvicc")
+volume_db = -12.675
+
+[node name="boss" type="AudioStreamPlayer" parent="Musique"]
+stream = ExtResource("144_afc1k")
+
+[node name="ui" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("140_fgvwt")
+volume_db = 5.0
 
 [connection signal="timeout" from="Fosse a squellette/delay" to="Fosse a squellette" method="_on_delay_timeout"]
 [connection signal="body_entered" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Fosse a squellette/FOW revealer/Area2D" to="Fosse a squellette/FOW revealer" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Terrain/NavigationRegion2D/Delay" to="Terrain" method="_on_delay_timeout"]
-[connection signal="animation_finished" from="day_night cycle" to="day_night cycle" method="_on_animation_finished"]
-[connection signal="timeout" from="day_night cycle/day duration" to="day_night cycle" method="_on_day_duration_timeout"]
+[connection signal="pressed" from="CanvasLayer/UI poti squellette/Button" to="CanvasLayer/UI poti squellette" method="_on_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/UI poti squellette/90 s" to="CanvasLayer/UI poti squellette" method="_on__s_timeout"]
+[connection signal="timeout" from="CanvasLayer/conteur os/Timer" to="CanvasLayer/conteur os" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/achat bati/explos/buy" to="CanvasLayer/achat bati/explos" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/achat bati/tour d\'archer/buy" to="CanvasLayer/achat bati/tour d\'archer" method="_on_buy_pressed"]
 [connection signal="pressed" from="CanvasLayer/achat bati/tour d\'aggro/buy" to="CanvasLayer/achat bati/tour d\'aggro" method="_on_buy_pressed"]
@@ -2880,8 +3296,14 @@ stream = ExtResource("135_ptu3f")
 [connection signal="pressed" from="spell book/trans/button/prev" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/derrière/Button" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/back" to="spell book" method="_on_back_pressed"]
+[connection signal="animation_finished" from="day_night cycle" to="day_night cycle" method="_on_animation_finished"]
+[connection signal="timeout" from="day_night cycle/day duration" to="day_night cycle" method="_on_day_duration_timeout"]
 [connection signal="timeout" from="Spell cost/Timer" to="Spell cost" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spell cost/freeze duartion" to="Spell cost" method="_on_freeze_duartion_timeout"]
 [connection signal="body_entered" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="night aura/Area2D" to="night aura/night aura" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="night aura/Timer" to="night aura/night aura" method="_on_timer_timeout"]
+[connection signal="finished" from="Musique/morning transi" to="Musique" method="_on_morning_transi_finished"]
+[connection signal="finished" from="Musique/night transi" to="Musique" method="_on_night_transi_finished"]
+[connection signal="finished" from="Musique/day musique" to="Musique" method="_on_day_musique_finished"]
+[connection signal="finished" from="Musique/boss" to="Musique" method="_on_boss_finished"]

@@ -381,7 +381,7 @@ animations = [{
 
 [node name="Squellette mortier" instance=ExtResource("1_t8fsr")]
 speed = 2000
-range = 20.0
+range = 18.0
 attack_damage = 15
 max_hp = 30
 taille = 2
@@ -392,6 +392,9 @@ sprite_frames = SubResource("SpriteFrames_3awu6")
 animation = &"idle down"
 speed_scale = 2.0
 offset = Vector2(0, -17)
+
+[node name="attack cd" parent="." index="5"]
+wait_time = 1.5
 
 [node name="attack" parent="." index="9"]
 sprite_frames = SubResource("SpriteFrames_8ahkc")

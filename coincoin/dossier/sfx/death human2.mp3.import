@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctww8s0dxsq0b"
+path="res://.godot/imported/death human2.mp3-2265922752b7874f8a8e8dda746ff015.mp3str"
+
+[deps]
+
+source_file="res://dossier/sfx/death human2.mp3"
+dest_files=["res://.godot/imported/death human2.mp3-2265922752b7874f8a8e8dda746ff015.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

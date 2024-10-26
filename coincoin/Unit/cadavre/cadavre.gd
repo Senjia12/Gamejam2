@@ -10,6 +10,6 @@ extends Sprite2D
 ]
 
 
-
 func _ready() -> void:
 	texture = cadavre[randi()%cadavre.size()]
+	$AudioStreamPlayer2D.play()

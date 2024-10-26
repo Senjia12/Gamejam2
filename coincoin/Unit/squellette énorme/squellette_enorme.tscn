@@ -393,9 +393,9 @@ animations = [{
 }]
 
 [node name="Squellette prefab" instance=ExtResource("1_trp1v")]
-speed = 3000
-range = 5.0
-attack_damage = 20
+speed = 3500
+range = 6.0
+attack_damage = 30
 max_hp = 250
 taille = 3
 

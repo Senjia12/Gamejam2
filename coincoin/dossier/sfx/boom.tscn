@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bstjdx12x123t"]
+
+[ext_resource type="AudioStream" uid="uid://687fi12ilpxq" path="res://dossier/sfx/explosion.mp3" id="1_hiddf"]
+[ext_resource type="Script" path="res://dossier/sfx/boom.gd" id="2_umcxu"]
+
+[node name="boom" type="AudioStreamPlayer"]
+stream = ExtResource("1_hiddf")
+volume_db = -15.0
+pitch_scale = 1.2
+script = ExtResource("2_umcxu")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

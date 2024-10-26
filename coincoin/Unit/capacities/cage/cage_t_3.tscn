@@ -1,29 +1,132 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgwm5d6glx08u"]
+[gd_scene load_steps=18 format=3 uid="uid://bgwm5d6glx08u"]
 
 [ext_resource type="Script" path="res://Unit/capacities/cage/cage_t_3.gd" id="1_0wiby"]
-[ext_resource type="Texture2D" uid="uid://brgomffc2dskh" path="res://Unit/capacities/Cage_grande_arriere.png" id="1_7bnpm"]
-[ext_resource type="Texture2D" uid="uid://dhg2lyimnkgjm" path="res://Unit/capacities/Cage_grande_avant.png" id="2_7g637"]
+[ext_resource type="Texture2D" uid="uid://y4mti1c7y46j" path="res://Unit/capacities/cage/image 3.png" id="2_7orqc"]
+[ext_resource type="Texture2D" uid="uid://qahtpeu51qrn" path="res://Unit/capacities/cage/image 2.png" id="3_sf2kt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fjpy"]
+atlas = ExtResource("2_7orqc")
+region = Rect2(495, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnrll"]
+atlas = ExtResource("2_7orqc")
+region = Rect2(396, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0wsh"]
+atlas = ExtResource("2_7orqc")
+region = Rect2(297, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3ft2"]
+atlas = ExtResource("2_7orqc")
+region = Rect2(198, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18qj5"]
+atlas = ExtResource("2_7orqc")
+region = Rect2(99, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0itf"]
+atlas = ExtResource("2_7orqc")
+region = Rect2(0, 0, 99, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcksq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fjpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnrll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0wsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3ft2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18qj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0itf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmoh3"]
+atlas = ExtResource("3_sf2kt")
+region = Rect2(495, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xbw4"]
+atlas = ExtResource("3_sf2kt")
+region = Rect2(396, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4erku"]
+atlas = ExtResource("3_sf2kt")
+region = Rect2(297, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc3ce"]
+atlas = ExtResource("3_sf2kt")
+region = Rect2(198, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pyuq"]
+atlas = ExtResource("3_sf2kt")
+region = Rect2(99, 0, 99, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6jg4"]
+atlas = ExtResource("3_sf2kt")
+region = Rect2(0, 0, 99, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3kwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmoh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xbw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4erku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc3ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pyuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6jg4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="cage t3" type="StaticBody2D" groups=["squellette"]]
 script = ExtResource("1_0wiby")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -21.725)
-texture = ExtResource("1_7bnpm")
-offset = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_jcksq")
+frame = 5
+offset = Vector2(0, -10)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 2.58)
-texture = ExtResource("2_7g637")
-offset = Vector2(0, -33)
+sprite_frames = SubResource("SpriteFrames_t3kwh")
+frame = 5
+offset = Vector2(0, -15.5)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 7.015)
-polygon = PackedVector2Array(-49, -28, -27, -35, -12, -36, 0, -37, 13, -36, 28, -35, 47, -31, 49, -15, 30, -9, 9, -8, -11, -8, -30, -9, -49, -16, -49, -28, -53, -31, -59, -19, -51, -10, -33, -5, -9, -4, 10, -4, 31, -6, 50, -11, 59, -18, 53, -31, 29, -38, 0, -41, -28, -39, -53, -31)
+polygon = PackedVector2Array(-41, -22.015, -32, -10.015, -19, -6.015, 2, -5.015, 19, -8.015, 31, -13.015, 40, -23.015, 37, -32.015, 28, -37.015, 17, -42.015, 0, -42.015, -14, -40.015, -27, -37.015, -39, -30.015, -41, -22.015, -49, -17.015, -53, -24.015, -46, -36.015, -32, -42.015, -23, -45.015, -14, -48.015, -5, -50.015, 4, -49.015, 10, -49.015, 21, -46.015, 30, -43.015, 41, -35.015, 45, -27.015, 43, -18.015, 36, -6.015, 20, -0.0149999, 5, 2.985, -21, 0.985, -39, -7.015, -49, -17.015)
 
 [node name="despawn" type="Timer" parent="."]
 wait_time = 25.0
 
-[connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="timeout" from="despawn" to="." method="_on_dispawn_timeout"]

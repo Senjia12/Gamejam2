@@ -1,52 +1,52 @@
-[gd_scene load_steps=11 format=3 uid="uid://db8rdrjxi2ow7"]
+[gd_scene load_steps=16 format=3 uid="uid://db8rdrjxi2ow7"]
 
 [ext_resource type="Script" path="res://Unit/capacities/offensif/boule_de_feu_t_2.gd" id="1_xhihj"]
-[ext_resource type="Texture2D" uid="uid://kogkarisamac" path="res://Unit/capacities/offensif/image.png" id="2_4edgr"]
+[ext_resource type="Texture2D" uid="uid://mit6ty4sv1yp" path="res://Unit/capacities/offensif/image (3).png" id="2_1vjyl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r01s2"]
-atlas = ExtResource("2_4edgr")
-region = Rect2(0, 0, 59, 45)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmn0t"]
+atlas = ExtResource("2_1vjyl")
+region = Rect2(0, 0, 41, 43)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7fai"]
-atlas = ExtResource("2_4edgr")
-region = Rect2(59, 0, 59, 45)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi8oy"]
+atlas = ExtResource("2_1vjyl")
+region = Rect2(41, 0, 41, 43)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lpf6d"]
-atlas = ExtResource("2_4edgr")
-region = Rect2(118, 0, 59, 45)
+[sub_resource type="AtlasTexture" id="AtlasTexture_px3sm"]
+atlas = ExtResource("2_1vjyl")
+region = Rect2(82, 0, 41, 43)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_48uok"]
-atlas = ExtResource("2_4edgr")
-region = Rect2(177, 0, 59, 45)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qu6l"]
+atlas = ExtResource("2_1vjyl")
+region = Rect2(123, 0, 41, 43)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5mnqo"]
-atlas = ExtResource("2_4edgr")
-region = Rect2(236, 0, 59, 45)
+[sub_resource type="AtlasTexture" id="AtlasTexture_41l5c"]
+atlas = ExtResource("2_1vjyl")
+region = Rect2(164, 0, 41, 43)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oiyrg"]
-atlas = ExtResource("2_4edgr")
-region = Rect2(295, 0, 59, 45)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ipe"]
+atlas = ExtResource("2_1vjyl")
+region = Rect2(205, 0, 41, 43)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivgt0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r01s2")
+"texture": SubResource("AtlasTexture_wmn0t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k7fai")
+"texture": SubResource("AtlasTexture_xi8oy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lpf6d")
+"texture": SubResource("AtlasTexture_px3sm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_48uok")
+"texture": SubResource("AtlasTexture_6qu6l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5mnqo")
+"texture": SubResource("AtlasTexture_41l5c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oiyrg")
+"texture": SubResource("AtlasTexture_j0ipe")
 }],
 "loop": false,
 "name": &"explosion",
@@ -54,23 +54,51 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohduh"]
-size = Vector2(64, 52)
+size = Vector2(80, 82)
+
+[sub_resource type="Curve" id="Curve_o6llh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.841463, 0.769231), -1.15341, -1.15341, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_n45xf"]
+curve = SubResource("Curve_o6llh")
+
+[sub_resource type="Gradient" id="Gradient_u5084"]
+colors = PackedColorArray(0.101961, 0.423529, 0.54902, 1, 0.313726, 0.67451, 0.713726, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x3q37"]
+gradient = SubResource("Gradient_u5084")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vhq5r"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_x3q37")
+alpha_curve = SubResource("CurveTexture_n45xf")
 
 [node name="boule de feu t 2" type="Node2D"]
 script = ExtResource("1_xhihj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(23.5, 0.5)
+position = Vector2(4, -1)
 sprite_frames = SubResource("SpriteFrames_ivgt0")
 animation = &"explosion"
-frame_progress = 0.880823
 speed_scale = 0.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(23.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, 0)
+position = Vector2(-23.5, -0.5)
 shape = SubResource("RectangleShape2D_ohduh")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_vhq5r")
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

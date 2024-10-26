@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://jgghu7ull30x"]
+[gd_scene load_steps=4 format=3 uid="uid://jgghu7ull30x"]
 
 [ext_resource type="Texture2D" uid="uid://d4kx66onkeqwi" path="res://Level/Village/Maison/image (2).png" id="1_hmpdv"]
+[ext_resource type="Script" path="res://Level/Village/maison scène/maison.gd" id="2_du1qa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih36j"]
 size = Vector2(130, 115)
@@ -9,6 +10,8 @@ size = Vector2(130, 115)
 y_sort_enabled = true
 texture = ExtResource("1_hmpdv")
 offset = Vector2(0, -84.5)
+script = ExtResource("2_du1qa")
+maison_number = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

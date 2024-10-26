@@ -13,6 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if global_position.distance_to(t_pos) <= 16:
 		$AnimatedSprite2D.speed_scale = 1
+		$GPUParticles2D.emitting = true
 		for i in $Area2D.get_overlapping_bodies():
 			if i.is_in_group("Humain"):
 				i.take_damage(25)

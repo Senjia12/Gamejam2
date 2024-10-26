@@ -4,6 +4,7 @@ extends Node2D
 var unit_from_village := []
 
 var is_raided := false
+var maison := []
 
 @export var difficulty := 10
 var x_diff := 232
@@ -41,6 +42,7 @@ var spawn_point := []
 
 
 func _ready() -> void:
+	Globals.village += 1
 	$Area2D.scale *= difficulty
 	$Area2D.global_position *= 2
 	$"look spawn".global_position = global_position * 2
@@ -53,12 +55,14 @@ func _ready() -> void:
 				
 				if house_number == 4:
 					var glise = _GLISE.instantiate()
-					glise.global_position = next_pos + global_position
-					add_child(glise)
+					glise.global_position = next_pos + global_position*2
+					get_parent().add_child(glise)
+					maison.append(glise)
 				else:
-					var maison = MAISON[randi()%MAISON.size()].instantiate()
-					maison.global_position = next_pos + global_position
-					add_child(maison)
+					var maison_i = MAISON[randi()%MAISON.size()].instantiate()
+					maison_i.global_position = next_pos + global_position*2
+					get_parent().add_child(maison_i)
+					maison.append(maison_i)
 				house_number += 1
 
 
@@ -81,9 +85,10 @@ func next_wave():
 		truc_a_spawn.mage_feu = budget / 40
 		truc_a_spawn.mage_soin = budget / 40
 		truc_a_spawn.mage_glace = budget / 40
-		
-	
-	$"spawn delay".start()
+	if !is_raided:
+		$"spawn delay".start()
+	else:
+		$spawn.start()
 
 
 
@@ -133,6 +138,20 @@ func couik(villageois):
 	if unit_from_village == [] && is_raided:
 		Globals.bone_counter.add_bones(difficulty * 50)
 		Globals.exp.add_exp(difficulty * 10)
+		Globals.score += difficulty * 200
+		Globals.village -= 1
+		if Globals.village == 2:
+			Globals.poti_squellette.talk(["Well done you razed a village, but there are still 2 left ^^ and they may not be very happy with the news"])
+		elif Globals.village == 1:
+			Globals.poti_squellette.talk(["And another to fall, only 1 left..."])
+		elif Globals.village == 0:
+			Globals.poti_squellette.talk(["And the last one, now nothing stops us from conquering the world", "Mouahahahahahhahahahahahahahahahahahahahahahahahhahahahahahahahahahahaha !!!"])
+			Globals.bone_pill.reveale()
+			Globals.poti_squellette.talk(["Now everything belongs to us, but without humans, it's difficult to have fun and collect bones, maybe there would be a solution to resurrect some... to be continued"])
+			
+		Globals.musique.raid_musique(false)
+		for i in maison:
+			i.burn()
 		queue_free()
 
 
@@ -150,10 +169,14 @@ func _on_spawn_delay_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Unit"):
+	if body.is_in_group("Unit") && !is_raided:
+		Globals.musique.raid_musique(true)
+		Globals.poti_squellette.talk(["You started a raid... Try to kill all the humans in this village in the shortest time possible to return to your base afterwards."])
 		is_raided = true
 		Globals.infamie += 2
 		next_wave()
 		next_wave()
 		next_wave()
 		next_wave()
+		for i in unit_from_village:
+			i.is_raided = true

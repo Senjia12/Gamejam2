@@ -87,6 +87,7 @@ func _on_bump_body_entered(body: Node2D) -> void:
 				i.bump(rot)
 		$AnimatedSprite2D.play("u " + rot)
 		$rebond.start()
+		$AudioStreamPlayer2D.play()
 
 func _on_rebond_timeout() -> void:
 	$AnimatedSprite2D.play(rot)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwgogwr065v8n"
+path="res://.godot/imported/medievl bosss.wav-2e18199c2950d8a04a756663d611566c.sample"
+
+[deps]
+
+source_file="res://dossier/musique + ambiance/medievl bosss.wav"
+dest_files=["res://.godot/imported/medievl bosss.wav-2e18199c2950d8a04a756663d611566c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

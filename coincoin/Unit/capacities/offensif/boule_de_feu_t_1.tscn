@@ -1,52 +1,52 @@
-[gd_scene load_steps=11 format=3 uid="uid://43p2h0eufj1u"]
+[gd_scene load_steps=16 format=3 uid="uid://43p2h0eufj1u"]
 
-[ext_resource type="Texture2D" uid="uid://b4bkxvil71ma1" path="res://Unit/capacities/offensif/image (1).png" id="1_55axi"]
 [ext_resource type="Script" path="res://Unit/capacities/offensif/boule_de_feu_t_1.gd" id="1_rtual"]
+[ext_resource type="Texture2D" uid="uid://bkxuacyjo7ji2" path="res://Unit/capacities/offensif/boukleeed-Sheet.png" id="2_6vhxh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3wnd"]
-atlas = ExtResource("1_55axi")
-region = Rect2(0, 0, 41, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cm70"]
+atlas = ExtResource("2_6vhxh")
+region = Rect2(0, 0, 31, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1esk1"]
-atlas = ExtResource("1_55axi")
-region = Rect2(41, 0, 41, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioe0g"]
+atlas = ExtResource("2_6vhxh")
+region = Rect2(31, 0, 31, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gybmg"]
-atlas = ExtResource("1_55axi")
-region = Rect2(82, 0, 41, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2rwf"]
+atlas = ExtResource("2_6vhxh")
+region = Rect2(62, 0, 31, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vr0wy"]
-atlas = ExtResource("1_55axi")
-region = Rect2(123, 0, 41, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7bul"]
+atlas = ExtResource("2_6vhxh")
+region = Rect2(93, 0, 31, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6nxd"]
-atlas = ExtResource("1_55axi")
-region = Rect2(164, 0, 41, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_23wy1"]
+atlas = ExtResource("2_6vhxh")
+region = Rect2(124, 0, 31, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2fh1g"]
-atlas = ExtResource("1_55axi")
-region = Rect2(205, 0, 41, 25)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c675"]
+atlas = ExtResource("2_6vhxh")
+region = Rect2(155, 0, 31, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2qmd5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l3wnd")
+"texture": SubResource("AtlasTexture_3cm70")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1esk1")
+"texture": SubResource("AtlasTexture_ioe0g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gybmg")
+"texture": SubResource("AtlasTexture_d2rwf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vr0wy")
+"texture": SubResource("AtlasTexture_g7bul")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h6nxd")
+"texture": SubResource("AtlasTexture_23wy1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2fh1g")
+"texture": SubResource("AtlasTexture_6c675")
 }],
 "loop": false,
 "name": &"explosion",
@@ -54,13 +54,34 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vopx3"]
-size = Vector2(46, 28)
+size = Vector2(46, 46)
+
+[sub_resource type="Curve" id="Curve_vx4eh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.841463, 0.769231), -1.15341, -1.15341, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gmlvl"]
+curve = SubResource("Curve_vx4eh")
+
+[sub_resource type="Gradient" id="Gradient_1oehm"]
+colors = PackedColorArray(0.101961, 0.423529, 0.54902, 1, 0.313726, 0.67451, 0.713726, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kkafr"]
+gradient = SubResource("Gradient_1oehm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bb6ox"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_kkafr")
+alpha_curve = SubResource("CurveTexture_gmlvl")
 
 [node name="boule de feu t1" type="Node2D"]
 script = ExtResource("1_rtual")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(15, 1)
 sprite_frames = SubResource("SpriteFrames_2qmd5")
 animation = &"explosion"
 speed_scale = 0.0
@@ -68,7 +89,13 @@ speed_scale = 0.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(13, 0)
 shape = SubResource("RectangleShape2D_vopx3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_bb6ox")
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

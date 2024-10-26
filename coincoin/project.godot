@@ -21,6 +21,7 @@ Globals="*res://Globals.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://UI/curseur base.png"

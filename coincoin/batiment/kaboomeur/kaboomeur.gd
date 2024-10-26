@@ -8,6 +8,8 @@ const allumé = preload("res://batiment/kaboomeur/image (1).png")
 @onready var sprite: Sprite2D = $Sprite2D
 const EXPLOSION = preload("res://UI/shader/explosion.tscn")
 
+const BOOM = preload("res://dossier/sfx/boom.tscn")
+
 var light = true
 
 func _physics_process(delta: float) -> void:
@@ -58,6 +60,7 @@ func _on_tick_timeout() -> void:
 func _on_explosion_delay_timeout() -> void:
 	for i in $Area2D.get_overlapping_bodies():
 		i.take_damage(25)
+	get_parent().add_child(BOOM.instantiate())
 	var explosion = EXPLOSION.instantiate()
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)

@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://kyw8nirpj3ab"]
+[gd_scene load_steps=3 format=3 uid="uid://kyw8nirpj3ab"]
 
 [ext_resource type="Texture2D" uid="uid://cfagcp42ja2ov" path="res://Level/Village/Maison/image (1).png" id="1_2euji"]
+[ext_resource type="Script" path="res://Level/Village/maison scène/maison.gd" id="2_k88jb"]
 
 [node name="Maison" type="Sprite2D"]
 y_sort_enabled = true
 texture = ExtResource("1_2euji")
 offset = Vector2(0, -67)
+script = ExtResource("2_k88jb")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

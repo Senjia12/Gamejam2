@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://byauyvuqltrvw"]
+[gd_scene load_steps=50 format=3 uid="uid://byauyvuqltrvw"]
 
 [ext_resource type="Script" path="res://Unit/nécromancien/nécromancien.gd" id="1_jlaiv"]
 [ext_resource type="Script" path="res://Unit/capacities/offensive_spell.gd" id="2_km2c4"]
@@ -117,19 +117,24 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u8st3")
 }, {
-"duration": 1.0,
+"duration": 6.0,
 "texture": SubResource("AtlasTexture_60c02")
 }],
-"loop": true,
+"loop": false,
 "name": &"t3",
-"speed": 5.0
+"speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilg75"]
+size = Vector2(997, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trept"]
-size = Vector2(993, 20)
+size = Vector2(4273.5, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15d3y"]
 radius = 76.9415
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_midjx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xbhf"]
 radius = 400.0
@@ -282,25 +287,30 @@ position = Vector2(0, -13)
 script = ExtResource("2_km2c4")
 
 [node name="cd" type="Timer" parent="offensive_spell"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="ray" type="AnimatedSprite2D" parent="offensive_spell"]
 visible = false
-position = Vector2(518, 0)
+position = Vector2(18, 2)
 sprite_frames = SubResource("SpriteFrames_gsuma")
 animation = &"t3"
+offset = Vector2(500, 0)
 
 [node name="ray t2" type="Area2D" parent="offensive_spell"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="offensive_spell/ray t2"]
-position = Vector2(229.5, 0)
-shape = SubResource("RectangleShape2D_trept")
+position = Vector2(511.5, 0)
+shape = SubResource("RectangleShape2D_ilg75")
 
 [node name="ray t3" type="Area2D" parent="offensive_spell"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="offensive_spell/ray t3"]
-position = Vector2(515.5, 0)
+position = Vector2(2156.75, 0)
 shape = SubResource("RectangleShape2D_trept")
 
 [node name="defensive_spell" type="Area2D" parent="."]
@@ -322,17 +332,17 @@ script = ExtResource("4_vfuac")
 wait_time = 8.0
 one_shot = true
 
-[node name="summon_spell" type="Area2D" parent="."]
+[node name="summon_spell" type="Node2D" parent="."]
 script = ExtResource("5_3xl4r")
 
-[node name="summon_spell_cd" type="Timer" parent="summon_spell"]
+[node name="cd" type="Timer" parent="summon_spell"]
 wait_time = 15.0
+one_shot = true
 
-[node name="dispawn_cd" type="Timer" parent="summon_spell"]
-wait_time = 10.0
+[node name="Area2D" type="Area2D" parent="summon_spell"]
 
-[node name="nearby_defended_allies" type="CollisionShape2D" parent="summon_spell"]
-shape = SubResource("CircleShape2D_15d3y")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="summon_spell/Area2D"]
+shape = SubResource("CircleShape2D_midjx")
 
 [node name="FOW revealer" type="PointLight2D" parent="." groups=["fow"]]
 blend_mode = 2
@@ -383,12 +393,14 @@ text = "RESPWAN IN : 10 secondes"
 [node name="0_1" type="Timer" parent="respawn"]
 wait_time = 0.1
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [connection signal="timeout" from="offensive_spell/cd" to="offensive_spell" method="_on_cd_timeout"]
 [connection signal="animation_finished" from="offensive_spell/ray" to="offensive_spell" method="_on_ray_animation_finished"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
 [connection signal="timeout" from="control_spell/cd" to="control_spell" method="_on_cd_timeout"]
-[connection signal="timeout" from="summon_spell/summon_spell_cd" to="summon_spell" method="_on_summon_spell_cd_timeout"]
-[connection signal="timeout" from="summon_spell/dispawn_cd" to="summon_spell" method="_on_dispawn_cd_timeout"]
+[connection signal="timeout" from="summon_spell/cd" to="summon_spell" method="_on_cd_timeout"]
 [connection signal="body_entered" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="FOW revealer/Area2D" to="FOW revealer" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="mort cd" to="." method="_on_mort_cd_timeout"]

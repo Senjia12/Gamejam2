@@ -6,7 +6,7 @@ var point := 0
 
 var page := 0
 var summon_tier := "t1"
-var shield_tier := "t1"
+var shield_tier := "disabled"
 var control_tier := "t1"
 var attack_tier := "t1"
 var trans_tier := "t1"
@@ -66,10 +66,6 @@ const _2_BAS_GAUCHE_AA = preload("res://arbre de compétence/summon spell/2 bas 
 const _2_HAUT_DROITE_AA = preload("res://arbre de compétence/summon spell/2 haut droite aa.png")
 const _2_HAUT_GAUCHE_AA = preload("res://arbre de compétence/summon spell/2 haut gauche aa.png")
 
-func _ready() -> void:
-	add_point(false)
-
-
 func add_point(reset):
 	if !reset:
 		point = 1
@@ -79,11 +75,11 @@ func add_point(reset):
 	elif summon_tier == "t2 cac":$"summoning/t3 cac".disabled = reset
 	elif summon_tier == "t2 range":$"summoning/t3 range".disabled = reset
 	
-	if shield_tier == "t1":
-		$"defense && control/t2 shield".disabled = reset
-		$"defense && control/t2 ombre".disabled = reset
-	elif shield_tier == "t2 shield":$"defense && control/t3 shield".disabled = reset
-	elif shield_tier == "t2 ombre":$"defense && control/t3 ombre".disabled = reset
+#	if shield_tier == "t1":
+#		$"defense && control/t2 shield".disabled = reset
+#		$"defense && control/t2 ombre".disabled = reset
+#	elif shield_tier == "t2 shield":$"defense && control/t3 shield".disabled = reset
+#	elif shield_tier == "t2 ombre":$"defense && control/t3 ombre".disabled = reset
 	
 	if control_tier == "t1":
 		$"defense && control/t2 cage".disabled = reset
@@ -133,11 +129,13 @@ func _on_next_pressed() -> void:
 	page += 1
 	get_child(page).hide()
 	get_child(page + 1).show()
+	$flip.play()
 
 func _on_prev_pressed() -> void:
 	page -= 1
 	get_child(page + 2).hide()
 	get_child(page + 1).show()
+	$flip2.play()
 
 func _on_open_pressed() -> void:
 	_on_next_pressed()
@@ -451,7 +449,7 @@ func _on_t_2_sca_pressed() -> void:
 		$"summon/barré sra".show()
 		$"summon/t2 sra".disabled = true
 		$"summon/t2 sca".texture_normal = D_HAUT_GAUCHE_AA
-		Globals.player.get_node("summon_spell").summon_spell = "summon spell t2 armed skeleton cac"
+		Globals.player.get_node("summon_spell").tier = 2
 		point = 0
 		add_point(true)
 
@@ -460,7 +458,7 @@ func _on_t_3_sca_pressed() -> void:
 	if sa_tier == "t2 sca" && point > 0:
 		res_tier = "t3 sca"
 		$"summon/t3 sca".texture_normal = D_BAS_GAUCHE_AA
-		Globals.player.get_node("summon_spell").summon_spell = "summon spell t3 armed skeleton cac"
+		Globals.player.get_node("summon_spell").tier = 3
 		point = 0
 		add_point(true)
 
@@ -471,8 +469,8 @@ func _on_t_2_sra_pressed() -> void:
 		$"summon/barré sca".show()
 		$"summon/t2 sca".disabled = true
 		$"summon/t2 sra".texture_normal = D_HAUT_DROITE_AA
-		Globals.player.get_node("summon_spell").summon_spell = "summon spell t2 armed skeleton range"
-		Globals.player.get_node("summon_spell").summon_update()
+		Globals.player.get_node("summon_spell").tier = 2
+		Globals.player.get_node("summon_spell").spé = "range"
 		point = 0
 		add_point(true)
 
@@ -481,7 +479,7 @@ func _on_t_3_sra_pressed() -> void:
 	if sa_tier == "t2 sra" && point > 0:
 		res_tier = "t3 sra"
 		$"summon/t3 sra".texture_normal = D_BAS_DROITE_AA
-		Globals.player.get_node("summon_spell").summon_spell = "summon spell t3 armed skeleton range"
+		Globals.player.get_node("summon_spell").tier = 3
 		point = 0
 		add_point(true)
 

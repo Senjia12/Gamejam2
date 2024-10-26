@@ -8,8 +8,8 @@ extends Control
 
 var control_cd := 8.0
 var defense_cd := 8.0
-var attack_cd := 3.0
-var summon_cd := 8.0
+var attack_cd := 2.0
+var summon_cd := 15.0
 
 
 func _ready() -> void:

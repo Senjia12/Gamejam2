@@ -16,3 +16,6 @@ offset = Vector2(0, -14)
 
 [node name="humain nulle randomiser" type="Sprite2D" parent="." index="6"]
 script = ExtResource("3_deiyg")
+
+[node name="attack" parent="." index="11"]
+animation = &"attack up"
