@@ -297,34 +297,6 @@ shader = ExtResource("10_hnh7q")
 shader_parameter/lod = 5.0
 shader_parameter/mix_percentage = 0.2
 
-[sub_resource type="Animation" id="Animation_qlxxh"]
-resource_name = "intro"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("intro/TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(9, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("intro/ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(9, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_b450a"]
 length = 0.001
 tracks/0/type = "value"
@@ -350,6 +322,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qlxxh"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("intro/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_devlo"]
@@ -1740,9 +1739,11 @@ offset_bottom = 431.0
 libraries = {
 "": SubResource("AnimationLibrary_devlo")
 }
+speed_scale = 1.2
 script = ExtResource("45_q1n7n")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/intro"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1755,6 +1756,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/intro"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1767,6 +1769,17 @@ offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("45_rylhr")
+
+[node name="Label2" type="Label" parent="CanvasLayer/intro/TextureRect"]
+offset_left = 166.0
+offset_top = 587.0
+offset_right = 941.0
+offset_bottom = 619.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("15_yflrp")
+theme_override_font_sizes/font_size = 32
+text = "Press any key"
+horizontal_alignment = 1
 
 [node name="spell book" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -3243,6 +3256,7 @@ volume_db = 5.0
 [connection signal="pressed" from="CanvasLayer/pause menu/resume" to="CanvasLayer/pause menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_screen/restart" to="CanvasLayer/end_screen" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/end_screen/main menu" to="CanvasLayer/end_screen" method="_on_main_menu_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/intro" to="CanvasLayer/intro" method="_on_animation_finished"]
 [connection signal="pressed" from="spell book/devant/open" to="spell book" method="_on_open_pressed"]
 [connection signal="pressed" from="spell book/page 0/Button" to="spell book" method="_on_prev_pressed"]
 [connection signal="pressed" from="spell book/page 0/Button2" to="spell book" method="_on_next_pressed"]
