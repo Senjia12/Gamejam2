@@ -118,6 +118,7 @@ grow_vertical = 2
 texture = ExtResource("1_nh08d")
 
 [node name="Label" type="Label" parent="TextureRect"]
+visible = false
 layout_mode = 0
 offset_left = 174.0
 offset_top = 581.0

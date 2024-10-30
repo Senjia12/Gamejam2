@@ -24,27 +24,30 @@ func _physics_process(delta: float) -> void:
 		if $Area2D.get_overlapping_bodies() == []:
 			squellette_number += 1
 			if tier == 1:
-				var poti_squellet = POTI_SQUELLETTE.instantiate()
-				poti_squellet.global_position = $Area2D.global_position
-				get_parent().get_parent().add_child(poti_squellet)
-				if !Globals.night:
-					poti_squellet.disabled()
+				if Globals.bone_counter.cost(2):
+					var poti_squellet = POTI_SQUELLETTE.instantiate()
+					poti_squellet.global_position = $Area2D.global_position
+					get_parent().get_parent().add_child(poti_squellet)
+					if !Globals.night:
+						poti_squellet.disabled()
 				if squellette_number >= 3:
 					looking_for_spot = false
 			elif spé == "cac":
-				var poti_squellet = SQUELLETTE_GROS.instantiate()
-				poti_squellet.global_position = $Area2D.global_position
-				get_parent().get_parent().add_child(poti_squellet)
-				if !Globals.night:
-					poti_squellet.disabled()
+				if Globals.bone_counter.cost(10):
+					var poti_squellet = SQUELLETTE_GROS.instantiate()
+					poti_squellet.global_position = $Area2D.global_position
+					get_parent().get_parent().add_child(poti_squellet)
+					if !Globals.night:
+						poti_squellet.disabled()
 				if squellette_number >= (tier - 1) * 5:
 					looking_for_spot = false
 			elif spé == "range":
-				var poti_squellet = SQUELLETTE_ARCHER.instantiate()
-				poti_squellet.global_position = $Area2D.global_position
-				get_parent().get_parent().add_child(poti_squellet)
-				if !Globals.night:
-					poti_squellet.disabled()
+				if Globals.bone_counter.cost(5):
+					var poti_squellet = SQUELLETTE_ARCHER.instantiate()
+					poti_squellet.global_position = $Area2D.global_position
+					get_parent().get_parent().add_child(poti_squellet)
+					if !Globals.night:
+						poti_squellet.disabled()
 				if squellette_number >= (tier - 1) * 5:
 					looking_for_spot = false
 		else:

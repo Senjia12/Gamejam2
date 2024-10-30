@@ -18,7 +18,7 @@ func take_damage(dmg):
 
 
 func _on_dispawn_timeout() -> void:
-	queue_free()
+	take_damage(250)
 
 
 func _on_sprite_2d_animation_finished() -> void:

@@ -7,7 +7,7 @@ const CAGE_T_3 = preload("res://Unit/capacities/cage/cage_t_3.tscn")
 const ZONE_DE_RALENTISSEMENT = preload("res://Unit/capacities/cage/zone_de_ralentissement.tscn")
 
 var control_type = "cage"
-var tier = 1
+var tier = 3
 
 var ysort
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("control_spell") && can_control:
-		if Globals.mana.cost(3):
+		if Globals.mana.cost(5):
 			if control_type == "cage" && tier <= 2:
 				var cage = CAGE_T_12.instantiate()
 				cage.t = tier

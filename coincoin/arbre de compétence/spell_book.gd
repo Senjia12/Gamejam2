@@ -240,7 +240,7 @@ func _on_t_2_cage_pressed() -> void:
 func _on_t_3_cage_pressed() -> void:
 	if control_tier == "t2 cage" && point > 0:
 		control_tier = "t3 cage"
-		$"defense && control/t2 cage".texture_normal = VALID__CAGE_T_3
+		$"defense && control/t3 cage".texture_normal = VALID__CAGE_T_3
 		point = 0
 		add_point(true)
 		Globals.player.get_node("control_spell").tier = 3
@@ -303,7 +303,7 @@ func _on_t_2_trai_pressed() -> void:
 func _on_t_3_trai_pressed() -> void:
 	if attack_tier == "t2 trai" && point > 0:
 		attack_tier = "t3 trai"
-		$"attack/t3 trai".texture_normal = BAS_GAUCHE_AA
+		$"attack/t3 trai".texture_normal = BAS_DROITE_AA
 		Globals.player.get_node("offensive_spell").tier = 3
 		point = 0
 		add_point(true)
@@ -321,8 +321,8 @@ func _on_t_2_smo_pressed() -> void:
 
 
 func _on_t_3_smo_pressed() -> void:
-	if attack_tier == "t2 smo" && point > 0:
-		attack_tier = "t3 smo"
+	if trans_tier == "t2 smo" && point > 0:
+		trans_tier = "t3 smo"
 		$"trans/t3 smo".texture_normal = ASSI_BGAA
 		Globals.player.speed = 200
 		point = 0
@@ -341,8 +341,8 @@ func _on_t_2_resi_pressed() -> void:
 
 
 func _on_t_3_resi_pressed() -> void:
-	if attack_tier == "t2 resi" && point > 0:
-		attack_tier = "t3 resi"
+	if trans_tier == "t2 resi" && point > 0:
+		trans_tier = "t3 resi"
 		$"trans/t3 resi".texture_normal = ASSI_BDAA
 		Globals.mana.upgrade(2)
 		point = 0

@@ -105,20 +105,20 @@ animations = [{
 }]
 
 [node name="cage t3" type="StaticBody2D" groups=["squellette"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_0wiby")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -21.725)
 sprite_frames = SubResource("SpriteFrames_jcksq")
-frame = 5
 offset = Vector2(0, -10)
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 2.58)
 sprite_frames = SubResource("SpriteFrames_t3kwh")
-frame = 5
 offset = Vector2(0, -15.5)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -126,7 +126,8 @@ position = Vector2(0, 7.015)
 polygon = PackedVector2Array(-41, -22.015, -32, -10.015, -19, -6.015, 2, -5.015, 19, -8.015, 31, -13.015, 40, -23.015, 37, -32.015, 28, -37.015, 17, -42.015, 0, -42.015, -14, -40.015, -27, -37.015, -39, -30.015, -41, -22.015, -49, -17.015, -53, -24.015, -46, -36.015, -32, -42.015, -23, -45.015, -14, -48.015, -5, -50.015, 4, -49.015, 10, -49.015, 21, -46.015, 30, -43.015, 41, -35.015, 45, -27.015, 43, -18.015, 36, -6.015, 20, -0.0149999, 5, 2.985, -21, 0.985, -39, -7.015, -49, -17.015)
 
 [node name="despawn" type="Timer" parent="."]
-wait_time = 25.0
+wait_time = 15.0
+autostart = true
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="despawn" to="." method="_on_dispawn_timeout"]
