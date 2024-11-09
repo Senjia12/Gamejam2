@@ -319,7 +319,7 @@ collision_mask = 4
 script = ExtResource("3_4fvd8")
 
 [node name="defensive_spell_cd" type="Timer" parent="defensive_spell"]
-wait_time = 7.0
+wait_time = 10.0
 
 [node name="nearby_defended_allies" type="CollisionShape2D" parent="defensive_spell"]
 visible = false
@@ -398,6 +398,7 @@ current = true
 
 [connection signal="timeout" from="offensive_spell/cd" to="offensive_spell" method="_on_cd_timeout"]
 [connection signal="animation_finished" from="offensive_spell/ray" to="offensive_spell" method="_on_ray_animation_finished"]
+[connection signal="body_exited" from="defensive_spell" to="defensive_spell" method="_on_body_exited"]
 [connection signal="timeout" from="defensive_spell/defensive_spell_cd" to="defensive_spell" method="_on_defensive_spell_cd_timeout"]
 [connection signal="timeout" from="control_spell/cd" to="control_spell" method="_on_cd_timeout"]
 [connection signal="timeout" from="summon_spell/cd" to="summon_spell" method="_on_cd_timeout"]

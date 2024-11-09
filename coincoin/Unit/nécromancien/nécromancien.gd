@@ -10,6 +10,8 @@ var nb_ames = 10
 var player_direction = "idle_forward"
 
 var insensible := false
+var taille = 1
+var shield = 0
 
 var respawn_time := 00
 
